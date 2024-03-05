@@ -26,8 +26,19 @@ return require('packer').startup(function(use)
       {'williamboman/mason-lspconfig.nvim'},
 
       -- Autocompletion
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-nvim-lsp'},
       {'dcampos/nvim-snippy'},
       {'honza/vim-snippets'},
+      {'dcampos/nvim-snippy'},
+      {'dcampos/cmp-snippy'},
+      {'neovim/nvim-lspconfig'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-cmdline'},
+      {'hrsh7th/nvim-cmp'},
+
       -- close keys
       {'jiangmiao/auto-pairs'},
     }
