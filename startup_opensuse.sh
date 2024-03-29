@@ -1,6 +1,6 @@
 PACKAGER='zypper'
 LIST_PACKAGES='zsh neovim cargo rust python3 openjdk go git openssl-devel'
-META_PACKAGES='devel_basis'
+META_PACKAGES='devel_basis devel_java devel_C_C++'
 
 sudo $PACKAGER install $LIST_PACKAGES -y
 sudo $PACKAGER install -t pattern $META_PACKAGES -y
