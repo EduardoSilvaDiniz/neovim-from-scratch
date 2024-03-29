@@ -1,9 +1,7 @@
 PACKAGER='zypper'
-LIST_PACKAGES='zsh neovim cargo rust python3 openjdk go git openssl-devel'
-META_PACKAGES='devel_basis devel_java devel_C_C++ devel_python3'
 
-sudo $PACKAGER install $LIST_PACKAGES -y
-sudo $PACKAGER install -t pattern $META_PACKAGES -y
+sudo $PACKAGER install zsh neovim cargo go git openssl-devel -y
+sudo $PACKAGER install -t pattern devel_basis devel_java devel_C_C++ devel_python3 -y
 
 git clone https://github.com/EduardoSilvaDiniz/neovim-vanilla.git ~/.config/nvim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/sta
