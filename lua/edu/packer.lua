@@ -1,7 +1,30 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  -- show lines
+  use "lukas-reineke/indent-blankline.nvim"
+
+  -- plugin manager
   use 'wbthomason/packer.nvim'
+
+  -- close keys
+  use 'jiangmiao/auto-pairs'
+
+  -- run code
+  use 'CRAG666/code_runner.nvim'
+
+  -- mini terminal
+  use 'CRAG666/betterTerm.nvim'
+
+  -- navegator 
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
+
+  -- theme
   use {
     'morhetz/gruvbox',
     gv = 'gruvbox',
@@ -10,12 +33,21 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- search code
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('nvim-treesitter/playground')
+
+  -- syntax highlight
+  use {
+    'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'
+  }
+
+  -- nãosei
+  use 'nvim-treesitter/playground'
+
+  -- lsp
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
@@ -26,21 +58,15 @@ return require('packer').startup(function(use)
       {'williamboman/mason-lspconfig.nvim'},
 
       -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'dcampos/nvim-snippy'},
       {'honza/vim-snippets'},
+      {'neovim/nvim-lspconfig'},
       {'dcampos/nvim-snippy'},
       {'dcampos/cmp-snippy'},
-      {'neovim/nvim-lspconfig'},
       {'hrsh7th/cmp-nvim-lsp'},
       {'hrsh7th/cmp-buffer'},
       {'hrsh7th/cmp-path'},
       {'hrsh7th/cmp-cmdline'},
-      {'hrsh7th/nvim-cmp'},
-
-      -- close keys
-      {'jiangmiao/auto-pairs'},
+      {'hrsh7th/nvim-cmp'}
     }
   }
 end)
