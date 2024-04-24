@@ -16,21 +16,15 @@ return require('packer').startup(function(use)
   -- mini terminal
   use 'CRAG666/betterTerm.nvim'
 
+  -- theme
+  use 'morhetz/gruvbox'
+
   -- navegator 
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-tree/nvim-web-devicons', -- icons
     },
-  }
-
-  -- theme
-  use {
-    'morhetz/gruvbox',
-    gv = 'gruvbox',
-    config = function()
-      vim.cmd('colorscheme gruvbox')
-    end
   }
 
   -- search code
@@ -39,13 +33,16 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- show signature args
+  use 'ray-x/lsp_signature.nvim'
+
   -- syntax highlight
   use {
     'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'
   }
 
   -- nãosei
-  use 'nvim-treesitter/playground'
+  -- use 'nvim-treesitter/playground'
 
   -- lsp
   use {
@@ -56,17 +53,27 @@ return require('packer').startup(function(use)
       {'neovim/nvim-lspconfig'},
       {'williamboman/mason.nvim'},
       {'williamboman/mason-lspconfig.nvim'},
+    }
+  }
 
-      -- Autocompletion
-      {'honza/vim-snippets'},
-      {'neovim/nvim-lspconfig'},
-      {'dcampos/nvim-snippy'},
-      {'dcampos/cmp-snippy'},
+  -- Autocompletion
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
       {'hrsh7th/cmp-nvim-lsp'},
       {'hrsh7th/cmp-buffer'},
       {'hrsh7th/cmp-path'},
       {'hrsh7th/cmp-cmdline'},
-      {'hrsh7th/nvim-cmp'}
+    }
+  }
+
+  -- Snippet
+  use {
+	  "L3MON4D3/LuaSnip",
+	  tag = "v2.*",
+	  run = "make install_jsregexp",
+    requires = {
+      'saadparwaiz1/cmp_luasnip'
     }
   }
 end)
