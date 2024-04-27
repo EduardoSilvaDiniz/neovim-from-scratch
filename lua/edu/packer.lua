@@ -33,6 +33,23 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- project manager
+  use({
+    "coffebar/neovim-project",
+    config = function()
+      vim.opt.sessionoptions:append("globals")
+      require("neovim-project").setup {
+        projects = { -- define project roots
+          "~/projects/*",
+          "~/.config/*",
+        },
+      }
+    end,
+    requires = {
+      { "Shatur/neovim-session-manager" },
+    }
+  })
+
   -- show signature args
   use 'ray-x/lsp_signature.nvim'
 

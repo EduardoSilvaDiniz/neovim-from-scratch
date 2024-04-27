@@ -3,27 +3,22 @@ PACKAGER='zypper'
 sudo $PACKAGER install zsh neovim cargo go git openssl-devel -y
 sudo $PACKAGER install -t pattern devel_basis devel_java devel_C_C++ devel_python3 -y
 
+# clone my repository nvim configs
 git clone https://github.com/EduardoSilvaDiniz/neovim-vanilla.git ~/.config/nvim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/sta
-rt/packer.nvim
+# changing the folder name to avoid errors when running neovim
+mv ~/.config/nvim/after ~/.config/nvim/CHANGEafter
 
-# installs NVM (Node Version Manager)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-# download and install Node.js
-nvm install 20
-# verifies the right Node.js version is in the environment
-node -v # should print `v20.12.0`
-# verifies the right NPM version is in the environment
-npm -v # should print `10.5.0`
+# install packer
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+# install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# add alias on zshrc
 echo "
 alias vi='nvim'
 alias vim='nvim'
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 " >> .zshrc
 
-echo "Abra nvim e execute PackerSync para instalar os plugins"
+echo 'open nvim and execute command PackerSync for install plugins and change name folder CHANGEafter for after on .config/nvim'
