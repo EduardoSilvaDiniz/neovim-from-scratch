@@ -1,1 +1,1 @@
-require("edu")
+require("default")
