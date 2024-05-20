@@ -1,11 +1,11 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- show lines
-  use "lukas-reineke/indent-blankline.nvim"
-
   -- plugin manager
   use 'wbthomason/packer.nvim'
+
+  -- show lines
+  use "lukas-reineke/indent-blankline.nvim"
 
   -- close keys
   use 'jiangmiao/auto-pairs'
