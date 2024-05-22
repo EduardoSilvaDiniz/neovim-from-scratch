@@ -2,33 +2,44 @@ local luasnip = require("luasnip")
 local cmp = require("cmp")
 
 cmp.setup({
-  mapping = {
-   ['<CR>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-            if luasnip.expandable() then
-                luasnip.expand()
-            else
-                cmp.confirm({
-                    select = true,
-                })
-            end
-        else
-            fallback()
-        end
-    end),
+	mapping = {
+		["<Tab>"] = cmp.mapping(function(fallback)
+			-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+			if cmp.visible() then
+				if luasnip.jumpable(1) then
+					cmp.select_next_item()
+				else
+					local entry = cmp.get_selected_entry()
+					if not entry then
+						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					end
+					cmp.confirm()
+				end
+			else
+				fallback()
+			end
+		end, {"i","s","c",}),
 
-            ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.confirm { select = true }
-            elseif luasnip.expand_or_locally_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-        end
-        end, {
-                "i",
-                "s",
-            }),
+		["<leader>;"] = cmp.mapping(function (fallback)
+			if luasnip.jumpable(1) then
+				luasnip.jump(1)
+			else
+				fallback()
+			end
+		end, {
+		"i",
+		"s",
+	}),
 
-  },
+	["<leader>,"] = cmp.mapping(function (fallback)
+		if luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end, {
+	"i",
+	"s",
+}),
+},
 })
