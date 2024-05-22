@@ -1,4 +1,4 @@
-script that install all dependencies for neovim
+script that install all dependencies for neovim (ubuntu only)
 ```bash
 cd ~/.config
 git clone git@github.com:EduardoSilvaDiniz/neovim-vanilla.git nvim
