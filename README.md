@@ -1,1 +1,6 @@
-use script startup_opensuse.sh for install compilers, packages manager and nvim.
+script that install all dependencies for neovim
+```bash
+cd ~/.config
+git clone git@github.com:EduardoSilvaDiniz/neovim-vanilla.git nvim
+cd nvim && chmod +x install_base.sh && ./install_base.sh
+```
