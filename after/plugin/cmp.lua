@@ -2,10 +2,9 @@ local cmp = require'cmp'
 local lspkind =  require('lspkind')
 
 cmp.setup({
-  max_item_count=15;
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   formatting = {
@@ -30,16 +29,16 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
-    { name = "luasnip", max_item_count = 3, group_index = 1 },
-			{ name = "nvim_lsp", group_index = 1 },
-			{ name = "treesitter", group_index = 2 },
-			{ name = "path", group_index = 2 },
-			{ name = "buffer", group_index = 2, keyword_length = 5 },
-			-- { name = "spell", group_index = 2 },
-			{ name = "emoji", group_index = 2 },
-			{ name = "calc", group_index = 2 },
+    { name = "luasnip", max_item_count = 15, group_index = 1 },
+    { name = "nvim_lsp", max_item_count = 15, group_index = 1 },
+    { name = "treesitter", max_item_count = 15, group_index = 2 },
+    { name = "path", max_item_count = 15, group_index = 2 },
+    { name = "buffer", max_item_count = 15, group_index = 2, keyword_length = 5 },
+    { name = "spell", max_item_count = 15, group_index = 2 },
+    { name = "emoji", max_item_count = 15, group_index = 2 },
+    { name = "calc", max_item_count = 15, group_index = 2 },
   }, {
-    { name = 'buffer' },
+    { name = 'buffer', max_item_count = 15 },
   })
 })
 
