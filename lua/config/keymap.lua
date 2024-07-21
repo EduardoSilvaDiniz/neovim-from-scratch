@@ -13,6 +13,8 @@ map("n", "<leader>mv", "<S-v>", { desc = "visual/line mode" })
 map("n", "gu", "gU", { desc = "uppercase" })
 map("n", "gl", "gu", { desc = "lowercase" })
 
+map("n", "<leader>bd", "<cmd>bd<cr>", { desc = "delete buffer" })
+
 map("n", "<S-i>", '<cmd>echo "use leader + m + h!!"<cr>')
 map("n", "<S-a>", '<cmd>echo "use leader + m + l!!"<cr>')
 map("n", "<S-s>", '<cmd>echo "use leader + m + s!!"<cr>')
