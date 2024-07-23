@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 
-map("n", "<leader>qq", "<cmd>q!<cr>", { desc = "force quit vim" })
-map("n", "<leader>qs", "<cmd>w<cr>", { desc = "save file" })
+map("n", "<leader>qq", "<cmd>q!<cr>", { desc = "Force Quit" })
+map("n", "<leader>qs", "<cmd>wq<cr>", { desc = "Save And Quit" })
 
 map("n", ";", ":", { silent = true, desc = "command line" })
 map("n", ":", '<cmd>echo "use ; command"<cr>')
@@ -14,6 +14,7 @@ map("n", "gu", "gU", { desc = "uppercase" })
 map("n", "gl", "gu", { desc = "lowercase" })
 
 map("n", "<leader>bd", "<cmd>bd<cr>", { desc = "delete buffer" })
+map("n", "<leader>bs", "<cmd>w<cr>", { desc = "Save Buffer" })
 
 map("n", "<S-i>", '<cmd>echo "use leader + m + h!!"<cr>')
 map("n", "<S-a>", '<cmd>echo "use leader + m + l!!"<cr>')
@@ -27,3 +28,4 @@ map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 map("n", "<leader>cr", "<cmd>w !node<cr>")
+map({ "n", "t" }, "<leader>tt", require("betterTerm").open, { desc = "Open terminal" })

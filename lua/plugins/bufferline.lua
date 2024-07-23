@@ -1,3 +1,5 @@
+vim.opt.termguicolors = true
+
 return {
 	"akinsho/bufferline.nvim",
 	version = "*",
@@ -11,10 +13,17 @@ return {
 		{ "<leader>bh", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
 		{ "<leader>bl", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
 	},
-	opts = {},
-	config = function(_, opts)
-		vim.opt.termguicolors = true
-		require("bufferline").setup({
+	opts = {
+		options = {
+			mode = "buffers",
+			always_show_bufferline = true,
+			enforce_regular_tabs = true,
+			offsets = {
+				filetype = "NvimTree",
+				text = "File Explorer",
+				highlight = "Directory",
+				separador = true,
+			},
 			diagnostics_indicator = function(count, level, diagnostics_dict, context)
 				local s = " "
 				for e, n in pairs(diagnostics_dict) do
@@ -23,6 +32,6 @@ return {
 				end
 				return s
 			end,
-		})
-	end,
+		},
+	},
 }

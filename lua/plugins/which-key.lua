@@ -1,7 +1,11 @@
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
+	lazy = true,
 	opts = {},
+	dependencies = {
+		"echasnovski/mini.icons",
+	},
 	keys = {
 		{
 			"<leader>c",
@@ -65,6 +69,13 @@ return {
 				require("which-key").show({ global = false })
 			end,
 			desc = "[M]oviment",
+		},
+		{
+			"<leader>q",
+			function()
+				require("which-key").show({ global = true })
+			end,
+			desc = "[Q]uiting",
 		},
 	},
 }
