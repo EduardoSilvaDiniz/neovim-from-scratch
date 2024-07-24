@@ -69,3 +69,16 @@ vim.opt.hlsearch = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+
+-- show tablines
+vim.o.showtabline = 2
+
+-- req bufferline
+vim.opt.termguicolors = true
+
+-- desable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true

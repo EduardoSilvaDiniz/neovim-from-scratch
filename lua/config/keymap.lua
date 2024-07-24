@@ -28,4 +28,3 @@ map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 map("n", "<leader>cr", "<cmd>w !node<cr>")
-map({ "n", "t" }, "<leader>tt", require("betterTerm").open, { desc = "Open terminal" })
