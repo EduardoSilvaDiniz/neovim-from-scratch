@@ -4,6 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	version = "*",
@@ -14,7 +15,7 @@ return {
 	},
 	cmd = "Neotree",
 	keys = {
-		{ "<leader>e", ":Neotree toggle<CR>", { desc = "NeoTree reveal" } },
+		{ "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "NeoTree reveal", silent = true } },
 		{ "<CR>", nil },
 	},
 	opts = {
