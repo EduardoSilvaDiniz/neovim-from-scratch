@@ -82,3 +82,6 @@ vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+
+-- req cmp
+--vim.g.completeopt = "menu,menuone,noselect,noinsert"
