@@ -1,11 +1,11 @@
 return {
-    'nvimdev/dashboard-nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    event = 'VimEnter',
-    config = function()
-      local logo = [[
+  "nvimdev/dashboard-nvim",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
+  event = "VimEnter",
+  config = function()
+    local logo = [[
         =================     ===============     ===============   ========  ========
         \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
         ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
@@ -26,25 +26,34 @@ return {
         \   _-'                                                                `-_   /
          `''                                                                      ``'
       ]]
-  
-      logo = string.rep('\n', 8) .. logo .. '\n\n'
-      require('dashboard').setup {
-        theme = 'doom',
-        hide = { statusline = false },
-        config = {
-          header = vim.split(logo, '\n'),
-          center = {
-            {
-              action = function()
-                vim.api.nvim_input '<cmd>qa<cr>'
-              end,
-              desc = ' Quit',
-              icon = ' ',
-              key = 'q',
-            },
+
+    logo = string.rep("\n", 8) .. logo .. "\n\n"
+    require("dashboard").setup({
+      theme = "doom",
+      hide = { statusline = false },
+      config = {
+        header = vim.split(logo, "\n"),
+        center = {
+          {
+            action = function()
+              local builtin = require("telescope.builtin")
+              builtin.find_files({ cwd = vim.fn.stdpath("config") })
+            end,
+            desc = " config",
+            icon = " ",
+            key = "c",
           },
-          footer = {}, --your footer
+          {
+            action = function()
+              vim.api.nvim_input("<cmd>qa<cr>")
+            end,
+            desc = " Quit",
+            icon = " ",
+            key = "q",
+          },
         },
-      }
-    end,
-  }
+        footer = {}, --your footer
+      },
+    })
+  end,
+}
