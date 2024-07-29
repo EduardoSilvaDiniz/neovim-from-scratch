@@ -13,7 +13,4 @@ return {
     -- better deal with markdown code blocks
     markdown = true,
   },
-  config = function(_, opts)
-    require("LazyVim").mini.pairs(opts)
-  end,
 }

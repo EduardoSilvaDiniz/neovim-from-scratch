@@ -3,18 +3,31 @@ return {
   cmd = { "LspInfo", "LspInstall", "LspStart" },
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
     "williamboman/mason-lspconfig.nvim",
-  },
-  config = function()
-    -- This is where all the LSP shenanigans will live
-    local lsp_zero = require("lsp-zero")
-    lsp_zero.extend_lspconfig()
+    -- main one
+    { "ms-jpq/coq_nvim", branch = "coq" },
 
+    -- 9000+ Snippets
+    { "ms-jpq/coq.artifacts", branch = "artifacts" },
+
+    -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
+    -- Need to **configure separately**
+    { "ms-jpq/coq.thirdparty", branch = "3p" },
+    -- - shell repl
+    -- - nvim lua api
+    -- - scientific calculator
+    -- - comment banner
+    -- - etc
+  },
+  init = function()
+    vim.g.coq_settings = {
+      auto_start = true, -- if you want to start COQ at startup
+      -- Your COQ settings here
+    }
+  end,
+  config = function()
     require("mason-lspconfig").setup({
       handlers = {
-        -- this first function is the "default handler"
-        -- it applies to every language server without a "custom handler"
         function(server_name)
           require("lspconfig")[server_name].setup({})
         end,

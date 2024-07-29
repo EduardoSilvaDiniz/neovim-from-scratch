@@ -84,4 +84,4 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 -- req cmp
---vim.g.completeopt = "menu,menuone,noselect,noinsert"
+vim.g.completeopt = "menu,menuone,popup,fuzzy"
