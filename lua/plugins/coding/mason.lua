@@ -3,7 +3,9 @@ return {
   dependencies = {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
-  lazy = false,
+  build = function()
+    pcall(vim.cmd, "MasonUpdate")
+  end,
   config = function()
     require("mason").setup()
     require("mason-tool-installer").setup({
