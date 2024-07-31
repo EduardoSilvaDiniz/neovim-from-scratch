@@ -10,7 +10,6 @@ local languages = {
   "java",
   "javascript",
   "go",
-  "apex",
   "typescript",
   "bash",
   "zig",

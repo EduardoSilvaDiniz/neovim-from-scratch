@@ -5,54 +5,25 @@ return {
   },
   event = "VimEnter",
   config = function()
-    local logo = [[
-        =================     ===============     ===============   ========  ========
-        \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
-        ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
-        || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||
-        ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||
-        || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . ||
-        ||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .||
-        || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . ||
-        ||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.||
-        ||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `||
-        ||    `'         || ||         `'    || ||    `'         || ||   | \  / |   ||
-        ||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   ||
-        ||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   ||
-        ||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   ||
-        ||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||
-        ||.=='    _-'                                                     `' |  /==.||
-        =='    _-'                        N E O V I M                         \/   `==
-        \   _-'                                                                `-_   /
-         `''                                                                      ``'
-      ]]
+    local buttons = require("plugins.ui.dashboard-buttons")
+    local logo = string.rep("\n", 8) .. require("plugins.ui.logo") .. "\n\n"
 
-    logo = string.rep("\n", 8) .. logo .. "\n\n"
     require("dashboard").setup({
       theme = "doom",
       hide = { statusline = false },
       config = {
         header = vim.split(logo, "\n"),
         center = {
-          {
-            action = function()
-              local builtin = require("telescope.builtin")
-              builtin.find_files({ cwd = vim.fn.stdpath("config") })
-            end,
-            desc = " config",
-            icon = " ",
-            key = "c",
-          },
-          {
-            action = function()
-              vim.api.nvim_input("<cmd>qa<cr>")
-            end,
-            desc = " Quit",
-            icon = " ",
-            key = "q",
-          },
+          { action = buttons.findFiles(), desc = " Find File", icon = " ", key = "f" },
+          { action = buttons.openNewFile(), desc = " New File", icon = " ", key = "n" },
+          { action = buttons.findRecentFiles(), desc = " Recent File", icon = " ", key = "r" },
+          { action = buttons.listProjects(), desc = " Project", icon = " ", key = "p" },
+          { action = buttons.restoreSession(), desc = " Restore Session", icon = " ", key = "s" },
+          { action = buttons.findConfigFiles(), desc = " config", icon = " ", key = "c" },
+          { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+          { action = buttons.quitVim, desc = " Quit", icon = " ", key = "q" },
         },
-        footer = {}, --your footer
+        footer = buttons.configFooter(),
       },
     })
   end,
