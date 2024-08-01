@@ -10,7 +10,7 @@ return {
     local cmp = require("cmp")
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
-    local cmp_action = require("plugins.coding.cmp-action")
+    local cmp_action = require("custom.cmp-action")
 
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     require("luasnip.loaders.from_vscode").lazy_load()

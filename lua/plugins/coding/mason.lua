@@ -9,7 +9,7 @@ return {
   config = function()
     require("mason").setup()
     require("mason-tool-installer").setup({
-      ensure_installed = require("plugins.coding.servers"),
+      ensure_installed = require("custom.servers"),
       auto_update = true,
     })
   end,

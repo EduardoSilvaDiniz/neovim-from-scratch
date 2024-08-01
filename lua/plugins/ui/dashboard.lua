@@ -5,8 +5,8 @@ return {
   },
   event = "VimEnter",
   config = function()
-    local buttons = require("plugins.ui.dashboard-buttons")
-    local logo = string.rep("\n", 8) .. require("plugins.custom.logo") .. "\n\n"
+    local buttons = require("custom.dashboard-buttons")
+    local logo = string.rep("\n", 8) .. require("custom.logo") .. "\n\n"
 
     require("dashboard").setup({
       theme = "doom",
