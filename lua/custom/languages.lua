@@ -12,6 +12,6 @@ local languages = {
   "go",
   "typescript",
   "bash",
-  "zig",
+  "regex",
 }
 return languages
