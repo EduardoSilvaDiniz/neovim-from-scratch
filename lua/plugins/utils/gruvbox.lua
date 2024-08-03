@@ -1,9 +1,9 @@
 return {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = true,
-    opts = {},
-    init = function()
-        vim.cmd("colorscheme gruvbox")
-    end
+  "luisiacc/gruvbox-baby",
+  config = function()
+    vim.g.gruvbox_baby_function_style = "NONE"
+    vim.g.gruvbox_baby_keyword_style = "italic"
+    vim.g.gruvbox_baby_telescope_theme = 1
+    vim.cmd([[colorscheme gruvbox-baby]])
+  end,
 }

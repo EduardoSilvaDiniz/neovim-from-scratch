@@ -45,7 +45,7 @@ function M.luasnip_supertab(select_opts)
     local col = vim.fn.col(".") - 1
 
     if cmp.visible() then
-      cmp.select_next_item(select_opts)
+      cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
     elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then

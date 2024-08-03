@@ -6,4 +6,7 @@ return {
     "rafamadriz/friendly-snippets",
   },
   build = "make install_jsregexp",
+  opts = {
+    theme = "gruvbox-baby",
+  },
 }

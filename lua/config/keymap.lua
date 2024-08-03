@@ -6,7 +6,7 @@ map("n", "<leader>qs", "<cmd>wq<cr>", { desc = "Save And Quit" })
 map("n", ";", ":", { silent = true, desc = "command line" })
 map("n", ":", '<cmd>echo "use ; command"<cr>')
 map("n", "<leader>ml", "<S-a>", { desc = "End Line" })
-map("n", "<leader>mh", "<S-i>", { desc = "Start Line" })
+map("n", "<leader>ma", "<S-i>", { desc = "Start Line" })
 map("n", "<leader>ms", "<S-s>", { desc = "delete Line" })
 map("n", "<leader>mc", "<S-c>", { desc = "delete ultil the cursor" })
 map("n", "<leader>mv", "<S-v>", { desc = "visual/line mode" })
@@ -28,4 +28,8 @@ map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 --map("n", "<leader>cr", "<cmd>w !node<cr>")
-map("n", "<leader>cr", "<cmd>w !php<cr>")
+--map("n", "<leader>cr", "<cmd>w !php<cr>")
+map("n", "<leader>cr", "<cmd>w !lua<cr>")
+
+-- neovim project
+map("n", "<leader>sp", "<cmd>Telescope neovim-project discover<CR>")
