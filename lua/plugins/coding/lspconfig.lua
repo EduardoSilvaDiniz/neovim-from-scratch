@@ -7,53 +7,53 @@ return {
   },
   config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    local lspconfig = require("lspconfig")
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
     capabilities.textDocument.completion.completionItem.snippetSupport = false
 
-    require("mason-lspconfig").setup()
     require("mason-lspconfig").setup_handlers({
       function(server_name)
-        lspconfig[server_name].setup({
+        require("lspconfig")[server_name].setup({
           capabilities = capabilities,
         })
       end,
-    })
 
-    lspconfig.lua_ls.setup({
-      settings = {
-        Lua = {
-          runtime = {
-            -- Tell the language server which version of Lua you're using
-            -- (most likely LuaJIT in the case of Neovim)
-            version = "LuaJIT",
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {
-              "vim",
-              "require",
+      ["lua_ls"] = function()
+        require("lspconfig").lua_ls.setup({
+          settings = {
+            Lua = {
+              runtime = {
+                version = "LuaJIT",
+              },
+              diagnostics = {
+                globals = {
+                  "vim",
+                  "require",
+                },
+              },
+              workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+              telemetry = {
+                enable = false,
+              },
             },
           },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-          },
-          -- Do not send telemetry data containing a randomized but unique identifier
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
+        })
+      end,
+      ["gopls"] = function()
+        require("lspconfig").gopls.setup({
+          settings = {
+            gopls = {
+              completeUnimported = true,
+              usePlaceholders = true,
+              analyses = {
+                unusedparams = true,
+              }
+            }
+          }
+        })
+      end
     })
-    lspconfig.jdtls.setup({
-      handlers = {
-        ["language/status"] = function(_, result)
-          -- Print or whatever.
-        end,
-        ["$/progress"] = function(_, result, ctx)
-          -- disable progress updates.
-        end,
-      },
-    })
+    vim.api.nvim_create_autocmd('LspAttach', require("custom.lsp-mapping"))
   end,
 }

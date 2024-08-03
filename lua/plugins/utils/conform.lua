@@ -1,5 +1,8 @@
 return {
   "stevearc/conform.nvim",
+  dependencies = {
+    "zapling/mason-conform.nvim",
+  },
   lazy = false,
   keys = {
     {
@@ -7,7 +10,6 @@ return {
       function()
         require("conform").format({ async = true, lsp_fallback = true })
       end,
-      mode = "",
       desc = "[F]ormat buffer",
     },
   },
@@ -18,9 +20,9 @@ return {
         timeout_ms = 500,
         lsp_format = "fallback",
       },
-      formatters_by_ft = {
-        lua = { "stylua" },
-      },
+    })
+    require("mason-conform").setup({
+      ignore_install = { "prettier" }, -- List of formatters to ignore during install
     })
   end,
 }

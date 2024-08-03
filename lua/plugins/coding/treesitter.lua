@@ -6,7 +6,6 @@ return {
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter").setup()
-
     require("nvim-treesitter.configs").setup({
       ensure_installed = require("custom.languages"),
       sync_install = true,

@@ -7,6 +7,19 @@ return {
   },
   config = function()
     require("noice").setup({
+      routes = {
+        {
+          filter = {
+            event = "lsp",
+            kind = "progress",
+            cond = function(message)
+              local client = vim.tbl_get(message.opts, "progress", "client")
+              return client == "lua_ls" or "jdtls"
+            end,
+          },
+          opts = { skip = true },
+        },
+      },
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
