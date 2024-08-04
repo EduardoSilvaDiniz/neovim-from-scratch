@@ -1,4 +1,3 @@
--- cmp mapping copy from lspzero
 local M = {}
 
 local function get_cmp()

@@ -1,5 +1,6 @@
 CmpConfig = {}
 local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 function CmpConfig:setupConfigs()
   return cmp.setup({
@@ -46,7 +47,7 @@ function CmpConfig:setEnabled()
 end
 
 function CmpConfig:setMapping()
-  local cmp_action = require("custom.cmp-action")
+  local cmp_action = require("custom.cmp-mapping-action")
   return {
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -83,7 +84,7 @@ function CmpConfig:setPreselect()
 end
 
 function CmpConfig:setFormatting()
-  local icons = require("custom.icons")
+  local icons = require("assets.icons")
   vim.api.nvim_set_hl(0, "MyCursorLine", { bg = "#988829", fg = "#000000", bold = true })
   return {
     fields = { "kind", "abbr", "menu" },
@@ -101,6 +102,35 @@ function CmpConfig:setConfirmation()
   return {
     completeopt = "menu,menuone,noinsert"
   }
+end
+
+function CmpConfig:addPairsAutomaticallyByAutopairs()
+  return cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+end
+
+function CmpConfig:addSnippetsFromFriendlySnippets()
+  return require("luasnip.loaders.from_vscode").lazy_load()
+end
+
+function CmpConfig:addAutocompleteOnSearching()
+  return cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = "buffer" },
+    },
+  })
+end
+
+function CmpConfig:addAutocompleteOnCommandline()
+  return cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = "path" },
+    }, {
+      { name = "cmdline" },
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false },
+  })
 end
 
 return CmpConfig

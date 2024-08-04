@@ -7,7 +7,7 @@ return {
   config = function()
     require("nvim-treesitter").setup()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = require("custom.languages"),
+      ensure_installed = require("custom.treesitter-ensure-servers"),
       sync_install = true,
       auto_install = true,
       TSUpdate = true,

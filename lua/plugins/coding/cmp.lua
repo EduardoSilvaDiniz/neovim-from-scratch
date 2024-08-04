@@ -7,13 +7,12 @@ return {
     "hrsh7th/cmp-cmdline",
   },
   config = function()
-    local cmpConnect = require("custom.cmp-connect")
-    local cmpConfig = require("custom.class-cmp")
+    local cmpConfig = require("custom.CmpConfig")
     require("cmp").setup({
-      cmpConnect.addSnippetsFromFriendlySnippets(),
-      cmpConnect.addPairsAutomaticallyByAutopairs(),
-      cmpConnect.addAutocompleteOnCommandline(),
-      cmpConnect.addAutocompleteOnSearching(),
+      cmpConfig:addSnippetsFromFriendlySnippets(),
+      cmpConfig:addPairsAutomaticallyByAutopairs(),
+      cmpConfig:addAutocompleteOnCommandline(),
+      cmpConfig:addAutocompleteOnSearching(),
       cmpConfig:setupConfigs(),
     })
   end,
