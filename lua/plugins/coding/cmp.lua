@@ -8,20 +8,13 @@ return {
   },
   config = function()
     local cmpConnect = require("custom.cmp-connect")
+    local cmpConfig = require("custom.class-cmp")
     require("cmp").setup({
       cmpConnect.addSnippetsFromFriendlySnippets(),
       cmpConnect.addPairsAutomaticallyByAutopairs(),
       cmpConnect.addAutocompleteOnCommandline(),
       cmpConnect.addAutocompleteOnSearching(),
-      window = require("custom.cmp-configs"),
-      enabled = require("custom.cmp-enabled"),
-      mapping = require("custom.cmp-mapping"),
-      sources = require("custom.cmp-sources"),
-      sorting = require("custom.cmp-sorting"),
-      formatting = require("custom.cmp-formatting"),
-      confirmation = require("custom.cmp-confirmation"),
-      preselect = require("cmp").PreselectMode.None,
-      snippet = cmpConnect.connectLuasnipOnCmp()
+      cmpConfig:setupConfigs(),
     })
   end,
 }
