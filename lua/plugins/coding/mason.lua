@@ -7,7 +7,7 @@ return {
   config = function()
     require("mason").setup()
     require("mason-tool-installer").setup({
-      ensure_installed = require("assets.mason-ensure-servers"),
+      ensure_installed = require("custom.mason-ensure-servers"),
       auto_update = true,
     })
   end,

@@ -5,7 +5,11 @@ return {
   },
   event = "VimEnter",
   config = function()
+<<<<<<< HEAD
     local buttons = require('configs.dashboard')
+=======
+    local buttons = require("custom.dashboard-buttons")
+>>>>>>> parent of fa5e447 (code refactoring, trying to create a factory for the plugin settings)
     local logo = string.rep("\n", 8) .. require("assets.logo") .. "\n\n"
 
     require("dashboard").setup({

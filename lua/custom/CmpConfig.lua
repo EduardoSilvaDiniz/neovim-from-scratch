@@ -1,8 +1,8 @@
-Cmp = {}
+CmpConfig = {}
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-function Cmp:setupConfigs()
+function CmpConfig:setupConfigs()
   return cmp.setup({
     snippet = self:setSnippet(),
     window = self:setWindow(),
@@ -16,7 +16,7 @@ function Cmp:setupConfigs()
   })
 end
 
-function Cmp:setWindow()
+function CmpConfig:setWindow()
   return {
     completion = cmp.config.window.bordered({
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:MyCursorLine",
@@ -25,7 +25,7 @@ function Cmp:setWindow()
   }
 end
 
-function Cmp:setSnippet()
+function CmpConfig:setSnippet()
   return {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
@@ -33,7 +33,7 @@ function Cmp:setSnippet()
   }
 end
 
-function Cmp:setEnabled()
+function CmpConfig:setEnabled()
   return {
     function()
       local context = require("cmp.config.context")
@@ -46,8 +46,13 @@ function Cmp:setEnabled()
   }
 end
 
+<<<<<<< HEAD:lua/configs/Cmp.lua
 function Cmp:setMapping()
   local cmp_action = require("Factory"):new("actions", "cmp")
+=======
+function CmpConfig:setMapping()
+  local cmp_action = require("custom.cmp-mapping-action")
+>>>>>>> parent of fa5e447 (code refactoring, trying to create a factory for the plugin settings):lua/custom/CmpConfig.lua
   return {
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -60,7 +65,7 @@ function Cmp:setMapping()
   }
 end
 
-function Cmp:setSources()
+function CmpConfig:setSources()
   return {
     { name = "luasnip", keyword_length = 2 },
     { name = "nvim_lsp" },
@@ -69,7 +74,7 @@ function Cmp:setSources()
   }
 end
 
-function Cmp:setSorting()
+function CmpConfig:setSorting()
   return {
     comparators = {
       cmp.config.compare.exact,
@@ -79,11 +84,11 @@ function Cmp:setSorting()
   }
 end
 
-function Cmp:setPreselect()
+function CmpConfig:setPreselect()
   return require("cmp").PreselectMode.None
 end
 
-function Cmp:setFormatting()
+function CmpConfig:setFormatting()
   local icons = require("assets.icons")
   vim.api.nvim_set_hl(0, "MyCursorLine", { bg = "#988829", fg = "#000000", bold = true })
   return {
@@ -98,21 +103,21 @@ function Cmp:setFormatting()
   }
 end
 
-function Cmp:setConfirmation()
+function CmpConfig:setConfirmation()
   return {
     completeopt = "menu,menuone,noinsert"
   }
 end
 
-function Cmp:addPairsAutomaticallyByAutopairs()
+function CmpConfig:addPairsAutomaticallyByAutopairs()
   return cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
-function Cmp:addSnippetsFromFriendlySnippets()
-  return require('luasnip_snippets.common.snip_utils').setup()
+function CmpConfig:addSnippetsFromFriendlySnippets()
+  return require("luasnip.loaders.from_vscode").lazy_load()
 end
 
-function Cmp:addAutocompleteOnSearching()
+function CmpConfig:addAutocompleteOnSearching()
   return cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
@@ -121,7 +126,7 @@ function Cmp:addAutocompleteOnSearching()
   })
 end
 
-function Cmp:addAutocompleteOnCommandline()
+function CmpConfig:addAutocompleteOnCommandline()
   return cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
@@ -133,4 +138,4 @@ function Cmp:addAutocompleteOnCommandline()
   })
 end
 
-return Cmp
+return CmpConfig

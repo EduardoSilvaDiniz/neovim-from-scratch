@@ -7,7 +7,11 @@ return {
     "hrsh7th/cmp-cmdline",
   },
   config = function()
+<<<<<<< HEAD
     local cmpConfig = require("Configs.cmp")
+=======
+    local cmpConfig = require("custom.CmpConfig")
+>>>>>>> parent of fa5e447 (code refactoring, trying to create a factory for the plugin settings)
     require("cmp").setup({
       cmpConfig:addSnippetsFromFriendlySnippets(),
       cmpConfig:addPairsAutomaticallyByAutopairs(),

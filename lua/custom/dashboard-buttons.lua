@@ -1,24 +1,24 @@
-Dashboard = {}
+CmpConfig = {}
 
-function Dashboard.findFiles() end
+function CmpConfig.findFiles() end
 
-function Dashboard.openNewFile()
+function CmpConfig.openNewFile()
   return function() end
 end
 
-function Dashboard.findRecentFiles()
+function CmpConfig.findRecentFiles()
   return function() end
 end
 
-function Dashboard.listProjects()
+function CmpConfig.listProjects()
   return function() end
 end
 
-function Dashboard.restoreSession()
+function CmpConfig.restoreSession()
   return function() end
 end
 
-function Dashboard.findConfigFiles()
+function CmpConfig.findConfigFiles()
   local builtin = require("telescope.builtin")
 
   return function()
@@ -26,13 +26,13 @@ function Dashboard.findConfigFiles()
   end
 end
 
-function Dashboard.quitVim()
+function CmpConfig.quitVim()
   return function()
     vim.api.nvim_input("<cmd>qa<cr>")
   end
 end
 
-function Dashboard.configFooter()
+function CmpConfig.configFooter()
   local stats = require("lazy").stats()
   local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 
@@ -41,4 +41,4 @@ function Dashboard.configFooter()
   end
 end
 
-return Dashboard
+return CmpConfig
