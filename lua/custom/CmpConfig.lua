@@ -46,13 +46,8 @@ function CmpConfig:setEnabled()
   }
 end
 
-<<<<<<< HEAD:lua/configs/Cmp.lua
-function Cmp:setMapping()
-  local cmp_action = require("Factory"):new("actions", "cmp")
-=======
 function CmpConfig:setMapping()
   local cmp_action = require("custom.cmp-mapping-action")
->>>>>>> parent of fa5e447 (code refactoring, trying to create a factory for the plugin settings):lua/custom/CmpConfig.lua
   return {
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),

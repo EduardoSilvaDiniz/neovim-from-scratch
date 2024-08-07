@@ -1,9 +1,5 @@
 local builtin = require("telescope.builtin")
-<<<<<<< HEAD
-local builtinCustom = require('actions.telescope')
-=======
 local builtinCustom = require("custom.telescope-builtin")
->>>>>>> parent of fa5e447 (code refactoring, trying to create a factory for the plugin settings)
 
 return {
   "nvim-telescope/telescope.nvim",
