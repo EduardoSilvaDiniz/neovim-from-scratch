@@ -1,5 +1,5 @@
 local builtin = require("telescope.builtin")
-local builtinCustom = require("actions.Actions"):new("telescope")
+local builtinCustom = require('actions.telescope')
 
 return {
   "nvim-telescope/telescope.nvim",

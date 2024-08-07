@@ -1,5 +1,4 @@
-local lspConfigs = require("configs.Configs"):new("Lspconfig")
-local lspConfigsServers = require('configs.Configs'):new("LspConfigsServers")
+local lspConfigs = require("actions.lspconfig")
 
 return {
   "neovim/nvim-lspconfig",
@@ -21,7 +20,6 @@ return {
       end,
     })
 
-    --require("custom.lsp-mapping").startCustomServers()
-    lspConfigsServers.startCustomServers()
+    lspConfigs.startCustomServers()
   end,
 }

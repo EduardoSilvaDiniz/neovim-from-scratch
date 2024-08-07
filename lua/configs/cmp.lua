@@ -47,7 +47,7 @@ function Cmp:setEnabled()
 end
 
 function Cmp:setMapping()
-  local cmp_action = require("actions.Actions"):new("cmp")
+  local cmp_action = require("Factory"):new("actions", "cmp")
   return {
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),

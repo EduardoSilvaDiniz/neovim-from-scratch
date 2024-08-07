@@ -1,7 +1,6 @@
 M = {}
 
 local map = function(keys, func, desc)
-  --vim.keymap.set('n', keys, func, { -[buffer = event.buf]-, desc = 'LSP: ' .. desc })
   vim.keymap.set('n', keys, func, { desc = 'LSP: ' .. desc })
 end
 
