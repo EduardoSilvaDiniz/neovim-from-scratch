@@ -7,9 +7,9 @@ return {
   config = function()
     require("nvim-treesitter").setup()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = require("custom.treesitter-ensure-servers"),
-      sync_install = true,
-      auto_install = true,
+      ensure_installed = require("assets.treesitter-ensure-servers"),
+      sync_install = false,
+      auto_install = false,
       TSUpdate = true,
       ignore_install = {},
       highlight = {

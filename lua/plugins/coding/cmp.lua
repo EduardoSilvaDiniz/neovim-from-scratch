@@ -7,7 +7,7 @@ return {
     "hrsh7th/cmp-cmdline",
   },
   config = function()
-    local cmpConfig = require("custom.CmpConfig")
+    local cmpConfig = require("configs.Configs"):new("cmp")
     require("cmp").setup({
       cmpConfig:addSnippetsFromFriendlySnippets(),
       cmpConfig:addPairsAutomaticallyByAutopairs(),

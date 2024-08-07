@@ -1,3 +1,4 @@
 return {
-  "mfussenegger/nvim-jdtls",
+  'mfussenegger/nvim-jdtls',
+  ft = 'java',
 }

@@ -1,4 +1,6 @@
-local lspConfigs = require("custom.lsp-mapping")
+local lspConfigs = require("configs.Configs"):new("Lspconfig")
+local lspConfigsServers = require('configs.Configs'):new("LspConfigsServers")
+
 return {
   "neovim/nvim-lspconfig",
   cmd = { "LspInfo", "LspInstall", "LspStart" },
@@ -8,14 +10,18 @@ return {
   },
   config = function()
     lspConfigs.extendLspAttach()
+
     require("mason-lspconfig").setup_handlers({
       function(server_name)
-        require("lspconfig")[server_name].setup({
-          capabilities = lspConfigs.extendCapabilities(),
-        })
+        if server_name ~= "jdtls" then
+          require("lspconfig")[server_name].setup({
+            capabilities = lspConfigs.extendCapabilities(),
+          })
+        end
       end,
     })
 
-    require("custom.lsp-mapping").startCustomServers()
+    --require("custom.lsp-mapping").startCustomServers()
+    lspConfigsServers.startCustomServers()
   end,
 }

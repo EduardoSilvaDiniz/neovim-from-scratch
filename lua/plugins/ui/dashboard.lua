@@ -5,7 +5,7 @@ return {
   },
   event = "VimEnter",
   config = function()
-    local buttons = require("custom.dashboard-buttons")
+    local buttons = require("configs.Configs"):new("Dashboard")
     local logo = string.rep("\n", 8) .. require("assets.logo") .. "\n\n"
 
     require("dashboard").setup({

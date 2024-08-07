@@ -1,6 +1,7 @@
+local lspconfig = require("lspconfig")
 local M = {
   lua_ls = function()
-    require("lspconfig").lua_ls.setup({
+    lspconfig.lua_ls.setup({
       settings = {
         Lua = {
           runtime = {
@@ -23,7 +24,7 @@ local M = {
     })
   end,
   gopls = function()
-    require("lspconfig").gopls.setup({
+    lspconfig.gopls.setup({
       settings = {
         gopls = {
           completeUnimported = true,

@@ -1,8 +1,8 @@
-CmpConfig = {}
+Cmp = {}
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-function CmpConfig:setupConfigs()
+function Cmp:setupConfigs()
   return cmp.setup({
     snippet = self:setSnippet(),
     window = self:setWindow(),
@@ -16,7 +16,7 @@ function CmpConfig:setupConfigs()
   })
 end
 
-function CmpConfig:setWindow()
+function Cmp:setWindow()
   return {
     completion = cmp.config.window.bordered({
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:MyCursorLine",
@@ -25,7 +25,7 @@ function CmpConfig:setWindow()
   }
 end
 
-function CmpConfig:setSnippet()
+function Cmp:setSnippet()
   return {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
@@ -33,7 +33,7 @@ function CmpConfig:setSnippet()
   }
 end
 
-function CmpConfig:setEnabled()
+function Cmp:setEnabled()
   return {
     function()
       local context = require("cmp.config.context")
@@ -46,8 +46,8 @@ function CmpConfig:setEnabled()
   }
 end
 
-function CmpConfig:setMapping()
-  local cmp_action = require("custom.cmp-mapping-action")
+function Cmp:setMapping()
+  local cmp_action = require("actions.Actions"):new("cmp")
   return {
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -60,7 +60,7 @@ function CmpConfig:setMapping()
   }
 end
 
-function CmpConfig:setSources()
+function Cmp:setSources()
   return {
     { name = "luasnip", keyword_length = 2 },
     { name = "nvim_lsp" },
@@ -69,7 +69,7 @@ function CmpConfig:setSources()
   }
 end
 
-function CmpConfig:setSorting()
+function Cmp:setSorting()
   return {
     comparators = {
       cmp.config.compare.exact,
@@ -79,11 +79,11 @@ function CmpConfig:setSorting()
   }
 end
 
-function CmpConfig:setPreselect()
+function Cmp:setPreselect()
   return require("cmp").PreselectMode.None
 end
 
-function CmpConfig:setFormatting()
+function Cmp:setFormatting()
   local icons = require("assets.icons")
   vim.api.nvim_set_hl(0, "MyCursorLine", { bg = "#988829", fg = "#000000", bold = true })
   return {
@@ -98,21 +98,21 @@ function CmpConfig:setFormatting()
   }
 end
 
-function CmpConfig:setConfirmation()
+function Cmp:setConfirmation()
   return {
     completeopt = "menu,menuone,noinsert"
   }
 end
 
-function CmpConfig:addPairsAutomaticallyByAutopairs()
+function Cmp:addPairsAutomaticallyByAutopairs()
   return cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
-function CmpConfig:addSnippetsFromFriendlySnippets()
-  return require("luasnip.loaders.from_vscode").lazy_load()
+function Cmp:addSnippetsFromFriendlySnippets()
+  return require('luasnip_snippets.common.snip_utils').setup()
 end
 
-function CmpConfig:addAutocompleteOnSearching()
+function Cmp:addAutocompleteOnSearching()
   return cmp.setup.cmdline({ "/", "?" }, {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
@@ -121,7 +121,7 @@ function CmpConfig:addAutocompleteOnSearching()
   })
 end
 
-function CmpConfig:addAutocompleteOnCommandline()
+function Cmp:addAutocompleteOnCommandline()
   return cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
@@ -133,4 +133,4 @@ function CmpConfig:addAutocompleteOnCommandline()
   })
 end
 
-return CmpConfig
+return Cmp

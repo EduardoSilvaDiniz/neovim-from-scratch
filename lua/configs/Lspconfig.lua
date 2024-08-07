@@ -1,9 +1,6 @@
 Lspconfig = {}
 local builtin = require("telescope.builtin")
 
-function Lspconfig:new()
-end
-
 function Lspconfig:setMappings()
   Lspconfig:map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
   Lspconfig:map('gr', builtin.lsp_references, '[G]oto [R]eferences')
@@ -31,3 +28,5 @@ function Lspconfig:setOtherMap()
     return false
   end
 end
+
+return Lspconfig

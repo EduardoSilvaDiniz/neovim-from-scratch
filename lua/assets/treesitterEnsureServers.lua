@@ -1,6 +1,5 @@
 local languages = {
   "c",
-  "cpp",
   "lua",
   "vim",
   "vimdoc",
@@ -11,7 +10,6 @@ local languages = {
   "javascript",
   "go",
   "typescript",
-  "bash",
   "regex",
 }
 return languages
