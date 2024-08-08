@@ -2,7 +2,6 @@ M = {}
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-
 local function setWindow()
   return {
     completion = cmp.config.window.bordered({
@@ -11,7 +10,6 @@ local function setWindow()
     }),
   }
 end
-
 
 local function setSnippet()
   return {
@@ -72,7 +70,7 @@ local function setPreselect()
 end
 
 local function setFormatting()
-  local icons = require("assets.icons")
+  local icons = require("consts.icons")
   vim.api.nvim_set_hl(0, "MyCursorLine", { bg = "#988829", fg = "#000000", bold = true })
   return {
     fields = { "kind", "abbr", "menu" },

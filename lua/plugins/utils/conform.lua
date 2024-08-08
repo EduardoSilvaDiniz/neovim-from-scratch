@@ -4,15 +4,6 @@ return {
     "zapling/mason-conform.nvim",
   },
   lazy = false,
-  keys = {
-    {
-      "<leader>f",
-      function()
-        require("conform").format({ async = true, lsp_fallback = true })
-      end,
-      desc = "[F]ormat buffer",
-    },
-  },
   config = function()
     require("conform").setup({
       notify_on_error = true,
