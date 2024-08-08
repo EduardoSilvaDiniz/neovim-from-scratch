@@ -1,4 +1,4 @@
-local M = {
+M = {
   lua_ls = function()
     require("lspconfig").lua_ls.setup({
       settings = {
