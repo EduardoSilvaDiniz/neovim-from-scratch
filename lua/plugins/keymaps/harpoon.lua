@@ -3,86 +3,92 @@ return {
   branch = "harpoon2",
   keys = function()
     local harpoon = require("harpoon")
-    local conf = require("telescope.config").values
+    local telescopeConfig = require("telescope.config").values
 
     local function toggle_telescope(harpoon_files)
       local file_paths = {}
       for _, item in ipairs(harpoon_files.items) do
         table.insert(file_paths, item.value)
       end
-      require("telescope.pickers")
-        .new({}, {
-          prompt_title = "Harpoon",
-          finder = require("telescope.finders").new_table({
-            results = file_paths,
-          }),
-          previewer = conf.file_previewer({}),
-          sorter = conf.generic_sorter({}),
-        })
-        :find()
+      require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+          results = file_paths,
+        }),
+        previewer = telescopeConfig.file_previewer({}),
+        sorter = telescopeConfig.generic_sorter({}),
+      }):find()
     end
     return {
       {
-        "<C-9>",
+        "<leader>hq",
         function()
           toggle_telescope(harpoon:list())
         end,
-        desc = "Open Harpoon window",
+        desc = "[Q]uery marks",
       },
 
       {
-        "<leader>a",
+        "<leader>hd",
         function()
           harpoon:list():add()
         end,
+        desc = "a[D]d mark"
       },
 
       {
-        "<C-e>",
+        "<leader>hs",
         function()
           harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
+        desc = "[S]earch quick menu"
       },
 
       {
-        "<C-h>",
+        "h1",
         function()
           harpoon:list():select(1)
         end,
+        desc = "select 1"
       },
 
       {
-        "<C-t>",
+        "h2",
         function()
           harpoon:list():select(2)
         end,
+        desc = "select 1"
       },
 
       {
-        "<C-n>",
+        "h3",
         function()
           harpoon:list():select(3)
         end,
+        desc = "select 1"
       },
 
       {
-        "<C-s>",
+        "h4",
         function()
           harpoon:list():select(4)
         end,
+        desc = "select 1"
       },
 
       {
-        "<C-S-P>",
+        "<leader>ha",
         function()
           harpoon:list():prev()
         end,
+        desc = "prov select"
       },
       {
-        "<C-S-N>",
+        "<leader>hl",
         function()
           harpoon:list():next()
         end,
+        desc = "next select"
       },
     }
   end,

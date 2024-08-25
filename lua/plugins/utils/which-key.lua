@@ -13,11 +13,11 @@ return {
       { "<leader>s", group = "[S]earch" },
       { "<leader>w", group = "[W]orkspace" },
       { "<leader>t", group = "[T]oggle" },
-      { "<leader>h", group = "Git [H]unk" },
       { "<leader>b", group = "[B]uffer" },
       { "<leader>m", group = "[M]oviment" },
       { "<leader>q", group = "[Q]uiting" },
       { "<leader>o", group = "[O]verseer" },
+      { "<leader>h", group = "[H]arpoon" },
     })
   end,
 }
