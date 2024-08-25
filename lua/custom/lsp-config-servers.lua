@@ -1,6 +1,7 @@
+local lspconfig = require("lspconfig")
 M = {
-  lua_ls = function()
-    require("lspconfig").lua_ls.setup({
+  lua = function()
+    lspconfig.lua_ls.setup({
       settings = {
         Lua = {
           runtime = {
@@ -22,18 +23,58 @@ M = {
       },
     })
   end,
-  gopls = function()
-    require("lspconfig").gopls.setup({
+  go = function()
+    lspconfig.gopls.setup({
       settings = {
         gopls = {
           completeUnimported = true,
           usePlaceholders = true,
           analyses = {
             unusedparams = true,
-          }
-        }
-      }
+          },
+        },
+      },
     })
+  end,
+
+  markdown = function()
+    lspconfig.markdown_oxide.setup({})
+  end,
+
+  c_cpp = function()
+    lspconfig.clangd.setup({})
+  end,
+
+  nix = function()
+    lspconfig.nil_ls.setup({})
+  end,
+
+  python = function()
+    lspconfig.pyright.setup({})
+  end,
+
+  bash = function()
+    lspconfig.bashls.setup({})
+  end,
+
+  php = function()
+    lspconfig.intelephense.setup({})
+  end,
+
+  html = function()
+    lspconfig.html.setup({})
+  end,
+
+  css = function()
+    lspconfig.cssls.setup({})
+  end,
+
+  js_typescript = function()
+    lspconfig.eslint.setup({})
+  end,
+
+  json = function()
+    lspconfig.jsonls.setup({})
   end,
 }
 

@@ -1,3 +1,4 @@
+local verSystem = require("custom.verification-nixos")
 return {
   "stevearc/conform.nvim",
   dependencies = {
@@ -12,8 +13,10 @@ return {
         lsp_format = "fallback",
       },
     })
-    require("mason-conform").setup({
-      ignore_install = { "prettier" }, -- List of formatters to ignore during install
-    })
+    if verSystem.verificationIsNotNix() then
+      require("mason-conform").setup({
+        ignore_install = { "prettier" }, -- List of formatters to ignore during install
+      })
+    end
   end,
 }

@@ -1,9 +1,12 @@
+local verSystem = require("custom.verification-nixos")
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
     "jay-babu/mason-nvim-dap.nvim",
   },
   config = function()
-    require("mason-nvim-dap").setup()
+    if verSystem.verificationIsNotNix() then
+      require("mason-nvim-dap").setup()
+    end
   end,
 }

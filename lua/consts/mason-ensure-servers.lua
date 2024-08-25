@@ -9,7 +9,6 @@ local servers = {
   "intelephense", -- php
   "lua-language-server", -- Lua
   "bash-language-server", -- Bash/ShellScript
-  "powershell-editor-services", -- PowerShell
 
   -- DAP
   "js-debug-adapter", -- JavaScript/TypeScript
