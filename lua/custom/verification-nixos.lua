@@ -1,7 +1,7 @@
 M = {}
 
 local function executar_comando(comando)
-  return vim.fn.system(comando):gsub("%s+", "") -- Remove espaços em branco e quebras de linha
+  return vim.fn.system(comando):gsub("%s+", "")
 end
 
 function M.verificationIsNotNix()
