@@ -45,7 +45,7 @@ return {
       },
 
       {
-        "h1",
+        "1",
         function()
           harpoon:list():select(1)
         end,
@@ -53,27 +53,27 @@ return {
       },
 
       {
-        "h2",
+        "2",
         function()
           harpoon:list():select(2)
         end,
-        desc = "select 1"
+        desc = "select 2"
       },
 
       {
-        "h3",
+        "3",
         function()
           harpoon:list():select(3)
         end,
-        desc = "select 1"
+        desc = "select 3"
       },
 
       {
-        "h4",
+        "4",
         function()
           harpoon:list():select(4)
         end,
-        desc = "select 1"
+        desc = "select 4"
       },
 
       {
