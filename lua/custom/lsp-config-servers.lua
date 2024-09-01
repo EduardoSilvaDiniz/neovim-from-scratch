@@ -1,7 +1,17 @@
 local lspconfig = require("lspconfig")
+local function extendCapabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = false
+  capabilities.textDocument.signatureHelp.dynamicRegistration = false;
+
+  capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+  return capabilities
+end
+
 M = {
   lua = function()
     lspconfig.lua_ls.setup({
+      capabilities = extendCapabilities(),
       settings = {
         Lua = {
           runtime = {
@@ -25,6 +35,7 @@ M = {
   end,
   go = function()
     lspconfig.gopls.setup({
+      capabilities = extendCapabilities(),
       settings = {
         gopls = {
           completeUnimported = true,
@@ -38,43 +49,63 @@ M = {
   end,
 
   markdown = function()
-    lspconfig.markdown_oxide.setup({})
+    lspconfig.markdown_oxide.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   c_cpp = function()
-    lspconfig.clangd.setup({})
+    lspconfig.clangd.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   nix = function()
-    lspconfig.nil_ls.setup({})
+    lspconfig.nil_ls.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   python = function()
-    lspconfig.pyright.setup({})
+    lspconfig.pyright.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   bash = function()
-    lspconfig.bashls.setup({})
+    lspconfig.bashls.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   php = function()
-    lspconfig.intelephense.setup({})
+    lspconfig.intelephense.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   html = function()
-    lspconfig.html.setup({})
+    lspconfig.html.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   css = function()
-    lspconfig.cssls.setup({})
+    lspconfig.cssls.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   js_typescript = function()
-    lspconfig.eslint.setup({})
+    lspconfig.eslint.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 
   json = function()
-    lspconfig.jsonls.setup({})
+    lspconfig.jsonls.setup({
+      capabilities = extendCapabilities(),
+    })
   end,
 }
 
