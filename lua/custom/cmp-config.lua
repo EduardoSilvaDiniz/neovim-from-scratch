@@ -1,6 +1,6 @@
 M = {}
 local cmp = require("cmp")
---local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local function setWindow()
 	return {
@@ -20,16 +20,15 @@ local function setSnippet()
 end
 
 local function setEnabled()
-	return {
-		function()
-			local context = require("cmp.config.context")
-			if vim.api.nvim_get_mode().mode == "c" then
-				return true
-			else
-				return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-			end
-		end,
-	}
+	return function()
+		local context = require("cmp.config.context")
+		local disabled = false
+		disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
+		disabled = disabled or (vim.fn.reg_recording() ~= "")
+		disabled = disabled or (vim.fn.reg_executing() ~= "")
+		disabled = disabled or context.in_treesitter_capture("comment")
+		return not disabled
+	end
 end
 
 local function setMapping()

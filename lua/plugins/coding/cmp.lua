@@ -10,7 +10,7 @@ return {
 		local cmpConfig = require("custom.cmp-config")
 		require("cmp").setup({
 			cmpConfig:addSnippetsFromFriendlySnippets(),
-			--cmpConfig:addPairsAutomaticallyByAutopairs(),
+			cmpConfig:addPairsAutomaticallyByAutopairs(),
 			cmpConfig:addAutocompleteOnCommandline(),
 			cmpConfig:addAutocompleteOnSearching(),
 			cmpConfig:setupConfigs(),
