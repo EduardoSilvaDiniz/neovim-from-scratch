@@ -7,6 +7,7 @@ return {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
 		"echasnovski/mini.icons",
+		"scottmckendry/telescope-resession.nvim",
 	},
 	config = function()
 		pcall(require("telescope").load_extension, "fzf")
