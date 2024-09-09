@@ -22,7 +22,6 @@ return {
 				go = { "gofmt", "gofumpt", "gosimports", "goimports-reviser", "golines" },
 				html = { "djlint", "htmlbeautifier" },
 				css = { "rustywind", "stylelint" },
-				dart = { "dart_format", "dcm_format" },
 				cmake = { "cmake_format", "gersemi" },
 				make = { "gersemi" },
 				shellscript = { "shfmt" },

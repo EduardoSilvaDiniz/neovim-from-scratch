@@ -18,7 +18,6 @@ return {
 			python = { "ruff" },
 			rust = {},
 			php = { "phpcs", "phpinsights", "phpmd", "php", "phpstan" },
-			dart = { "dart" },
 			cmake = { "cmakelint" },
 			make = {},
 			shellscript = { "shellcheck" },
