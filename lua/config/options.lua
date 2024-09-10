@@ -4,6 +4,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.syntax = true
+vim.cmd.highlight("IndentLine guifg=#504945")
+--vim.cmd.highlight("IndentLineCurrent guifg=#123456")
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
