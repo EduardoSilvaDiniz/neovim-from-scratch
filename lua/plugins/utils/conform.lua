@@ -25,7 +25,7 @@ return {
 				cmake = { "cmake_format", "gersemi" },
 				make = { "gersemi" },
 				shellscript = { "shfmt" },
-				nix = { "nixfmt" },
+				nix = { "alejandra" },
 			},
 		})
 	end,
