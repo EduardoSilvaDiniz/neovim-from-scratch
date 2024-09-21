@@ -1,8 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	dependencies = {
-		"zapling/mason-conform.nvim",
-	},
 	lazy = false,
 	config = function()
 		require("conform").setup({
@@ -11,14 +8,14 @@ return {
 				timeout_ms = 500,
 			},
 			formatters_by_ft = {
-				lua = { "stylua", "lua-format" },
+				lua = { "stylua" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				python = { "isort", "black" },
 				rust = { "rustfmt" },
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 				java = { "google-java-format", "checkstyle" },
-				php = { "php_cs_fixer", "phpcbf", "phpinsights", "pint", "pretty-php" },
+				php = { "phpcs" },
 				go = { "gofmt", "gofumpt", "gosimports", "goimports-reviser", "golines" },
 				html = { "djlint", "htmlbeautifier" },
 				css = { "rustywind", "stylelint" },
