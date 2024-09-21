@@ -56,6 +56,6 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - lua_ls
 - nil_ls
 
-## TODOS
+## TODOs
 - adicionar mais LSPs
 - melhorar a exibição do autocomplete
