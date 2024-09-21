@@ -56,7 +56,6 @@ return {
 				"fzf",
 				"lazy",
 				"man",
-				"mason",
 				"mundo",
 				"neo-tree",
 				"nvim-dap-ui",

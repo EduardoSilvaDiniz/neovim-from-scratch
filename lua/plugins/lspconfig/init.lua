@@ -9,7 +9,8 @@ return {
 	},
 	cmd = { "LspInfo", "LspInstall", "LspStart" },
 	event = { "BufReadPre", "BufNewFile" },
+	keys = require("plugins.lspconfig.keymap"),
 	config = function()
-		require("custom-new.lsp-start-servers")
+		require("plugins.lspconfig.config")
 	end,
 }

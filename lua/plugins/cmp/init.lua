@@ -19,6 +19,6 @@ return {
 	},
 
 	config = function()
-		require("custom-new.cmp")
+		require("plugins.cmp.config")
 	end,
 }

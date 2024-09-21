@@ -20,7 +20,6 @@ return {
 			"help",
 			"lazy",
 			"markdown",
-			"mason",
 			"neogitstatus",
 			"neo-tree",
 			"NvimTree",

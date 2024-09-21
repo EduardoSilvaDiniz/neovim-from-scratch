@@ -1,4 +1,6 @@
 local cmp = require("cmp")
+
+--TODO refatore-me!
 local function enabled()
 	local context = require("cmp.config.context")
 	local disabled = false
@@ -11,7 +13,7 @@ local function enabled()
 end
 
 cmp.setup({
-	mapping = require("custom-new.keymap").setup(cmp),
+	mapping = require("plugins.cmp.keymap").setup(cmp),
 
 	completion = {
 		winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:MyCursorLine",
@@ -66,6 +68,7 @@ cmp.setup({
 
 	cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done()),
 
+	--TODO cmdlines estao grandes demais!
 	cmp.setup.cmdline({ "/", "?" }, {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = {

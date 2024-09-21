@@ -1,28 +1,19 @@
-local function findFiles()
-	local status, files = pcall(io.popen, 'find "$HOME"/.config/nvim/lua/' .. "plugins" .. " -type f")
-	if not status then
-		vim.print("The find command could not be executed")
-	end
-
-	return files
-end
-
-local function clearPath(filePath)
-	return filePath:gmatch("%/lua%/(.+).lua$")({ 0 }):gsub("/", ".")
-end
+local lib = require("lib.command")
 
 local function tableFactory()
 	local pluginsTable = {}
-	local files = findFiles()
-
+	local files = lib.findFiles()
 	for file in files:lines() do
-		if not string.find(file, "init") then
-			local pluginPath = clearPath(file)
+		local pluginPath = lib.clearPath(file)
+		if
+			not string.find(pluginPath, "config")
+			and not string.find(pluginPath, "keymap")
+			and not string.find(pluginPath, "plugins.init")
+		then
 			local status, objPlugin = pcall(require, pluginPath)
 			if not status then
 				vim.print("not found plugin " .. pluginPath)
 			end
-
 			table.insert(pluginsTable, objPlugin)
 		end
 	end
