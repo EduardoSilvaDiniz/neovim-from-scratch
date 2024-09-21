@@ -12,6 +12,36 @@ local function enabled()
 	return not disabled
 end
 
+--TODO encontre um lugar melhor para mim!
+--TODO esses icones nao fazem sentido!
+local icons = {
+	Text = "",
+	Method = "󰆧",
+	Function = "󰊕",
+	Constructor = "",
+	Field = "󰇽",
+	Variable = "󰂡",
+	Class = "󰠱",
+	Interface = "",
+	Module = "",
+	Property = "󰜢",
+	Unit = "",
+	Value = "󰎠",
+	Enum = "",
+	Keyword = "󰌋",
+	Snippet = "",
+	Color = "󰏘",
+	File = "󰈙",
+	Reference = "",
+	Folder = "󰉋",
+	EnumMember = "",
+	Constant = "󰏿",
+	Struct = "",
+	Event = "",
+	Operator = "󰆕",
+	TypeParameter = "󰅲",
+}
+
 cmp.setup({
 	mapping = require("plugins.cmp.keymap").setup(cmp),
 
@@ -29,8 +59,6 @@ cmp.setup({
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			local icons = require("consts.icons")
-
 			vim_item.kind = icons[vim_item.kind] or ""
 			vim_item.menu = " (" .. vim_item.kind .. ") "
 

@@ -1,13 +1,14 @@
 -- local handler = require("lsp.handler")
 -- local attach = require("lsp.attach")
--- local capabilities = require("lsp.capability")
+local capabilities = require("lsp.capability")
 
 return {
 	cmd = { "gopls", "serve" },
-	-- capabilities = capabilities,
+	capabilities = capabilities,
 	-- handlers = handler.default(),
 	settings = {
 		gopls = {
+			completeUnimported = true,
 			gofumpt = true, -- A stricter gofmt
 			codelenses = {
 				gc_details = true, -- Toggle the calculation of gc annotations
