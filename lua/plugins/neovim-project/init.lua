@@ -14,6 +14,7 @@ return {
 			"~/Projetos/*",
 			"~/.config/nvim",
 		},
+		last_session_on_startup = false,
 	},
 	init = function()
 		vim.opt.sessionoptions:append("globals")

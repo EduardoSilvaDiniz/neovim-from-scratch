@@ -10,6 +10,9 @@ return {
 			dev_log = {
 				enabled = false,
 			},
+			settings = {
+				closingLabels = false,
+			},
 		})
 	end,
 }
