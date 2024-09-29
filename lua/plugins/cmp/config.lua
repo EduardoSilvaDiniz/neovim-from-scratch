@@ -1,17 +1,5 @@
 local cmp = require("cmp")
 
---TODO refatore-me!
-local function enabled()
-	local context = require("cmp.config.context")
-	local disabled = false
-	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
-	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "nofile")
-	disabled = disabled or (vim.fn.reg_recording() ~= "")
-	disabled = disabled or (vim.fn.reg_executing() ~= "")
-	disabled = disabled or context.in_treesitter_capture("comment")
-	return not disabled
-end
-
 --TODO encontre um lugar melhor para mim!
 --TODO esses icones nao fazem sentido!
 local icons = {
@@ -114,5 +102,14 @@ cmp.setup({
 		matching = { disallow_symbol_nonprefix_matching = false },
 	}),
 
-	enabled = enabled(),
+	enabled = function()
+		local context = require("cmp.config.context")
+		local disabled = false
+		disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
+		disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "nofile")
+		disabled = disabled or (vim.fn.reg_recording() ~= "")
+		disabled = disabled or (vim.fn.reg_executing() ~= "")
+		disabled = disabled or context.in_treesitter_capture("comment")
+		return not disabled
+	end,
 })

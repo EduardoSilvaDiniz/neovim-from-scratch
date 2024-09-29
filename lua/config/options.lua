@@ -1,13 +1,37 @@
 -- Set <space> as the leader key
 -- See `:help map""""leader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+--
+
+local signs = { Error = "!!", Warn = "!", Hint = "!!", Info = "!!" }
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = signs.Error,
+			[vim.diagnostic.severity.WARN] = signs.Warn,
+			[vim.diagnostic.severity.HINT] = signs.Hint,
+			[vim.diagnostic.severity.INFO] = signs.Info,
+		},
+	},
+})
+
+vim.opt.showmode = false
+vim.o.cmdheight = 0
+
+vim.g.neovide_padding_top = 0
+vim.g.neovide_padding_bottom = 0
+vim.g.neovide_padding_right = 0
+vim.g.neovide_padding_left = 0
+vim.g.neovide_theme = "auto"
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.syntax = true
-vim.cmd.highlight("IndentLine guifg=#504945")
+-- vim.cmd.highlight("IndentLine guifg=#504945")
 --vim.cmd.highlight("IndentLineCurrent guifg=#123456")
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
+
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
@@ -34,6 +58,8 @@ vim.opt.breakindent = true
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+-- vim.opt.clipboard = "unnamedplus"
+
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -69,10 +95,10 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 -- show tablines
-vim.o.showtabline = 2
+-- vim.o.showtabline = 2
 
 -- req bufferline
-vim.opt.termguicolors = true
+-- vim.opt.termguicolors = true
 
 -- desable netrw
 vim.g.loaded_netrw = 1

@@ -26,8 +26,4 @@ return {
 			require("plugins.formatter.config-lint")
 		end,
 	},
-	{
-		"nvimdev/indentmini.nvim",
-		opts = {},
-	},
 }

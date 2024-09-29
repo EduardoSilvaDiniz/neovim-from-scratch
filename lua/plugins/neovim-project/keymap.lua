@@ -1,3 +1,3 @@
 return {
-	{ "<leader>sp", "<cmd>Telescope neovim-project discover<CR>", desc = "Open search projects" },
+	{ "<leader>pp", "<cmd>Telescope neovim-project discover<CR>", desc = "Switch project" },
 }

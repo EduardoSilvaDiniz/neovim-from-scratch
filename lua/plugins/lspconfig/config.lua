@@ -1,4 +1,5 @@
 local lsp = require("lspconfig")
+-- local navic = require("nvim-navic")
 
 local servers = {
 	clangd = require("lsp.config.clangd"),
@@ -8,5 +9,6 @@ local servers = {
 }
 
 for name, conf in pairs(servers) do
+	-- conf = vim.tbl_extend(conf, navic.attach(client, bufnr))
 	lsp[name].setup(conf)
 end

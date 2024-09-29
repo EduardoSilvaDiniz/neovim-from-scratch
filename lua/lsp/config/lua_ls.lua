@@ -1,7 +1,9 @@
 local capabilities = require("lsp.capability")
+local handler = require("lsp.handler")
 
 return {
 	capabilities = capabilities,
+	handlers = handler.with({ handler.hover, handler.publishDiagnostics }),
 	settings = {
 		Lua = {
 			runtime = {

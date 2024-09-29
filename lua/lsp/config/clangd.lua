@@ -13,7 +13,7 @@ return {
 		"--header-insertion=iwyu",
 	},
 	capabilities = capabilities,
-	handlers = handler.with({ handler.hover }),
+	handlers = handler.with({ handler.hover, handler.publishDiagnostics }),
 
 	init_options = {
 		clangdFileStatus = true,

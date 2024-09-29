@@ -10,5 +10,5 @@ lint.linters_by_ft = {
 	php = { "phpcs", "phpinsights", "phpmd", "php", "phpstan" },
 	cmake = { "cmakelint" },
 	shellscript = { "shellcheck" },
-	nix = { "nil" },
+	nix = { "nix", "deadnix" },
 }

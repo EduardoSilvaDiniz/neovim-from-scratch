@@ -35,3 +35,11 @@ vim.keymap.set("n", "<leader>rp", ":RunProject<CR>", { noremap = true, silent = 
 vim.keymap.set("n", "<leader>rc", ":RunClose<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>crf", ":CRFiletype<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>crp", ":CRProjects<CR>", { noremap = true, silent = false })
+
+if vim.g.neovide then
+	vim.keymap.set("v", "<C-S-c>", '"+y', { noremap = true, silent = false })
+	vim.keymap.set("n", "<C-S-c>", '"+y', { noremap = true, silent = false })
+
+	vim.keymap.set("n", "<C-S-v>", '"+p', { noremap = true, silent = false })
+	vim.keymap.set("i", "<C-S-v>", '<cmd>echo "use C-o and C-S-v"<CR>', { noremap = true, silent = false })
+end
