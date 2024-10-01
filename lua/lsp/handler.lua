@@ -12,8 +12,8 @@ M.publishDiagnostics = {
 	["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		virtual_text = false,
 		underline = true,
-		signs = false,
-		update_in_insert = false,
+		signs = true,
+		update_in_insert = true,
 		severity_sort = true,
 	}),
 	vim.cmd([[highlight DiagnosticUnderlineError cterm=undercurl gui=undercurl guisp=Red]]),
@@ -21,7 +21,7 @@ M.publishDiagnostics = {
 
 M.hover = {
 	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		-- border = "rounded",
+		border = "rounded",
 		silent = true,
 	}),
 }

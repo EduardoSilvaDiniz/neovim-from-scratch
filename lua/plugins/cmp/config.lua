@@ -1,35 +1,5 @@
 local cmp = require("cmp")
 
---TODO encontre um lugar melhor para mim!
---TODO esses icones nao fazem sentido!
-local icons = {
-	Text = "",
-	Method = "󰆧",
-	Function = "󰊕",
-	Constructor = "",
-	Field = "󰇽",
-	Variable = "󰂡",
-	Class = "󰠱",
-	Interface = "",
-	Module = "",
-	Property = "󰜢",
-	Unit = "",
-	Value = "󰎠",
-	Enum = "",
-	Keyword = "󰌋",
-	Snippet = "",
-	Color = "󰏘",
-	File = "󰈙",
-	Reference = "",
-	Folder = "󰉋",
-	EnumMember = "",
-	Constant = "󰏿",
-	Struct = "",
-	Event = "",
-	Operator = "󰆕",
-	TypeParameter = "󰅲",
-}
-
 cmp.setup({
 	mapping = require("plugins.cmp.keymap").setup(cmp),
 
@@ -45,22 +15,37 @@ cmp.setup({
 	},
 
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			vim_item.kind = icons[vim_item.kind] or ""
-			vim_item.menu = " (" .. vim_item.kind .. ") "
-
-			vim_item.menu = ({
-				nvim_lsp = "(LSP)",
-				nvim_lua = "(Neovim Lua)",
-				luasnip = "(LuaSnip)",
-				buffer = "(Buffer)",
-				path = "(Path)",
-			})[entry.source.name]
-
-			return vim_item
+			if vim.tbl_contains({ "path" }, entry.source.name) then
+				local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
+				if icon then
+					vim_item.kind = icon
+					vim_item.kind_hl_group = hl_group
+					return vim_item
+				end
+			end
+			return require("lspkind").cmp_format({ with_text = false })(entry, vim_item)
 		end,
 	},
+
+	-- formatting = {
+	-- 	fields = { "kind", "abbr", "menu" },
+	-- 	format = function(entry, vim_item)
+	-- 		vim_item.kind = icons[vim_item.kind] or ""
+	-- 		vim_item.menu = " (" .. vim_item.kind .. ") "
+	--
+	--
+	-- 		vim_item.menu = ({
+	-- 			nvim_lsp = "(LSP)",
+	-- 			nvim_lua = "(Neovim Lua)",
+	-- 			luasnip = "(LuaSnip)",
+	-- 			buffer = "(Buffer)",
+	-- 			path = "(Path)",
+	-- 		})[entry.source.name]
+	--
+	-- 		return vim_item
+	-- 	end,
+	-- },
 
 	sources = {
 		{ name = "nvim_lsp" },
@@ -68,6 +53,7 @@ cmp.setup({
 		{ name = "luasnip", max_item_count = 10 },
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "path" },
+		{ name = "nvim_lsp_signature_help" },
 	},
 
 	preselect = {

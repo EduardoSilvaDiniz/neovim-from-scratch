@@ -1,4 +1,4 @@
-local signs = { Error = "!!", Warn = "!", Hint = "!!", Info = "!!" }
+local signs = { Error = "»", Warn = "»", Hint = "»", Info = "»" }
 vim.diagnostic.config({
 	signs = {
 		text = {
@@ -10,6 +10,7 @@ vim.diagnostic.config({
 	},
 })
 
+vim.lsp.inlay_hint.enable(true)
 vim.opt.showmode = false
 vim.o.cmdheight = 0
 vim.g.mapleader = " "
