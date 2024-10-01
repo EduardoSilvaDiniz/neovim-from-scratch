@@ -28,18 +28,10 @@ keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 keymap.set("n", "<C-z>", '<cmd>echo "suspend disable!!"<CR>')
 
-vim.keymap.set("n", "<leader>r", ":RunCode<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>rf", ":RunFile<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>rft", ":RunFile tab<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>rp", ":RunProject<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>rc", ":RunClose<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>crf", ":CRFiletype<CR>", { noremap = true, silent = false })
-vim.keymap.set("n", "<leader>crp", ":CRProjects<CR>", { noremap = true, silent = false })
-
-if vim.g.neovide then
-	vim.keymap.set("v", "<C-S-c>", '"+y', { noremap = true, silent = false })
-	vim.keymap.set("n", "<C-S-c>", '"+y', { noremap = true, silent = false })
-
-	vim.keymap.set("n", "<C-S-v>", '"+p', { noremap = true, silent = false })
-	vim.keymap.set("i", "<C-S-v>", '<cmd>echo "use C-o and C-S-v"<CR>', { noremap = true, silent = false })
-end
+keymap.set("n", "<leader>r", ":RunCode<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>rf", ":RunFile<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>rft", ":RunFile tab<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>rp", ":RunProject<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>rc", ":RunClose<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>crf", ":CRFiletype<CR>", { noremap = true, silent = false })
+keymap.set("n", "<leader>crp", ":CRProjects<CR>", { noremap = true, silent = false })

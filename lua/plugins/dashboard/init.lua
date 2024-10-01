@@ -1,12 +1,13 @@
 return {
 	"nvimdev/dashboard-nvim",
 	dependencies = {
-		"echasnovski/mini.icons",
+		"nvim-tree/nvim-web-devicons",
 	},
 	event = "VimEnter",
 	config = function()
 		local config = require("plugins.dashboard.config")
-		local logo = string.rep("\n", 8) .. config.logo .. "\n\n"
+		-- local logo = string.rep("\n", 1) .. config.logo .. "\n\n"
+		local logo = config.logo 
 
 		require("dashboard").setup({
 			theme = "doom",

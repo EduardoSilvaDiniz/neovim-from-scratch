@@ -6,7 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-fzf-native.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
-		"echasnovski/mini.icons",
+		"nvim-tree/nvim-web-devicons",
 		"scottmckendry/telescope-resession.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
