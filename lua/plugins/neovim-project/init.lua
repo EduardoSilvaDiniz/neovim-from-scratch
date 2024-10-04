@@ -13,6 +13,8 @@ return {
 		projects = {
 			"~/Projetos/*",
 			"~/.config/nvim",
+			"~/.config/eww",
+			"~/.config/hypr",
 		},
 		last_session_on_startup = false,
 	},

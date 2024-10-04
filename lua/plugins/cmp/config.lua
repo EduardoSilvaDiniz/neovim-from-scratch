@@ -1,4 +1,49 @@
 local cmp = require("cmp")
+-- vim.cmd([[packadd plenary.nvim]])
+local log = require("plenary.log").new({
+	plugin = "uthman",
+	level = "debug",
+})
+
+local cmp_kinds = {
+	Text = "󰬛 ",
+	TypeParameter = "󰬛 ",
+
+	Function = "󰬍 ",
+	Field = "󰬍 ",
+
+	Class = "󰬊 ",
+	Constant = "󰬊 ",
+	Color = "󰬊 ",
+	Constructor = "󰬊 ",
+
+	Interface = "󰬐 ",
+
+	Module = "󰬔 ",
+	Method = "󰬔 ",
+
+	Property = "󰬗 ",
+
+	Unit = "󰬜 ",
+
+	Value = "󰬝 ",
+	Variable = "󰬝 ",
+
+	Enum = "󰬌 ",
+	EnumMember = "󰬌 ",
+	Event = "󰬌 ",
+
+	Keyword = "󰬒 ",
+
+	Snippet = "󰬚 ",
+	Struct = "󰬚 ",
+
+	File = "󰬍 ",
+	Folder = "󰬍 ",
+
+	Reference = "󰬙 ",
+	Operator = "󰬖 ",
+}
 
 cmp.setup({
 	mapping = require("plugins.cmp.keymap").setup(cmp),
@@ -8,6 +53,25 @@ cmp.setup({
 		side_padding = 0,
 	},
 
+	window = {
+		completion = {
+			winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder,CursorLine:Pmenu",
+			border = "rounded",
+			scrollbar = false,
+			col_offset = -3,
+			side_padding = 0,
+		},
+		documentation = {
+			scrollbar = false,
+			winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder",
+			border = "rounded",
+		},
+		snippet = {
+			winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder",
+			border = "rounded",
+		},
+	},
+
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
@@ -15,78 +79,49 @@ cmp.setup({
 	},
 
 	formatting = {
+		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			if vim.tbl_contains({ "path" }, entry.source.name) then
-				local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
-				if icon then
-					vim_item.kind = icon
-					vim_item.kind_hl_group = hl_group
-					return vim_item
+			vim_item.kind = (cmp_kinds[vim_item.kind] or "")
+
+			if entry == "Function" then
+				local item = entry:get_completion_item()
+
+				log.debug(item)
+
+				if item.detail then
+					vim_item.menu = item.detail
 				end
 			end
-			return require("lspkind").cmp_format({ with_text = false })(entry, vim_item)
+
+			vim_item.abbr = vim_item.abbr:match("[^(]+")
+
+			return vim_item
 		end,
 	},
 
-	-- formatting = {
-	-- 	fields = { "kind", "abbr", "menu" },
-	-- 	format = function(entry, vim_item)
-	-- 		vim_item.kind = icons[vim_item.kind] or ""
-	-- 		vim_item.menu = " (" .. vim_item.kind .. ") "
-	--
-	--
-	-- 		vim_item.menu = ({
-	-- 			nvim_lsp = "(LSP)",
-	-- 			nvim_lua = "(Neovim Lua)",
-	-- 			luasnip = "(LuaSnip)",
-	-- 			buffer = "(Buffer)",
-	-- 			path = "(Path)",
-	-- 		})[entry.source.name]
-	--
-	-- 		return vim_item
-	-- 	end,
-	-- },
-
 	sources = {
+		{ name = "luasnip", max_item_count = 10 },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua", keyword_length = 2 },
-		{ name = "luasnip", max_item_count = 10 },
 		{ name = "buffer", keyword_length = 3 },
 		{ name = "path" },
-		{ name = "nvim_lsp_signature_help" },
 	},
 
 	preselect = {
 		cmp.PreselectMode.None,
 	},
 
-	comparators = {
-		cmp.config.compare.exact,
-		cmp.config.compare.recently_used,
-		cmp.config.compare.score,
+	sorting = {
+		comparators = {
+			cmp.config.compare.exact,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.score,
+		},
 	},
 
 	completeopt = "menu,menuone,noinsert",
 
 	cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done()),
-
-	--TODO cmdlines estao grandes demais!
-	cmp.setup.cmdline({ "/", "?" }, {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = {
-			{ name = "buffer" },
-		},
-	}),
-
-	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = cmp.config.sources({
-			{ name = "path" },
-		}, {
-			{ name = "cmdline" },
-		}),
-		matching = { disallow_symbol_nonprefix_matching = false },
-	}),
 
 	enabled = function()
 		local context = require("cmp.config.context")
@@ -98,4 +133,21 @@ cmp.setup({
 		disabled = disabled or context.in_treesitter_capture("comment")
 		return not disabled
 	end,
+})
+--TODO cmdlines estao grandes demais!
+cmp.setup.cmdline({ "/", "?" }, {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
+
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
+	matching = { disallow_symbol_nonprefix_matching = false },
 })

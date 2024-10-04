@@ -5,6 +5,7 @@ return {
 		require("gruvbox").setup({
 			overrides = {
 				SignColumn = { bg = "#282828" },
+				NormalFloat = { bg = "#282828" },
 				DiagnosticSignError = { bg = "#282828", fg = "#fb4934" },
 				DiagnosticSignOk = { bg = "#282828", fg = "#fb4934" },
 				DiagnosticSignHint = { bg = "#282828", fg = "#8ec07c" },

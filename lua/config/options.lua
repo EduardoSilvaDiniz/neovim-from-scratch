@@ -8,6 +8,7 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.INFO] = signs.Info,
 		},
 	},
+	float = { border = "rounded" },
 })
 
 vim.lsp.inlay_hint.enable(true)

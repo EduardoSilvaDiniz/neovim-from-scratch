@@ -16,9 +16,10 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"saadparwaiz1/cmp_luasnip",
-    "nvim-tree/nvim-web-devicons",
-    "onsails/lspkind.nvim",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
+		"nvim-tree/nvim-web-devicons",
+		"onsails/lspkind.nvim",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"nvim-lua/plenary.nvim",
 	},
 
 	config = function()

@@ -21,5 +21,6 @@ conform.setup({
 		make = { "gersemi" },
 		shellscript = { "shfmt" },
 		nix = { "alejandra" },
+		yuck = { "yuck" },
 	},
 })

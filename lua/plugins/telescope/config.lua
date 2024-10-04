@@ -11,11 +11,8 @@ telescope.setup({
 			i = { ["<C-t>"] = open_with_trouble },
 			n = { ["<C-t>"] = open_with_trouble },
 		},
-		borderchars = {
-			prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-			results = { " " },
-			preview = { " " },
-		},
+		border = {},
+		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 		pickers = {
 			find_files = {
 				theme = "ivy",

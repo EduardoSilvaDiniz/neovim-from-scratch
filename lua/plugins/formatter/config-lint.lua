@@ -11,4 +11,5 @@ lint.linters_by_ft = {
 	cmake = { "cmakelint" },
 	shellscript = { "shellcheck" },
 	nix = { "nix", "deadnix" },
+	yuck = { "yuck" },
 }
