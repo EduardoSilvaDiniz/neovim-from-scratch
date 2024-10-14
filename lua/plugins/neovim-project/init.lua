@@ -15,6 +15,7 @@ return {
 			"~/.config/nvim",
 			"~/.config/eww",
 			"~/.config/hypr",
+			"~/.config/emacs",
 		},
 		last_session_on_startup = false,
 	},
