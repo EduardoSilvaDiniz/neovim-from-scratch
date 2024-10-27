@@ -1,11 +1,11 @@
 return {
 	{
-		"<leader>db",
+		"<leader>cb",
 		"<cmd>DapToggleBreakpoint<cr>",
 		desc = "Add breakpoint at line",
 	},
 	{
-		"<leader>dr",
+		"<leader>cc",
 		"<cmd>DapContinue<cr>",
 		desc = "start or continue the debugger",
 	},

@@ -13,16 +13,16 @@ local function searchinOpenFiles()
 end
 
 return {
-	{ "<leader><leader>", searchinOpenFiles(), desc = "[S]earch [/] in Open Files" },
-	{ "<leader>sn", searchinOpenFiles(), desc = "[S]earch [N]eovim files" },
-	{ "<leader>sh", builtin.help_tags, desc = "[S]earch [H]elp" },
-	{ "<leader>sk", builtin.keymaps, desc = "[S]earch [K]eymaps" },
-	{ "<leader>sf", builtin.find_files, desc = "[S]earch [F]iles" },
-	{ "<leader>ss", builtin.builtin, desc = "[S]earch [S]elect Telescope" },
-	{ "<leader>sw", builtin.grep_string, desc = "[S]earch current [W]ord" },
-	{ "<leader>sg", builtin.live_grep, desc = "[S]earch by [G]rep" },
-	{ "<leader>sd", builtin.diagnostics, desc = "[S]earch [D]iagnostics" },
-	{ "<leader>sr", builtin.resume, desc = "[S]earch [R]esume" },
-	{ "<leader>s.", builtin.oldfiles, desc = '[S]earch Recent Files ("." for repeat)' },
-	{ "<leader>sb", builtin.buffers, desc = "[ ] Find existing buffers" },
+	{ "<leader><leader>", searchinOpenFiles(), desc = "/ in Open Files" },
+	{ "<leader>sn", searchinOpenFiles(), desc = "Neovim files" },
+	{ "<leader>sh", builtin.help_tags, desc = "Help" },
+	{ "<leader>sk", builtin.keymaps, desc = "Keymaps" },
+	{ "<leader>sp", builtin.find_files, desc = "Project" },
+	{ "<leader>ss", builtin.builtin, desc = "Select Telescope" },
+	{ "<leader>sw", builtin.grep_string, desc = "Word" },
+	{ "<leader>sg", builtin.live_grep, desc = "Grep" },
+	{ "<leader>sd", builtin.diagnostics, desc = "Diagnostics" },
+	{ "<leader>sr", builtin.resume, desc = "Resume" },
+	{ "<leader>s.", builtin.oldfiles, desc = 'Recent Files ("." for repeat)' },
+	{ "<leader>bb", builtin.buffers, desc = "Buffer" },
 }
