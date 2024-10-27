@@ -34,7 +34,8 @@ local config = {
 		component_separators = "",
 		section_separators = "",
 		max_length = vim.o.columns * 2 / 2,
-		theme = "gruvbox",
+		-- theme = require("lualine.themes.gruvbox"),
+    options = { theme = 'gruvbox' }
 	},
 	sections = {
 		lualine_a = {},
@@ -121,7 +122,7 @@ ins_left({
 			["!"] = colors.red,
 			t = colors.red,
 		}
-		return { fg = mode_color[vim.fn.mode()] }
+		return { bg = mode_color[vim.fn.mode()]}
 	end,
 	padding = { right = 1 },
 })
@@ -130,19 +131,19 @@ ins_left({
 	"filename",
 	path = 1,
 	cond = conditions.buffer_not_empty,
-	color = { fg = "#ffffff", gui = "bold" },
+	color = { bg = "#ffffff", gui = "bold" },
 })
 
-ins_left({ "location" })
+ins_left({ "location", color = { bg = "#ffffff", gui = "bold" } })
 
 ins_right({
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
 	symbols = { error = " ", warn = " ", info = " " },
 	diagnostics_color = {
-		error = { fg = colors.red },
-		warn = { fg = colors.yellow },
-		info = { fg = colors.cyan },
+		error = { bg = colors.red },
+		warn = { bg = colors.yellow, fg = nil},
+		info = { bg = colors.cyan, fg = nil},
 	},
 })
 

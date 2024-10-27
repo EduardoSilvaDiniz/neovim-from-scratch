@@ -1,9 +1,12 @@
+if true then
+	return {}
+end
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
-		require("plugins.lualine.config")
+		require("lualine").setup({})
 	end,
 }
