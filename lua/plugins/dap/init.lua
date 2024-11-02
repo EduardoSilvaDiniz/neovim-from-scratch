@@ -1,7 +1,6 @@
 return {
 	{
 		"mfussenegger/nvim-dap",
-		keys = require("plugins.dap.keymap"),
 		config = function()
 			require("plugins.dap.config")
 		end,

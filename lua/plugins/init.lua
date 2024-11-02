@@ -8,6 +8,7 @@ local function tableFactory()
 		if
 			not string.find(pluginPath, "config")
 			and not string.find(pluginPath, "keymap")
+			and not string.find(pluginPath, "test.code-snippets")
 			and not string.find(pluginPath, "plugins.init")
 		then
 			local status, objPlugin = pcall(require, pluginPath)

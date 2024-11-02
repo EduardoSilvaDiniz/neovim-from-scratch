@@ -16,7 +16,6 @@ return {
 			end,
 		},
 	},
-	keys = require("plugins.telescope.keymap"),
 	config = function()
 		require("plugins.telescope.config")
 	end,

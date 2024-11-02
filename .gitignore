@@ -1,3 +1,5 @@
 .vscode/
+.clj-kondo/
+.lsp/
 lazy-lock.json
 .luarc.json

@@ -4,6 +4,7 @@ return {
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
+			dependencies = "rafamadriz/friendly-snippets",
 			build = "make install_jsregexp",
 		},
 		{
@@ -21,8 +22,9 @@ return {
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"nvim-lua/plenary.nvim",
 	},
-
 	config = function()
 		require("plugins.cmp.config")
+		require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_vscode").load({paths = "./snippets"})
 	end,
 }

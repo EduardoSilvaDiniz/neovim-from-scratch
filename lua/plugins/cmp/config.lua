@@ -4,6 +4,7 @@ local log = require("plenary.log").new({
 	plugin = "uthman",
 	level = "debug",
 })
+local lspkind = require('lspkind')
 
 local cmp_kinds = {
 	Text = "󰬛 ",
@@ -80,23 +81,25 @@ cmp.setup({
 
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			vim_item.kind = (cmp_kinds[vim_item.kind] or "")
+		format = lspkind.cmp_format(),
 
-			if entry == "Function" then
-				local item = entry:get_completion_item()
-
-				log.debug(item)
-
-				if item.detail then
-					vim_item.menu = item.detail
-				end
-			end
-
-			vim_item.abbr = vim_item.abbr:match("[^(]+")
-
-			return vim_item
-		end,
+		-- format = function(entry, vim_item)
+		-- 	vim_item.kind = (cmp_kinds[vim_item.kind] or "")
+		--
+		-- 	if entry == "Function" then
+		-- 		local item = entry:get_completion_item()
+		--
+		-- 		log.debug(item)
+		--
+		-- 		if item.detail then
+		-- 			vim_item.menu = item.detail
+		-- 		end
+		-- 	end
+		--
+		-- 	vim_item.abbr = vim_item.abbr:match("[^(]+")
+		--
+		-- 	return vim_item
+		-- end,
 	},
 
 	sources = {
