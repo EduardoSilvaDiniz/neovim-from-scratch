@@ -40,3 +40,7 @@ keymap.set("n", "<leader>cW", "<cmd>echo 'comando não encontrado<cr>", { desc =
 keymap.set("n", "<leader>cx", "<cmd>echo 'comando não encontrado<cr>", { desc = "List errors" })
 
 keymap.set("n", "<leader>cll", vim.lsp.buf.declaration, { desc = "LSP: [G]oto [D]eclaration" })
+
+keymap.set({ "n", "t" }, "<c-]>", function()
+	require("betterTerm").open()
+end, { desc = "Open terminal" })

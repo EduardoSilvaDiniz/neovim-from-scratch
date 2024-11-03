@@ -2,7 +2,6 @@ return {
 	"rebelot/heirline.nvim",
 	dependencies = {
 		"Zeioth/heirline-components.nvim",
-		"rebelot/kanagawa.nvim",
 	},
 	config = function()
 		local heirline = require("heirline")
@@ -24,7 +23,6 @@ return {
 		}
 		local TabLine = {}
 
-		vim.cmd([[colorscheme kanagawa-wave]])
 		require("heirline").setup({
 			statusline = StatusLine,
 			tabline = TabLine,
