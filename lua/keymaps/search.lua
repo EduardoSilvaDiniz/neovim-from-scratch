@@ -17,7 +17,6 @@ keymap.set("n", "<leader><leader>", searchinOpenFiles(), { desc = "/ in Open Fil
 keymap.set("n", "<leader>sn", searchinOpenFiles(), { desc = "Neovim files" })
 keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Help" })
 keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Keymaps" })
-keymap.set("n", "<leader>sp", builtin.find_files, { desc = "Project" })
 keymap.set("n", "<leader>ss", builtin.builtin, { desc = "Select Telescope" })
 keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "Word" })
 keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Grep" })

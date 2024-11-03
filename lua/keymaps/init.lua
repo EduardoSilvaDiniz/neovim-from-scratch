@@ -1,4 +1,4 @@
-local lib = require("lib.command")
+local lib = require("lib.plugin_loader")
 
 local function loadPlugins()
 	local list = lib.findFiles("keymaps")

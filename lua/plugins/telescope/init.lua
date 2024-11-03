@@ -8,6 +8,7 @@ return {
 		"nvim-telescope/telescope-ui-select.nvim",
 		"nvim-tree/nvim-web-devicons",
 		"scottmckendry/telescope-resession.nvim",
+		"nvim-telescope/telescope-frecency.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -18,5 +19,6 @@ return {
 	},
 	config = function()
 		require("plugins.telescope.config")
+		require("telescope").load_extension("frecency")
 	end,
 }
