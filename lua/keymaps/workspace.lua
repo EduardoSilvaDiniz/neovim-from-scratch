@@ -1,2 +1,1 @@
-
 local keymap = vim.keymap

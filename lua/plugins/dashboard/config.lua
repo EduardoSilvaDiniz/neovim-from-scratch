@@ -1,25 +1,25 @@
 local stats = require("lazy").stats()
 local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 local logo = [[
-        =================     ===============     ===============   ========  ========
-        \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
-        ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
-        || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||
-        ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||
-        || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . ||
-        ||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .||
-        || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . ||
-        ||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.||
-        ||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `||
-        ||    `'         || ||         `'    || ||    `'         || ||   | \  / |   ||
-        ||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   ||
-        ||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   ||
-        ||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   ||
-        ||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||
-        ||.=='    _-'                                                     `' |  /==.||
-        =='    _-'                        N E O V I M                         \/   `==
-        \   _-'                                                                `-_   /
-         `''                                                                      ``'
+=================     ===============     ===============   ========  ========
+\\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . //
+||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .||
+|| . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||
+||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||
+|| . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . ||
+||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\_ . .|. .||
+|| . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . ||
+||_-' ||  .|/    || ||    \|.  || `-_|| ||_-' ||  .|/    || ||   | \  / |-_.||
+||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \  / |  `||
+||    `'         || ||         `'    || ||    `'         || ||   | \  / |   ||
+||            .===' `===.         .==='.`===.         .===' /==. |  \/  |   ||
+||         .=='   \_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \/  |   ||
+||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \/  |   ||
+||   .=='    _-'          '-__\._-'         '-_./__-'         `' |. /|  |   ||
+||.=='    _-'                                                     `' |  /==.||
+=='    _-'                        N E O V I M                         \/   `==
+\   _-'                                                                `-_   /
+ `''                                                                      ``'
 ]]
 
 require("dashboard").setup({
@@ -28,17 +28,22 @@ require("dashboard").setup({
 	config = {
 		header = vim.split(logo, "\n"),
 		center = {
-			{ action = "", desc = " Find File", icon = " ", key = "f" },
-			{ action = "", desc = " New File", icon = " ", key = "n" },
-			{ action = "", desc = " Recent File", icon = " ", key = "r" },
-			{ action = "Telescope neovim-project discover", desc = " Project", icon = " ", key = "p" },
-			{ action = "NeovimProjectLoadRecent", desc = " Restore Session", icon = " ", key = "s" },
-			{ action = "require('telescope.builtin').find_files({cwd='~/.config/nvim'})", desc = " config", icon = " ", key = "c" },
-			{ action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
-			{ action = "q!", desc = " Quit", icon = " ", key = "q" },
+			{ desc = " Recently opened files", icon = "󰧮 ", key = "SPC f r", action = "" },
+			{ desc = " Reload last session", icon = "󰋚 ", key = "SPC q l", action = "NeovimProjectLoadRecent" },
+			{ desc = " Open org-agenda", icon = "󰃮 ", key = "SPC o A", action = "" },
+			{ desc = " Open project", icon = "󰃖 ", key = "SPC p p", action = "Telescope neovim-project discover" },
+			{ desc = " Jump to bookmark", icon = "󰃀 ", key = "SPC RET", action = "" },
+			{
+				desc = " Open private configuration",
+				icon = "󰖷 ",
+				key = "SPC f P",
+				action = "require('telescope.builtin').find_files({cwd='~/.config/nvim'})",
+			},
+			{ desc = " Open package manager", icon = "󰏓 ", key = "SPC h l", action = "Lazy" },
+			{ desc = " Quiting neovim", icon = "󰈆 ", key = "SPC q q", action = "q!" },
 		},
 		footer = function()
-			return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+			return { "Neovim loaded " .. stats.count .." plugins in " .. stats.startuptime .. " ms" }
 		end,
 	},
 })

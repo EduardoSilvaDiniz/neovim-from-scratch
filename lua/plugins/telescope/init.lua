@@ -16,9 +16,15 @@ return {
 				return vim.fn.executable("make") == 1
 			end,
 		},
+		{
+			"crusj/bookmarks.nvim",
+			branch = "main",
+			opts = {},
+		},
 	},
 	config = function()
 		require("plugins.telescope.config")
 		require("telescope").load_extension("frecency")
+		require("telescope").load_extension("bookmarks")
 	end,
 }
