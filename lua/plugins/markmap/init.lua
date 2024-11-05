@@ -1,6 +1,7 @@
 return {
 	"Zeioth/markmap.nvim",
 	build = "yarn global add markmap-cli",
+  ft = "markdown",
 	cmd = { "MarkmapOpen", "MarkmapSave", "MarkmapWatch", "MarkmapWatchStop" },
 	opts = {
 		html_output = "/tmp/markmap.html",
