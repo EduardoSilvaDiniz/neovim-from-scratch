@@ -1,5 +1,6 @@
 local keymap = vim.keymap
 local builtin = require("telescope.builtin")
+--#TODO tirar todos os comandos não encontrando
 
 keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Lsp Execute code action" })
 
@@ -30,6 +31,7 @@ keymap.set("n", "<leader>ck", "<cmd>echo 'comando não encontrado<cr>", { desc =
 keymap.set("n", "<leader>cl", "<cmd>echo 'comando não encontrado<cr>", { desc = "lsp" })
 
 keymap.set("n", "<leader>co", function()
+  --#TODO diminuir a função e tirar ela daqui
 	if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" then
 		vim.lsp.buf.code_action({
 			---@diagnostic disable-next-line: missing-fields

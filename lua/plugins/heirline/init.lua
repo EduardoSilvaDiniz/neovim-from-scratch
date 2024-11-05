@@ -1,8 +1,6 @@
 return {
 	"rebelot/heirline.nvim",
-	dependencies = {
-		"Zeioth/heirline-components.nvim",
-	},
+	dependencies = "Zeioth/heirline-components.nvim",
 	config = function()
 		local heirline = require("heirline")
 		local components = require("heirline-components.all")
@@ -10,6 +8,9 @@ return {
 		heirline.load_colors(components.hl.get_colors())
 
 		local StatusLine = {
+			--#TODO adicionar exibição de macro
+			--#TODO melhorar a exibição do modo atual
+			--#TODO passa a configuração para o config.lua
 			components.component.mode(),
 			components.component.file_info({ filetype = false, filename = {}, file_modified = false }),
 			components.component.nav(),

@@ -1,4 +1,5 @@
 return {
+  --#TODO adicionar keybinds
 	"Zeioth/markmap.nvim",
 	build = "yarn global add markmap-cli",
   ft = "markdown",

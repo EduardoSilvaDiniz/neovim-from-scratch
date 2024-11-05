@@ -1,6 +1,7 @@
 local builtin = require("telescope.builtin")
 local keymap = vim.keymap
 
+--#TODO leader + p + o tem um resultado estranho!
 keymap.set("n", "<leader>pp", "<cmd>Telescope neovim-project discover<CR>", { desc = "Switch project" })
 keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Find file in project" })
 keymap.set("n", "<leader>pr", "<cmd>Telescope frecency<cr>", { desc = "Find recent project files" })
