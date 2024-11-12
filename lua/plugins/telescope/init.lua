@@ -24,6 +24,7 @@ return {
 	},
 	config = function()
 		require("plugins.telescope.config")
+		require("telescope").load_extension("ui-select")
 		require("telescope").load_extension("frecency")
 		require("telescope").load_extension("bookmarks")
 	end,

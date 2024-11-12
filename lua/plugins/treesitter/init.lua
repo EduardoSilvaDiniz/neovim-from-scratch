@@ -1,7 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
-		"nvim-treesitter/nvim-treesitter-context",
+		-- "nvim-treesitter/nvim-treesitter-context",
 		{
 			"hiphish/rainbow-delimiters.nvim",
 			event = "VeryLazy",

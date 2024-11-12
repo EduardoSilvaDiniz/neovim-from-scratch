@@ -11,6 +11,7 @@ vim.diagnostic.config({
 	float = { border = "rounded" },
 })
 
+--vim.cmd.colorscheme("catppuccin")
 vim.lsp.inlay_hint.enable(true)
 vim.opt.showmode = false
 vim.o.cmdheight = 0

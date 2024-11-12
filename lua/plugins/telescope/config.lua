@@ -11,5 +11,14 @@ telescope.setup({
 		},
 		border = {},
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+		highlight = { enable = true },
+		indent = { enable = true },
+		extensions = {
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({}),
+				},
+			},
+		},
 	},
 })
