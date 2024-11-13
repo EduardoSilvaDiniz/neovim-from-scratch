@@ -30,7 +30,7 @@ keymap.set("n", "<leader>cJ", builtin.lsp_dynamic_workspace_symbols, { desc = "J
 
 keymap.set("n", "<leader>ck", "<cmd>echo 'comando não encontrado<cr>", { desc = "Jump to decumentation" })
 
-keymap.set("n", "<leader>cl", "<cmd>echo 'comando não encontrado<cr>", { desc = "lsp" })
+-- keymap.set("n", "<leader>cl", "<cmd>echo 'comando não encontrado<cr>", { desc = "lsp" })
 
 keymap.set("n", "<leader>co", function()
   --#TODO diminuir a função e tirar ela daqui
@@ -63,4 +63,4 @@ keymap.set("n", "<leader>cW", "<cmd>echo 'comando não encontrado<cr>", { desc =
 
 keymap.set("n", "<leader>cx", builtin.diagnostics, { desc = "List errors" })
 
-keymap.set("n", "<leader>cll", vim.lsp.buf.declaration, { desc = "LSP: [G]oto [D]eclaration" })
+-- keymap.set("n", "<leader>cll", vim.lsp.buf.declaration, { desc = "LSP: [G]oto [D]eclaration" })
