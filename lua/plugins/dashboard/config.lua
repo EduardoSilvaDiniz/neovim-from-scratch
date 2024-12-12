@@ -41,27 +41,11 @@ require("dashboard").setup({
         action = "NeovimProjectLoadRecent",
       },
       {
-        --#TODO tecla de atalho não existe
-        desc = " Open org-agenda",
-        icon = "󰃮 ",
-        key = "a",
-        keymap = "SPC o A",
-        action = "",
-      },
-      {
         desc = " Open project",
         icon = "󰃖 ",
         key = "p",
         keymap = "SPC p p",
         action = "Telescope neovim-project discover",
-      },
-      {
-        --#TODO tecla de atalho não existe
-        desc = " Jump to bookmark",
-        icon = "󰃀 ",
-        key = "RET",
-        keymap = "SPC RET",
-        action = "",
       },
       {
         desc = " Open private configuration",

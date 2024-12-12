@@ -18,16 +18,6 @@ return {
     dapui.setup()
     require("dap-go").setup()
 
-    --TODO esta faltando a localização do executavel lldb
-    require("dap-lldb").setup() -- C/C++, rust
-
-    --TODO configurar melhor plugin (config default)
-    require("dap-vscode-js").setup({
-      adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-    })
-
-    --TODO falta o dap do java,lua,shellscript
-
     for _, language in ipairs({ "typescript", "javascript" }) do
       dap.configurations[language] = {}
     end

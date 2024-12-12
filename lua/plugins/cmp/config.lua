@@ -1,50 +1,5 @@
 local cmp = require("cmp")
--- vim.cmd([[packadd plenary.nvim]])
-local log = require("plenary.log").new({
-	plugin = "uthman",
-	level = "debug",
-})
 local lspkind = require('lspkind')
-
-local cmp_kinds = {
-	Text = "󰬛 ",
-	TypeParameter = "󰬛 ",
-
-	Function = "󰬍 ",
-	Field = "󰬍 ",
-
-	Class = "󰬊 ",
-	Constant = "󰬊 ",
-	Color = "󰬊 ",
-	Constructor = "󰬊 ",
-
-	Interface = "󰬐 ",
-
-	Module = "󰬔 ",
-	Method = "󰬔 ",
-
-	Property = "󰬗 ",
-
-	Unit = "󰬜 ",
-
-	Value = "󰬝 ",
-	Variable = "󰬝 ",
-
-	Enum = "󰬌 ",
-	EnumMember = "󰬌 ",
-	Event = "󰬌 ",
-
-	Keyword = "󰬒 ",
-
-	Snippet = "󰬚 ",
-	Struct = "󰬚 ",
-
-	File = "󰬍 ",
-	Folder = "󰬍 ",
-
-	Reference = "󰬙 ",
-	Operator = "󰬖 ",
-}
 
 cmp.setup({
 	mapping = require("plugins.cmp.keymap").setup(cmp),
@@ -82,24 +37,6 @@ cmp.setup({
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = lspkind.cmp_format(),
-
-		-- format = function(entry, vim_item)
-		-- 	vim_item.kind = (cmp_kinds[vim_item.kind] or "")
-		--
-		-- 	if entry == "Function" then
-		-- 		local item = entry:get_completion_item()
-		--
-		-- 		log.debug(item)
-		--
-		-- 		if item.detail then
-		-- 			vim_item.menu = item.detail
-		-- 		end
-		-- 	end
-		--
-		-- 	vim_item.abbr = vim_item.abbr:match("[^(]+")
-		--
-		-- 	return vim_item
-		-- end,
 	},
 
 	sources = {
@@ -137,7 +74,6 @@ cmp.setup({
 		return not disabled
 	end,
 })
---TODO cmdlines estao grandes demais!
 cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {

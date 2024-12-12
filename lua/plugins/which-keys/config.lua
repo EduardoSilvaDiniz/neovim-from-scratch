@@ -74,7 +74,6 @@ wk.add({
   { "<leader>b",  group = "buffer" },
   { "<leader>c",  group = "code" },
   { "<leader>d",  group = "dap" },
-  -- { "<leader>f", group = "file" },
   { "<leader>g",  group = "git" },
   { "<leader>h",  group = "help" },
   { "<leader>i",  group = "insert" },

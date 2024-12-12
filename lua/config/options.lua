@@ -1,17 +1,16 @@
 local signs = { Error = "»", Warn = "»", Hint = "»", Info = "»" }
 vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = signs.Error,
-			[vim.diagnostic.severity.WARN] = signs.Warn,
-			[vim.diagnostic.severity.HINT] = signs.Hint,
-			[vim.diagnostic.severity.INFO] = signs.Info,
-		},
-	},
-	float = { border = "rounded" },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = signs.Error,
+      [vim.diagnostic.severity.WARN] = signs.Warn,
+      [vim.diagnostic.severity.HINT] = signs.Hint,
+      [vim.diagnostic.severity.INFO] = signs.Info,
+    },
+  },
+  float = { border = "rounded" },
 })
 
---vim.cmd.colorscheme("catppuccin")
 vim.lsp.inlay_hint.enable(true)
 vim.opt.showmode = false
 vim.o.cmdheight = 0
@@ -43,8 +42,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
--- req cmp
 vim.g.completeopt = "menu,menuone,popup,fuzzy"
 
--- limit show autocompletes
 vim.opt.pumheight = 15

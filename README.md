@@ -1,6 +1,4 @@
-<h1 align="center">
-Neovim from scratch
-</h4>
+# Neovim from scratch
 
 ![nvim](/.github/assets/nvim.png)
 
@@ -22,40 +20,51 @@ mas tudo tem o seu lado ruim...
 
 Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda vale muito a pena. Aprendo muito sobre os mecanismos internos das IDEs e, de quebra, desenvolvo meus conhecimentos em organização de código e na linguagem Lua. E claro, o resultado final é incrível.
 
- ## ✨ Ferramentas
+## ✨ Ferramentas
 - 🔥 LSP super rapido
 - 💤 Gerenciamendo rapido de plugins
 - 🧹 Refaturação e organização do codigo com apenas duas teclas
-- 🚀 editção do codigo super rapido, quer remover as chaves ? aperte rapido "s-d-{" e ponto!
-- 📦 é possivel abrir o nvim com todas as configurações usando nix sem a necessidade de BAIXA NADA!
+- 🚀 edição do codigo super rapido, quer remover as chaves ? aperte rapido "s d {" e ponto!
+- 📦 O gerenciador de plugins lazy torna a instalação, atualização e remoção de plugins super rapido
 
 ## Plugins
-- betterTerm
-- bufferline
-- catppuccin
+
+### Codigo
 - cmp
-- dap
-- dashboard
-- flutter-tools
-- formatter
-- harpoon
-- jdtls
-- lazygit
 - lspconfig
-- lualine
-- mini-nvim
+- treesitter
+- none-ls
+- nvim-dap
+- nvim-jdtls
+
+### Ferramentas
+- betterTerm
+- lazygit
 - neovim-project
 - telescope
-- treesitter
 - which-keys
+- comment
+- conjure
+- nvim-neo-tree
+- nvim-surround
+- substitute
+- mini-nvim
+
+### UI
+- dashboard
+- everforest (tema)
+- fidget
+- lualine
+- gitsigns
+- indent-blank
+- barbecue
 
 ## LSPs Suportados
-- Clangd
-- gopls
-- dartls
-- lua_ls
-- nil_ls
+- Clangd (C C++)
+- jdtls (Java)
+- gopls (Golang)
+- nil_ls (Nix)
+- lua_ls (Lua)
 
-## TODOs
-- adicionar mais LSPs
-- melhorar a exibição do autocomplete
+## TODO
+- [ ] adicionar lsp para php, javascript, html e css
