@@ -27,6 +27,13 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - 🚀 edição do codigo super rapido, quer remover as chaves ? aperte rapido "s d {" e ponto!
 - 📦 O gerenciador de plugins lazy torna a instalação, atualização e remoção de plugins super rapido
 
+
+## LSPs Suportados
+- Clangd (C, C++)
+- jdtls (Java)
+- nil_ls (Nix)
+- lua_ls (Lua)
+
 ## Plugins
 
 ### Codigo
@@ -34,21 +41,16 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - lspconfig
 - treesitter
 - none-ls
-- nvim-dap
 - nvim-jdtls
 
 ### Ferramentas
-- betterTerm
 - lazygit
 - neovim-project
 - telescope
 - which-keys
-- comment
-- conjure
-- nvim-neo-tree
+- neo-tree
 - nvim-surround
 - substitute
-- mini-nvim
 
 ### UI
 - dashboard
@@ -56,15 +58,4 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - fidget
 - lualine
 - gitsigns
-- indent-blank
-- barbecue
 
-## LSPs Suportados
-- Clangd (C C++)
-- jdtls (Java)
-- gopls (Golang)
-- nil_ls (Nix)
-- lua_ls (Lua)
-
-## TODO
-- [ ] adicionar lsp para php, javascript, html e css
