@@ -2,8 +2,8 @@ local config = {
 	cmd = { "/nix/store/014m3wvsnfskhpcxqk58qjnpsvrlsg20-user-environment/bin/jdtls" },
 	root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
--- JDTLS mappings
 local jdtls = require("jdtls")
+
 vim.keymap.set("n", "<A-o>", jdtls.organize_imports, { desc = "Organize imports" })
 vim.keymap.set("n", "<leader>cra", jdtls.extract_variable, { desc = "Extract variable" })
 vim.keymap.set("n", "<leader>crd", jdtls.extract_constant, { desc = "Extract constant" })
