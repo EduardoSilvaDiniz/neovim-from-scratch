@@ -7,7 +7,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.cppcheck,
 
 		-- Editorconfig
-    null_ls.builtins.diagnostics.editorconfig_checker,
+		null_ls.builtins.diagnostics.editorconfig_checker,
 
 		-- Java
 		null_ls.builtins.formatting.google_java_format,
