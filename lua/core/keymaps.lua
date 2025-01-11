@@ -1,26 +1,14 @@
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
-local builtin = require("telescope.builtin")
 local substitute = require("substitute")
+local builtin = require("telescope.builtin")
 local M = {}
 
 M.plugins = {
-	none_ls = {
-		enable = true,
-		keymaps = {
-			{ "<leader>f", vim.lsp.buf.format, { noremap = true } },
-		},
-	},
 	neo_tree = {
 		enable = true,
 		keymaps = {
-			{ "<leader>tn", "<cmd>Neotree reveal<cr>", { noremap = true } },
-		},
-	},
-	lazygit = {
-		enable = false,
-		keymaps = {
-			{ "<leader>gl", "<cmd>LazyGit<cr>", { noremap = true } },
+			{ "tn", "<cmd>Neotree reveal<cr>", { noremap = true } },
 		},
 	},
 	telescope = {
@@ -63,20 +51,6 @@ M.plugins = {
 				builtin.find_files({ cwd = vim.fn.stdpath("config") })
 			end,
 			{ desc = "[S]earch [N]eovim files" },
-		},
-	},
-	lspconfig = {
-		enable = true,
-		keymaps = {
-			{ "gd",         builtin.lsp_definitions,               { desc = "[G]oto [D]efinition" } },
-			{ "gr",         builtin.lsp_references,                { desc = "[G]oto [R]eferences" } },
-			{ "gI",         builtin.lsp_implementations,           { desc = "[G]oto [I]mplementation" } },
-			{ "<leader>D",  builtin.lsp_type_definitions,          { desc = "Type [D]efinition" } },
-			{ "<leader>ds", builtin.lsp_document_symbols,          { desc = "[D]ocument [S]ymbols" } },
-			{ "<leader>ws", builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" } },
-			{ "<leader>rn", vim.lsp.buf.rename,                    { desc = "[R]e[n]ame" } },
-			{ "<leader>ca", vim.lsp.buf.code_action,               { desc = "[C]ode [A]ction" },        { "n", "x" } },
-			{ "gD",         vim.lsp.buf.declaration,               { desc = "[G]oto [D]eclaration" } },
 		},
 	},
 	substitute = {
