@@ -1,5 +1,5 @@
 local builtin = require("telescope.builtin")
-M = {}
+local M = {}
 
 M.plugins = {
 	lspconfig = {
