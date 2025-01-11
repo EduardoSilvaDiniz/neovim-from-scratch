@@ -1,5 +1,4 @@
-local wk = require("which-key")
-wk.setup({
+return {
 	delay = 0,
 	icons = {
 		mappings = vim.g.have_nerd_font,
@@ -43,4 +42,4 @@ wk.setup({
 		{ "<leader>t", group = "[T]oggle" },
 		{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 	},
-})
+}
