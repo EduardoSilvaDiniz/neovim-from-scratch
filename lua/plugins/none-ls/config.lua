@@ -1,25 +1,26 @@
-local null_ls = require("null-ls")
-
-null_ls.setup({
-	sources = {
+return function(_, opts)
+	local nls = require("null-ls")
+	opts.root_dir = opts.root_dir
+			or require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git")
+	opts.sources = vim.list_extend(opts.sources or {}, {
 		-- C/C++
-		null_ls.builtins.formatting.clang_format,
-		null_ls.builtins.diagnostics.cppcheck,
+		nls.builtins.formatting.clang_format,
+		nls.builtins.diagnostics.cppcheck,
 
 		-- Editorconfig
-		null_ls.builtins.diagnostics.editorconfig_checker,
+		nls.builtins.diagnostics.editorconfig_checker,
 
 		-- Java
-		null_ls.builtins.formatting.google_java_format,
-		null_ls.builtins.diagnostics.checkstyle,
-		null_ls.builtins.diagnostics.pmd,
+		nls.builtins.formatting.google_java_format,
+		nls.builtins.diagnostics.checkstyle,
+		nls.builtins.diagnostics.pmd,
 
 		-- Nix
-		null_ls.builtins.formatting.alejandra,
-		null_ls.builtins.code_actions.statix,
-		null_ls.builtins.diagnostics.deadnix,
+		nls.builtins.formatting.alejandra,
+		nls.builtins.code_actions.statix,
+		nls.builtins.diagnostics.deadnix,
 
 		-- Lua
-		null_ls.builtins.formatting.stylua,
-	},
-})
+		nls.builtins.formatting.stylua,
+	})
+end
