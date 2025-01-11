@@ -21,7 +21,7 @@ require("lazy").setup({
 		import = "plugins",
 	},
 	install = {
-		colorscheme = { "habamax" },
+		colorscheme = { "everforest" },
 	},
 	checker = {
 		enabled = false,
