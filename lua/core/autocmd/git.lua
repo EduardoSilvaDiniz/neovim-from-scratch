@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 			return false
 		end
 		if is_git_repo() then
-			require("core.keymaps_autocmd").load_plugins("lazygit")
+			require("core.keymaps").manual_load("lazygit")
 		end
 	end,
 })
