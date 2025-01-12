@@ -77,10 +77,7 @@ local keys_manual = {
 		{ "<leader>rn", vim.lsp.buf.rename,                    { desc = "[R]e[n]ame" } },
 		{ "<leader>ca", vim.lsp.buf.code_action,               { desc = "[C]ode [A]ction" },        { "n", "x" } },
 		{ "gD",         vim.lsp.buf.declaration,               { desc = "[G]oto [D]eclaration" } },
-	},
-
-	none_ls = {
-		{ "<leader>f", vim.lsp.buf.format, { desc = "Format buffer " } },
+		{ "<leader>f",  vim.lsp.buf.format,                    { desc = "Format buffer " } },
 	},
 
 	lazygit = {
