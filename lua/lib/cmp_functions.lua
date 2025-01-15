@@ -1,8 +1,8 @@
 local M = {}
 
 local function get_plugin(plugin)
-	local ok_luasnip, luasnip = pcall(require, plugin)
-	return ok_luasnip and luasnip or {}
+	local status, name = pcall(require, plugin)
+	return status and name or {}
 end
 
 function M.luasnip_jump_forward()
