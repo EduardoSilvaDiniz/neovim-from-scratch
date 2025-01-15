@@ -4,7 +4,7 @@ require("lualine").setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "packer", "NVimTree", "neo-tree" },
+		disabled_filetypes = { "neo-tree" },
 		ignore_focus = {},
 		always_divide_middle = true,
 		always_show_tabline = true,
