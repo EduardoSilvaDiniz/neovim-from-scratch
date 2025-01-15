@@ -1,4 +1,5 @@
 local M = {}
+
 function M.createTable(pathList)
 	local plugins = {}
 
