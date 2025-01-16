@@ -15,6 +15,14 @@ return function(_, opts)
 		nls.builtins.diagnostics.checkstyle,
 		nls.builtins.diagnostics.pmd,
 
+		-- Go
+		nls.builtins.formatting.gofumpt,
+		nls.builtins.formatting.golines,
+		nls.builtins.formatting.goimports,
+		nls.builtins.formatting.goimports_reviser,
+		nls.builtins.diagnostics.golangci_lint,
+		nls.builtins.code_actions.gomodifytags,
+
 		-- Nix
 		nls.builtins.formatting.alejandra,
 		nls.builtins.code_actions.statix,
