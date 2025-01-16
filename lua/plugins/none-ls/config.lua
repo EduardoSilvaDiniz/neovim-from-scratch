@@ -18,6 +18,7 @@ return function(_, opts)
 		-- Go
 		nls.builtins.formatting.gofumpt,
 		nls.builtins.formatting.golines,
+		nls.builtins.formatting.goimports,
 		nls.builtins.formatting.goimports_reviser,
 		nls.builtins.diagnostics.golangci_lint,
 		nls.builtins.code_actions.gomodifytags,
