@@ -13,6 +13,7 @@ return {
 				["\\"] = "close_window",
 				["l"] = "open",
 				["h"] = "back_close_folder",
+				["<cr>"] = "refresh",
 			},
 		},
 	},
