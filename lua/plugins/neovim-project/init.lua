@@ -8,5 +8,5 @@ return {
 		"Shatur/neovim-session-manager",
 		"ibhagwan/fzf-lua",
 	},
-	opts = require("plugins.project.config"),
+	opts = require("plugins.neovim-project.config"),
 }
