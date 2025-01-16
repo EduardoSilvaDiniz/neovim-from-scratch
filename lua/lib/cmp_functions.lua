@@ -1,14 +1,8 @@
 local M = {}
-
-local function get_plugin(plugin)
-	local status, name = pcall(require, plugin)
-	return status and name or {}
-end
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 function M.luasnip_jump_forward()
-	local cmp = get_plugin("cmp")
-	local luasnip = get_plugin("luasnip")
-
 	return cmp.mapping(function(fallback)
 		if luasnip.jumpable(1) then
 			luasnip.jump(1)
@@ -19,9 +13,6 @@ function M.luasnip_jump_forward()
 end
 
 function M.luasnip_jump_backward()
-	local cmp = get_plugin("cmp")
-	local luasnip = get_plugin("luasnip")
-
 	return cmp.mapping(function(fallback)
 		if luasnip.jumpable(-1) then
 			luasnip.jump(-1)
@@ -32,9 +23,6 @@ function M.luasnip_jump_backward()
 end
 
 function M.luasnip_supertab(select_opts)
-	local cmp = get_plugin("cmp")
-	local luasnip = get_plugin("luasnip")
-
 	return cmp.mapping(function(fallback)
 		local col = vim.fn.col(".") - 1
 
@@ -51,9 +39,6 @@ function M.luasnip_supertab(select_opts)
 end
 
 function M.luasnip_shift_supertab(select_opts)
-	local cmp = get_plugin("cmp")
-	local luasnip = get_plugin("luasnip")
-
 	return cmp.mapping(function(fallback)
 		if cmp.visible() then
 			cmp.select_prev_item(select_opts)
