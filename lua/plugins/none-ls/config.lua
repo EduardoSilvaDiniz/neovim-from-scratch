@@ -28,6 +28,15 @@ return function(_, opts)
 		nls.builtins.code_actions.statix,
 		nls.builtins.diagnostics.deadnix,
 
+		-- Markdown
+		nls.builtins.formatting.cbfmt,
+		nls.builtins.formatting.textlint,
+		nls.builtins.diagnostics.markdownlint_cli2,
+		nls.builtins.diagnostics.mdl,
+		nls.builtins.diagnostics.proselint,
+		nls.builtins.diagnostics.vale,
+		nls.builtins.diagnostics.write_good,
+
 		-- Lua
 		nls.builtins.formatting.stylua,
 	})
