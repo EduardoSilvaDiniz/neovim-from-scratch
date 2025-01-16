@@ -6,7 +6,7 @@ local jdtls = require("jdtls")
 local M = {}
 
 local function check_plugin(plugin)
-	local plugin = plugin:gsub("_", "-")
+	plugin = plugin:gsub("_", "-")
 	local status, _ = pcall(require, plugin)
 	if status then
 		return true
