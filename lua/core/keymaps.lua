@@ -6,7 +6,7 @@ local jdtls = require("jdtls")
 local M = {}
 
 local function check_plugin(plugin)
-	plugin = plugin:gsub("_", "-")
+	local plugin = plugin:gsub("_", "-")
 	local status, _ = pcall(require, plugin)
 	if status then
 		return true
@@ -63,6 +63,11 @@ local keys_auto = {
 		{ "ss", substitute.line,     { noremap = true } },
 		{ "S",  substitute.eol,      { noremap = true } },
 		{ "s",  substitute.visual,   { noremap = true }, { "x" } },
+	},
+	neovim_project = {
+		{ "<leader>pp", "<cmd>Telescope neovim-project discover<cr>", { desc = "Switch project" } },
+		{ "<leader>pf", builtin.find_files,                           { desc = "Find file in project" } },
+		{ "<leader>pr", "<cmd>Telescope frecency<cr>",                { desc = "Find recent project files" } },
 	},
 }
 
