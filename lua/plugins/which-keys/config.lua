@@ -1,7 +1,7 @@
 return {
 	delay = 0,
 	icons = {
-		mappings = vim.g.have_nerd_font,
+		mappings = false,
 		keys = vim.g.have_nerd_font and {} or {
 			Up = "<Up> ",
 			Down = "<Down> ",
@@ -34,12 +34,14 @@ return {
 		},
 	},
 	spec = {
-		{ "<leader>c", group = "[C]ode",     mode = { "n", "x" } },
-		{ "<leader>d", group = "[D]ocument" },
-		{ "<leader>r", group = "[R]ename" },
-		{ "<leader>s", group = "[S]earch" },
-		{ "<leader>w", group = "[W]orkspace" },
-		{ "<leader>t", group = "[T]oggle" },
-		{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+		{ "<leader>c", group = "Code",        mode = { "n", "x" } },
+		{ "<leader>d", group = "Document" },
+		{ "<leader>r", group = "Rename" },
+		{ "<leader>s", group = "Search" },
+		{ "<leader>q", group = "Quit session" },
+		{ "<leader>p", group = "Project" },
+		{ "<leader>w", group = "Workspace" },
+		{ "<leader>t", group = "Toggle" },
+		{ "<leader>h", group = "Git Hunk",    mode = { "n", "v" } },
 	},
 }
