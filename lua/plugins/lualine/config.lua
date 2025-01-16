@@ -1,4 +1,4 @@
-require("lualine").setup({
+return {
 	options = {
 		icons_enabled = false,
 		theme = "auto",
@@ -16,10 +16,39 @@ require("lualine").setup({
 		},
 	},
 	sections = {
-		lualine_a = { "filename" },
+		lualine_a = { { "filename", file_status = true, path = 1 } },
 		lualine_b = { "diagnostics" },
-		lualine_c = {},
-		lualine_x = {},
+		lualine_c = {
+			{
+				function()
+					local msg = "No Active Lsp"
+					local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+					local clients = vim.lsp.get_clients()
+
+					if next(clients) == nil then
+						return msg
+					end
+
+					for _, client in ipairs(clients) do
+						if client.name == "null-ls" then
+							goto continue
+						end
+
+						local filetypes = client.config.filetypes
+						if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+							return client.name
+						end
+
+						::continue::
+					end
+
+					return msg
+				end,
+				icon = " LSP:",
+				color = { fg = "#ffffff", gui = "bold" },
+			},
+		},
+		lualine_x = { "branch", "diff", "diagnostics" },
 		lualine_y = { "location" },
 		lualine_z = { "mode" },
 	},
@@ -35,4 +64,4 @@ require("lualine").setup({
 	winbar = {},
 	inactive_winbar = {},
 	extensions = {},
-})
+}
