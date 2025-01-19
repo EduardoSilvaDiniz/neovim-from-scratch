@@ -2,19 +2,19 @@
 	"set key leader command": {
 		"prefix": "setklc",
 		"body": [
-      "keymap.set('$1', '<leader>$2', '<cmd>$3<cr>', { desc = '$4'})"
+			"keymap.set('$1', '<leader>$2', '<cmd>$3<cr>', { desc = '$4'})"
 		]
 	},
 	"set key leader": {
 		"prefix": "setkl",
 		"body": [
-      "keymap.set('$1', '<leader>$2', '$3', { desc = '$4'})"
+			"keymap.set('$1', '<leader>$2', '$3', { desc = '$4'})"
 		]
 	},
 	"set key": {
 		"prefix": "setk",
 		"body": [
-      "keymap.set('$1', '$2', '$3', { desc = '$4'})"
+			"keymap.set('$1', '$2', '$3', { desc = '$4'})"
 		]
 	}
 }

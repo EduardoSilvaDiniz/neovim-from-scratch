@@ -1,10 +1,7 @@
-local handler = require("lsp.handler")
-local capabilities = require("lsp.capability")
+local capabilities = require("lsp.capabilities")
 
 return {
 	capabilities = capabilities,
-	handlers = handler.with({ handler.hover, handler.publishDiagnostics }),
-
 	init_options = {
 		clangdFileStatus = true,
 		usePlaceholders = true,

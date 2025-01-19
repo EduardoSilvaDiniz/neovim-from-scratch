@@ -1,31 +1,17 @@
 local cmp = require("cmp")
-local lspkind = require('lspkind')
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local cmp_functions = require("lib.cmp_functions")
 
 cmp.setup({
-	mapping = require("plugins.cmp.keymap").setup(cmp),
-
-	completion = {
-		winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None,CursorLine:MyCursorLine",
-		side_padding = 0,
-	},
-
-	window = {
-		completion = {
-			winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder,CursorLine:Pmenu",
-			border = "rounded",
-			scrollbar = false,
-			col_offset = -3,
-			side_padding = 0,
-		},
-		documentation = {
-			scrollbar = false,
-			winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder",
-			border = "rounded",
-		},
-		snippet = {
-			winhighlight = "Normal:Normal,FloatBorder:CmpCompletionBorder",
-			border = "rounded",
-		},
+	mapping = {
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-f"] = cmp_functions.luasnip_jump_forward(),
+		["<C-b"] = cmp_functions.luasnip_jump_backward(),
+		["<Tab>"] = cmp_functions.luasnip_supertab(),
+		["<S-Tab>"] = cmp_functions.luasnip_shift_supertab(),
 	},
 
 	snippet = {
@@ -34,16 +20,11 @@ cmp.setup({
 		end,
 	},
 
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = lspkind.cmp_format(),
-	},
-
 	sources = {
-		{ name = "luasnip", max_item_count = 10 },
+		{ name = "luasnip",  max_item_count = 10 },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua", keyword_length = 2 },
-		{ name = "buffer", keyword_length = 3 },
+		{ name = "buffer",   keyword_length = 3 },
 		{ name = "path" },
 	},
 
@@ -59,10 +40,6 @@ cmp.setup({
 		},
 	},
 
-	completeopt = "menu,menuone,noinsert",
-
-	cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done()),
-
 	enabled = function()
 		local context = require("cmp.config.context")
 		local disabled = false
@@ -74,18 +51,18 @@ cmp.setup({
 		return not disabled
 	end,
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 cmp.setup.cmdline({ "/", "?" }, {
 	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "buffer" },
-	},
+	sources = { name = "buffer" },
 })
 
 cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 		{ name = "path" },
-	}, {
 		{ name = "cmdline" },
 	}),
 	matching = { disallow_symbol_nonprefix_matching = false },

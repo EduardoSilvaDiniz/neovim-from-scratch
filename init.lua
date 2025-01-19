@@ -1,5 +1,4 @@
-require("config.options")
-require("config.lazy")
-require("config.autocmd")
-
-require("keymaps.init")
+require("core.lazy")
+require("core.options")
+require("core.autocmd")
+require("core.keymaps").autoload()

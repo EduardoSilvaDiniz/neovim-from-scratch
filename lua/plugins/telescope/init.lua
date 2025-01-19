@@ -4,11 +4,7 @@ return {
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-fzf-native.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
-		"nvim-tree/nvim-web-devicons",
-		"scottmckendry/telescope-resession.nvim",
-		"nvim-telescope/telescope-frecency.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
@@ -16,16 +12,7 @@ return {
 				return vim.fn.executable("make") == 1
 			end,
 		},
-		{
-			"crusj/bookmarks.nvim",
-			branch = "main",
-			opts = {},
-		},
+		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 	},
-	config = function()
-		require("plugins.telescope.config")
-		require("telescope").load_extension("ui-select")
-		require("telescope").load_extension("frecency")
-		require("telescope").load_extension("bookmarks")
-	end,
+	opts = require("plugins.telescope.config"),
 }
