@@ -2,7 +2,6 @@ pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 local substitute = require("substitute")
 local builtin = require("telescope.builtin")
-local jdtls = require("jdtls")
 local M = {}
 
 local function check_plugin(plugin)
@@ -87,15 +86,6 @@ local keys_manual = {
 
 	lazygit = {
 		{ "gl", "<cmd>LazyGit<cr>", { noremap = true } },
-	},
-
-	jdtls = {
-		{ "<A-o>",       jdtls.organize_imports,    { desc = "Organize imports" } },
-		{ "<leader>cra", jdtls.extract_variable,    { desc = "Extract variable" } },
-		{ "<leader>crd", jdtls.extract_constant,    { desc = "Extract constant" } },
-		{ "<leader>crm", jdtls.extract_method,      { desc = "Extract method" },         { "v" } },
-		{ "<leader>df",  jdtls.test_class,          { desc = "Run test class" } },
-		{ "<leader>dn",  jdtls.test_nearest_method, { desc = "Run nearest test method" } },
 	},
 }
 
