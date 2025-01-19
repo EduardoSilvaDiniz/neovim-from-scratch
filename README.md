@@ -27,35 +27,37 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - 🚀 edição do codigo super rapido, quer remover as chaves ? aperte rapido "s d {" e ponto!
 - 📦 O gerenciador de plugins lazy torna a instalação, atualização e remoção de plugins super rapido
 
-
 ## LSPs Suportados
-- Clangd (C, C++)
-- jdtls (Java)
-- nil_ls (Nix)
-- lua_ls (Lua)
+- [clangd](https://github.com/clangd/clangd)
+- [gopls](https://github.com/golang/tools/blob/master/gopls/README.md)
+- [lua ls](https://github.com/LuaLS/lua-language-server)
+- [markdown oxide](https://github.com/Feel-ix-343/markdown-oxide)
+- [nil ls](https://github.com/oxalica/nil)
+- [phpactor](https://github.com/phpactor/phpactor)
 
 ## Plugins
-
 ### Codigo
-- cmp
-- lspconfig
-- treesitter
-- none-ls
-- nvim-jdtls
+- [cmp](https://github.com/hrsh7th/nvim-cmp)
+- [lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [none ls](https://github.com/nvimtools/none-ls.nvim)
+- [nvim treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 ### Ferramentas
-- lazygit
-- neovim-project
-- telescope
-- which-keys
-- neo-tree
-- nvim-surround
-- substitute
+- [lazygit](https://github.com/jesseduffield/lazygit)
+- [telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [tmux](https://github.com/aserowy/tmux.nvim)
+- [neo tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- [neovim project](https://github.com/coffebar/neovim-project)
+- [nvim surround](https://github.com/kylechui/nvim-surround)
+- [substitute](https://github.com/gbprod/substitute.nvim)
+- [which keys](https://github.com/folke/which-key.nvim)
 
 ### UI
-- dashboard
-- everforest (tema)
-- fidget
-- lualine
-- gitsigns
-
+- [dashboard](https://github.com/nvimdev/dashboard-nvim)
+- [dressing](https://github.com/stevearc/dressing.nvim)
+- [everforest](https://github.com/neanias/everforest-nvim)
+- [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- [image](https://github.com/3rd/image.nvim)
+- [lualine](https://github.com/nvim-lualine/lualine.nvim)
+- [noice](https://github.com/folke/noice.nvim)
+- [render markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim)
