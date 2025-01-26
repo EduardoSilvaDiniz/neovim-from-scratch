@@ -1,9 +1,21 @@
 local M = {}
 
+local function is_activated()
+	local context = require("cmp.config.context")
+	local disabled = false
+	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
+	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "nofile")
+	disabled = disabled or (vim.fn.reg_recording() ~= "")
+	disabled = disabled or (vim.fn.reg_executing() ~= "")
+	disabled = disabled or context.in_treesitter_capture("comment")
+	return not disabled
+end
+
 M.setup = function()
 	local cmp = require("cmp")
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	local cmp_functions = require("lib.cmp_functions")
+	local luasnip = require("luasnip")
 
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	cmp.setup.cmdline({ "/", "?" }, {
@@ -34,7 +46,7 @@ M.setup = function()
 
 		snippet = {
 			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
+				luasnip.lsp_expand(args.body)
 			end,
 		},
 
@@ -57,17 +69,7 @@ M.setup = function()
 				cmp.config.compare.score,
 			},
 		},
-
-		enabled = function()
-			local context = require("cmp.config.context")
-			local disabled = false
-			disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
-			disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "nofile")
-			disabled = disabled or (vim.fn.reg_recording() ~= "")
-			disabled = disabled or (vim.fn.reg_executing() ~= "")
-			disabled = disabled or context.in_treesitter_capture("comment")
-			return not disabled
-		end,
+		enabled = is_activated(),
 	}
 end
 
