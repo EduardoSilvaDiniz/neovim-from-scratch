@@ -15,9 +15,6 @@ local function check_plugin(plugin)
 end
 
 local keys_auto = {
-	neo_tree = {
-		{ "tn", "<cmd>Neotree reveal<cr>", { noremap = true } },
-	},
 	telescope = {
 		{ "<leader>sh",       builtin.help_tags,   { desc = "[S]earch [H]elp" } },
 		{ "<leader>sk",       builtin.keymaps,     { desc = "[S]earch [K]eymaps" } },
@@ -62,11 +59,6 @@ local keys_auto = {
 		{ "ss", substitute.line,     { noremap = true } },
 		{ "S",  substitute.eol,      { noremap = true } },
 		{ "s",  substitute.visual,   { noremap = true }, { "x" } },
-	},
-	neovim_project = {
-		{ "<leader>pp", "<cmd>Telescope neovim-project discover<cr>", { desc = "Switch project" } },
-		{ "<leader>pf", builtin.find_files,                           { desc = "Find file in project" } },
-		{ "<leader>pr", "<cmd>Telescope frecency<cr>",                { desc = "Find recent project files" } },
 	},
 }
 
