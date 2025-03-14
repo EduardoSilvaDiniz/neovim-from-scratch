@@ -1,4 +1,9 @@
 return {
+	lsp = {
+		signature = {
+			enabled = false, -- Desativa a exibição de assinatura do LSP no Noice
+		},
+	},
 	cmdline = {
 		format = {
 			cmdline = { title = "" },
