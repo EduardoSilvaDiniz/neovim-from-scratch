@@ -3,7 +3,6 @@ return {
 	version = "v2.*",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"saadparwaiz1/cmp_luasnip",
 	},
 	build = "make install_jsregexp",
 	config = function()
