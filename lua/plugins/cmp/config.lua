@@ -1,33 +1,38 @@
 local M = {}
 
-local function is_activated()
-	local context = require("cmp.config.context")
-	local disabled = false
-	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
-	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "nofile")
-	disabled = disabled or (vim.fn.reg_recording() ~= "")
-	disabled = disabled or (vim.fn.reg_executing() ~= "")
-	disabled = disabled or context.in_treesitter_capture("comment")
-	return not disabled
-end
+-- TODO está função quebrou o cmp 
+-- local function is_activated()
+-- 	local context = require("cmp.config.context")
+-- 	local disabled = false
+-- 	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
+-- 	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "nofile")
+-- 	disabled = disabled or (vim.fn.reg_recording() ~= "")
+-- 	disabled = disabled or (vim.fn.reg_executing() ~= "")
+-- 	disabled = disabled or context.in_treesitter_capture("comment")
+-- 	return not disabled
+-- end
 
 M.setup = function()
+	local lspkind = require("lspkind")
 	local cmp = require("cmp")
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	local cmp_functions = require("lib.cmp_functions")
 	local luasnip = require("luasnip")
 
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+---@diagnostic disable-next-line: undefined-field
 	cmp.setup.cmdline({ "/", "?" }, {
 		mapping = cmp.mapping.preset.cmdline(),
-		sources = { name = "buffer" },
+		sources = { name = "buffer", max_item_count = 16 },
 	})
 
+---@diagnostic disable-next-line: undefined-field
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = cmp.config.sources({
-			{ name = "path" },
-			{ name = "cmdline" },
+			{ name = "path",    max_item_count = 16 },
+			{ name = "cmdline", max_item_count = 16 },
 		}),
 		matching = { disallow_symbol_nonprefix_matching = false },
 	})
@@ -51,15 +56,45 @@ M.setup = function()
 		},
 
 		sources = {
-			{ name = "luasnip",  max_item_count = 10 },
-			{ name = "nvim_lsp" },
-			{ name = "nvim_lua", keyword_length = 2 },
-			{ name = "buffer",   keyword_length = 3 },
-			{ name = "path" },
+			{ name = "nvim_lsp", max_item_count = 16 },
+			{ name = "luasnip",  max_item_count = 16 },
+			{ name = "path",     max_item_count = 16 },
+			{ name = "buffer", max_item_count = 16 },
 		},
 
 		preselect = {
 			cmp.PreselectMode.None,
+		},
+
+		formatting = {
+			format = lspkind.cmp_format({
+				maxwidth = 50,
+				ellipsis_char = "...",
+			}),
+		},
+
+		window = {
+			completion = cmp.config.window.bordered({
+				winhighlight = "Normal:normal,FloatBorder:normal,Search:None",
+				col_offset = -3,
+				side_padding = 0,
+			}),
+			documentation = cmp.config.window.bordered({
+				winhighlight = "Normal:normal,FloatBorder:normal,Search:None",
+				col_offset = -3,
+				side_padding = 0,
+			}),
+		},
+
+		view = {
+			entries = {
+				follow_cursor = true,
+			},
+		},
+
+		experimental = {
+			ghost_text = false,
+			native_menu = false,
 		},
 
 		sorting = {
@@ -69,7 +104,7 @@ M.setup = function()
 				cmp.config.compare.score,
 			},
 		},
-		enabled = is_activated(),
+		-- enabled = is_activated(),
 	}
 end
 
