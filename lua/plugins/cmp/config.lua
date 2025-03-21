@@ -47,7 +47,6 @@ return {
 	},
 
 	sources = {
-		-- { name = "nvim_lsp", max_item_count = 16 },
 		{
 			name = "nvim_lsp",
 			max_item_count = 16,
@@ -91,23 +90,17 @@ return {
 	window = {
 		completion = cmp.config.window.bordered({
 			winhighlight = "Normal:normal,FloatBorder:normal,Search:None",
-			-- col_offset = -3,
-			-- side_padding = 0,
-
 			col_offset = 0,
 			side_padding = 1,
-			max_width = 60, -- Largura máxima do menu de conclusão
-			max_height = 15, -- Altura máxima do menu de conclusão
+			max_width = 60,
+			max_height = 15,
 		}),
 		documentation = cmp.config.window.bordered({
 			winhighlight = "Normal:normal,FloatBorder:normal,Search:None",
-			-- col_offset = -3,
-			-- side_padding = 0,
-
 			col_offset = 0,
 			side_padding = 1,
-			max_width = 60, -- Largura máxima do menu de conclusão
-			max_height = 15, -- Altura máxima do menu de conclusão
+			max_width = 60,
+			max_height = 15,
 		}),
 	},
 
