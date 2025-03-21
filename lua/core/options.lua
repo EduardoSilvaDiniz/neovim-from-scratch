@@ -4,6 +4,29 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.g.have_nerd_font = true
 vim.wo.number = true
+vim.lsp.inlay_hint.enable(true)
+local signs = {
+  Error = "",
+  Warn  = "",
+  Hint  = "",
+  Info  = "",
+}
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorder", { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, "NoiceCmdlinePopupBorderSearch", { bg = normal_bg })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal_bg })
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { fg = normal_bg })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = normal_bg })
+vim.api.nvim_set_hl(0, "GitSignsAdd", { bg = normal_bg })
+vim.api.nvim_set_hl(0, "GitSignsChange", { bg = normal_bg })
+vim.api.nvim_set_hl(0, "GitSignsDelete", { bg = normal_bg })
 
 local augroup = vim.api.nvim_create_augroup("user_cmds", { clear = true })
 local builtin = require("telescope.builtin")
