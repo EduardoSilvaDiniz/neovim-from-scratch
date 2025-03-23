@@ -3,7 +3,7 @@
 -- com o plugin, e configura de uma forma que 
 -- ao carregar o plugin todas as keybinds tambem
 -- são criadas, assim caso o plugin não seja
--- carregado, não averar keybinds quebradas
+-- carregado, não haverá keybinds quebradas
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 local substitute = require("substitute")
