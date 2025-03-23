@@ -11,4 +11,11 @@ return {
 	{ "<leader>cr", vim.lsp.buf.rename,                    { desc = "Rename" } },
 	{ "<leader>ca", vim.lsp.buf.code_action,               { desc = "Do action" },              { "n", "x" } },
 	{ "<leader>f",  vim.lsp.buf.format,                    { desc = "Format buffer " } },
+	{
+		"<leader>th",
+		function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+		end,
+		{ desc = "[T]oggle Inlay [H]ints" },
+	},
 }
