@@ -4,6 +4,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	callback = function(event)
 		local keymaps = require("plugins.lspconfig.keymap")
 		local loadkeys = require("lib.loadkeys")
-		loadkeys.manual_load(keymaps)
+		loadkeys.manual_load(keymaps, "lspconfig")
 	end,
 })
