@@ -6,7 +6,7 @@ local servers = {
 	clangd = require("lsp.config.clangd"),
 	gopls = require("lsp.config.gopls"),
 	markdown_oxide = require("lsp.config.markdown_oxide"),
-	ts_ls = require("lsp.config.ts_ls"),
+	-- ts_ls = require("lsp.config.ts_ls"),
 	jsonls = require("lsp.config.jsonls"),
 	eslint = require("lsp.config.eslint"),
 }
