@@ -12,7 +12,8 @@ return function(_, opts)
 		nls.builtins.formatting.stylua,
 
 		-- Typescript
+		-- nls.builtins.code_actions.eslint,
 		nls.builtins.formatting.prettier,
-		nls.builtins.code_actions.refactoring
+		nls.builtins.code_actions.refactoring,
 	})
 end
