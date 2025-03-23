@@ -6,4 +6,10 @@ return {
 	},
 	lazy = false,
 	opts = {},
+
+	config = vim.schedule(function()
+		local keymaps = require("plugins.refactoring.keymap")
+		local loadkeys = require("lib.loadkeys")
+		loadkeys.manual_load(keymaps)
+	end),
 }
