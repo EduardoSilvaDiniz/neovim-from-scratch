@@ -1,4 +1,3 @@
-local refactoring = require("refactoring")
 return {
 	{ "<leader>re",  "<cmd>Refactor extract<cr>",               { desc = "extract" },              "x" },
 	{ "<leader>rf",  "<cmd>Refactor extract_to_file<cr>",       { desc = "extract to file" },      "x" },

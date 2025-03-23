@@ -27,42 +27,42 @@ return {
 		header = vim.split(logo, "\n"),
 		center = {
 			{
-				desc = " Recently opened files",
+				desc = " Arquivos abertos recentemente",
 				icon = "󰧮 ",
 				key = "r",
 				keymap = "SPC f r",
 				action = "",
 			},
 			{
-				desc = " Reload last session",
+				desc = " Recarregar a última sessão",
 				icon = "󰋚 ",
 				key = "s",
 				keymap = "SPC q l",
 				action = "NeovimProjectLoadRecent",
 			},
 			{
-				desc = " Open project",
+				desc = " pesquisar projetos",
 				icon = "󰃖 ",
 				key = "p",
 				keymap = "SPC p p",
 				action = "Telescope neovim-project discover",
 			},
 			{
-				desc = " Open neovim configuration",
+				desc = " abrir configuração do neovim",
 				icon = "󰖷 ",
 				key = "n",
 				keymap = "SPC f P",
 				action = "require('telescope.builtin').find_files({cwd='~/.config/nvim'})",
 			},
 			{
-				desc = " Open package manager",
+				desc = " abrir gerenciador de pacotes",
 				icon = "󰏓 ",
 				key = "l",
 				keymap = "SPC h l",
 				action = "Lazy",
 			},
 			{
-				desc = " Quiting neovim",
+				desc = " sair do neovim",
 				icon = "󰈆 ",
 				key = "q",
 				keymap = "SPC q q",
@@ -72,7 +72,7 @@ return {
 		footer = function()
 			local stats = require("lazy").stats()
 			local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
-			return { "Neovim loaded " .. stats.count .. " plugins in " .. ms .. " ms" }
+			return { "Neovim carregou " .. stats.count .. " plugins em " .. ms .. " ms" }
 		end,
 	},
 }
