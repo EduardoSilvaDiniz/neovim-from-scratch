@@ -1,7 +1,10 @@
 return {
 	lsp = {
 		signature = {
-			enabled = false, -- Desativa a exibição de assinatura do LSP no Noice
+			enabled = false,
+		},
+		presets = {
+			lsp_doc_border = true,
 		},
 	},
 	cmdline = {
@@ -13,6 +16,10 @@ return {
 	},
 
 	views = {
+		hover = {
+			border = { style = "rounded" },
+			size = { max_width = 80 },
+		},
 		cmdline_popup = {
 			position = {
 				row = "90%",
