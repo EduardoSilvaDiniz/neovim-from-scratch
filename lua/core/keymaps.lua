@@ -1,3 +1,9 @@
+-- TODO este arquivo esta ficando muito grande
+-- acho melhor voltar a deixa as keybinds junto 
+-- com o plugin, e configura de uma forma que 
+-- ao carregar o plugin todas as keybinds tambem
+-- são criadas, assim caso o plugin não seja
+-- carregado, não averar keybinds quebradas
 pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 local substitute = require("substitute")
@@ -114,12 +120,12 @@ local keys_manual = {
 		{ "gd",         builtin.lsp_definitions,               { desc = "[G]oto [D]efinition" } },
 		{ "gr",         builtin.lsp_references,                { desc = "[G]oto [R]eferences" } },
 		{ "gI",         builtin.lsp_implementations,           { desc = "[G]oto [I]mplementation" } },
+		{ "gD",         vim.lsp.buf.declaration,               { desc = "[G]oto [D]eclaration" } },
 		{ "<leader>D",  builtin.lsp_type_definitions,          { desc = "Type [D]efinition" } },
 		{ "<leader>ds", builtin.lsp_document_symbols,          { desc = "[D]ocument [S]ymbols" } },
 		{ "<leader>ws", builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" } },
-		{ "<leader>rn", vim.lsp.buf.rename,                    { desc = "[R]e[n]ame" } },
-		{ "<leader>ca", vim.lsp.buf.code_action,               { desc = "[C]ode [A]ction" },        { "n", "x" } },
-		{ "gD",         vim.lsp.buf.declaration,               { desc = "[G]oto [D]eclaration" } },
+		{ "<leader>cr", vim.lsp.buf.rename,                    { desc = "Rename" } },
+		{ "<leader>ca", vim.lsp.buf.code_action,               { desc = "Do action" },              { "n", "x" } },
 		{ "<leader>f",  vim.lsp.buf.format,                    { desc = "Format buffer " } },
 	},
 
