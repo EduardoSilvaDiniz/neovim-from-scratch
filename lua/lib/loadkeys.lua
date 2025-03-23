@@ -1,16 +1,11 @@
 local M = {}
 
 local function check_plugin(plugin)
-	plugin = plugin:gsub("_", "-")
 	local status, _ = pcall(require, plugin)
-	if status then
-		return true
-	else
-		return false
-	end
+	return status
 end
 
-local map = function(keys, func, opts, mode)
+local function map(keys, func, opts, mode)
 	mode = mode or "n"
 	opts.desc = opts.desc or ""
 	opts.noremap = opts.noremap or false
@@ -26,7 +21,7 @@ function M.manual_load(keymaps, plugin)
 			map(unpack(keymap))
 		end
 	else
-		vim.print("falha ao carrega keymaps do plugin: ", plugin)
+		vim.notify("Falha ao carregar keymaps do plugin: " .. plugin, vim.log.levels.ERROR)
 	end
 end
 
