@@ -1,4 +1,12 @@
 return {
+	window = {
+    position = "float",
+    popup = {
+      border = "rounded",
+      title = "Neo-Tree",
+      title_pos = "center",
+    },
+  },
 	event_handlers = {
 		{
 			event = "file_open_requested",
