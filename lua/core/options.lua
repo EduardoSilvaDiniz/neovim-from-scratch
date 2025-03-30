@@ -6,6 +6,11 @@ vim.g.have_nerd_font = true
 vim.wo.number = true
 vim.lsp.inlay_hint.enable(true)
 vim.opt.signcolumn = "yes:1"
+vim.diagnostic.config({
+  virtual_text = false, -- Desativa mensagens inline
+  signs = true,         -- Mantém os ícones laterais
+  underline = true,     -- Mantém sublinhado
+})
 local signs = {
 	Error = "",
 	Warn = "",
