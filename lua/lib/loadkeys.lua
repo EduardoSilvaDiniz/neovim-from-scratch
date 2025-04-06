@@ -14,7 +14,7 @@ end
 
 --- carrega todas as keymaps da tabela passada como argumento
 --- @param keymaps table
---- @param plugin string
+--- @param plugin string | nil
 function M.manual_load(keymaps, plugin)
 	if plugin == nil or check_plugin(plugin) then
 		for _, keymap in ipairs(keymaps) do
