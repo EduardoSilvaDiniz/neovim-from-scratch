@@ -5,6 +5,8 @@ return {
 	capabilities = capabilities,
 	settings = {
 		gopls = {
+			usePlaceholders = true,
+			staticcheck = true,
 			completeUnimported = true,
 			gofumpt = true,
 			codelenses = {
@@ -15,7 +17,6 @@ return {
 				upgrade_dependency = true,
 				vendor = true,
 			},
-			usePlaceholders = true,
 			analyses = {
 				fieldalignment = true,
 				nilness = true,
