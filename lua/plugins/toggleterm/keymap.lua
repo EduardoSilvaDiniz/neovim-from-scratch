@@ -20,7 +20,7 @@ local function run_command_terminal()
 	quick_command:shutdown()
 	vim.ui.input({ prompt = "Comando: " }, function(input)
 		if not input or input == "" then
-			vim.api.nvim_err_writeln("Por favor, forneça um comando para o terminal.")
+			vim.api.nvim_echo({ { "Por favor, forneça um comando para o terminal.", "WaringMsg" }, }, false, { err = true })
 			return
 		end
 
@@ -35,7 +35,7 @@ end
 --- caso o terminal esteja fechando, ele executa com o ultimo comando
 local function toggle_terminal()
 	if quick_command.cmd == "" then
-		vim.api.nvim_err_writeln("Por favor, forneça um comando para o terminal.")
+		vim.api.nvim_echo({ { "Por favor, forneça um comando para o terminal.", "WaringMsg" }, }, false, { err = true })
 		return
 	end
 	quick_command:toggle()

@@ -5,6 +5,6 @@ return {
 	config = vim.schedule(function()
 		local keymaps = require("plugins.toggleterm.keymap")
 		local loadkeys = require("lib.loadkeys")
-		loadkeys.manual_load(keymaps)
+		loadkeys.manual_load(keymaps, nil)
 	end),
 }
