@@ -1,5 +1,5 @@
 return {
-	ensure_installed = "",
+	ensure_installed = "all",
 	sync_install = true,
 	auto_install = true,
 	TSUpdate = true,
