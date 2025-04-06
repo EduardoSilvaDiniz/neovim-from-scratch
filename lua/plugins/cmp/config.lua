@@ -4,18 +4,12 @@ local luasnip = require("luasnip")
 local ts_utils = require("nvim-treesitter.ts_utils")
 local cmp = require("cmp")
 
--- TODO está função quebrou o cmp
--- local function is_activated()
--- 	local context = require("cmp.config.context")
--- 	local disabled = false
--- 	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "prompt")
--- 	disabled = disabled or (vim.api.nvim_get_option_value("buftype", {}) == "nofile")
--- 	disabled = disabled or (vim.fn.reg_recording() ~= "")
--- 	disabled = disabled or (vim.fn.reg_executing() ~= "")
--- 	disabled = disabled or context.in_treesitter_capture("comment")
--- 	return not disabled
--- end
---
+local function is_cmp_enabled()
+	local context = require("cmp.config.context")
+	-- Desativa em comentários de qualquer linguagem
+	return not (context.in_treesitter_capture("comment") or context.in_syntax_group("Comment"))
+end
+
 
 local function inside_function_args()
 	local node = ts_utils.get_node_at_cursor()
@@ -122,5 +116,7 @@ return {
 			cmp.config.compare.score,
 		},
 	},
-	-- enabled = is_activated(),
+	enabled = function()
+		return is_cmp_enabled()
+	end,
 }
