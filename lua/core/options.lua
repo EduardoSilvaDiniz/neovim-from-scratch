@@ -7,9 +7,9 @@ vim.wo.number = true
 vim.lsp.inlay_hint.enable(true)
 vim.opt.signcolumn = "yes:1"
 vim.diagnostic.config({
-	virtual_text = false, -- Desativa mensagens inline
-	signs = true,        -- Mantém os ícones laterais
-	underline = true,    -- Mantém sublinhado
+	virtual_text = false,
+	signs = true,
+	underline = true,
 })
 
 vim.diagnostic.config({
@@ -22,6 +22,29 @@ vim.diagnostic.config({
 		},
 	},
 })
+
+local function is_wsl()
+---@diagnostic disable-next-line: undefined-field
+	local uname = vim.loop.os_uname()
+	return uname.release:lower():find("microsoft") ~= nil
+end
+
+if is_wsl() then
+	vim.g.clipboard = {
+		name = "WslClipboard",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] =
+			'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			["*"] =
+			'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		},
+		cache_enabled = false,
+	}
+end
 
 local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal_bg })
