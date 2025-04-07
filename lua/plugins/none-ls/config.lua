@@ -32,9 +32,9 @@ return function(_, opts)
     -- null_ls.builtins.diagnostics.npm_groovy_lint,
 
     -- Java
-    -- null_ls.builtins.formatting.google_java_format,
-    -- null_ls.builtins.diagnostics.checkstyle,
-    -- null_ls.builtins.diagnostics.pmd,
+    null_ls.builtins.formatting.google_java_format,
+    null_ls.builtins.diagnostics.checkstyle,
+    null_ls.builtins.diagnostics.pmd,
 
 		-- Javascript/Typescript
 		null_ls.builtins.formatting.prettier,
