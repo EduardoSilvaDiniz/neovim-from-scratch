@@ -1,3 +1,4 @@
+local utils = require "lib.utils"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.tabstop = 2
@@ -21,15 +22,11 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.HINT]  = "",
 		},
 	},
+	float = { border = "rounded" },
 })
 
-local function is_wsl()
----@diagnostic disable-next-line: undefined-field
-	local uname = vim.loop.os_uname()
-	return uname.release:lower():find("microsoft") ~= nil
-end
 
-if is_wsl() then
+if utils.whoa_system("microsoft") then
 	vim.g.clipboard = {
 		name = "WslClipboard",
 		copy = {
