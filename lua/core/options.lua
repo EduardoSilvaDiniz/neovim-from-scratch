@@ -1,4 +1,5 @@
 local utils = require "lib.utils"
+vim.o.background = "dark"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.tabstop = 2
