@@ -18,7 +18,6 @@ return {
 				vendor = true,
 			},
 			analyses = {
-				fieldalignment = true,
 				nilness = true,
 				shadow = true,
 				unusedparams = true,
