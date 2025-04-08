@@ -8,24 +8,6 @@ vim.g.have_nerd_font = true
 vim.wo.number = true
 vim.lsp.inlay_hint.enable(true)
 vim.opt.signcolumn = "yes:1"
-vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	underline = true,
-})
-
-vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "",
-			[vim.diagnostic.severity.WARN]  = "",
-			[vim.diagnostic.severity.INFO]  = "",
-			[vim.diagnostic.severity.HINT]  = "",
-		},
-	},
-	float = { border = "rounded" },
-})
-
 
 if utils.whoa_system("microsoft") then
 	vim.g.clipboard = {
