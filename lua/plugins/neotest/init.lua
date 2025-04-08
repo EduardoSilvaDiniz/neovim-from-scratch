@@ -7,5 +7,5 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-neotest/neotest-go",
 	},
-	config = require("plugins.neotest.config"),
+	opts = require("plugins.neotest.config"),
 }

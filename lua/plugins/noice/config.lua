@@ -1,11 +1,7 @@
 return {
 	lsp = {
-		signature = {
-			enabled = false,
-		},
-		presets = {
-			lsp_doc_border = true,
-		},
+		signature = { enabled = false },
+		presets = { lsp_doc_border = true },
 	},
 	cmdline = {
 		format = {
@@ -83,3 +79,4 @@ return {
 }
 -- reference
 -- https://github.com/Hashino/hash.nvim/blob/main/lua/hash/plugins/interface/improved-ui-elements.lua
+
