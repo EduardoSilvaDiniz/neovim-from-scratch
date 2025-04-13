@@ -7,7 +7,7 @@ return function(_, opts)
 	opts.sources = {}
 
 	if utils.whoa_system("nixos") then
-		opts.sources = vim.list_extend(opts.sources or {}, {
+		opts.sources = vim.list_extend(opts.sources, {
 			null_ls.builtins.formatting.alejandra,
 			null_ls.builtins.code_actions.statix,
 			null_ls.builtins.diagnostics.deadnix,
@@ -25,10 +25,14 @@ return function(_, opts)
 
 	utils.add_formatter_if_lsp("jdtls", opts.sources, {
 		null_ls.builtins.formatting.google_java_format,
-		null_ls.builtins.diagnostics.checkstyle,
-		null_ls.builtins.diagnostics.pmd,
-		-- Gradle
 		null_ls.builtins.diagnostics.npm_groovy_lint,
+		--TODO pmd não esta disponivel no mason
+		-- null_ls.builtins.diagnostics.pmd,
+
+		--TODO checkstyle precisa de ajustes, fica reclamando de indentação
+		-- null_ls.builtins.diagnostics.checkstyle.with({
+		-- 	extra_args = { "-c", "/home/edu/Projetos/checkstyle.xml" }, -- or "/sun_checks.xml" or path to self written rules
+		-- }),
 	})
 
 	utils.add_formatter_if_lsp("gopls", opts.sources, {
