@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		loadkeys.manual_load(keymaps, "lspconfig")
 		vim.diagnostic.config({
 			virtual_text = false,
-			virtual_lines = { current_line = true },
+			virtual_lines = false,
 			underline = true,
 			update_in_insert = false,
 			signs = {
