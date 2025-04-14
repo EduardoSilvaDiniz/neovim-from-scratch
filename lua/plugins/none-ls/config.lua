@@ -25,7 +25,7 @@ return function(_, opts)
 
 	utils.add_formatter_if_lsp("jdtls", opts.sources, {
 		null_ls.builtins.formatting.google_java_format,
-		null_ls.builtins.diagnostics.npm_groovy_lint,
+		-- null_ls.builtins.diagnostics.npm_groovy_lint,
 		--TODO pmd não esta disponivel no mason
 		-- null_ls.builtins.diagnostics.pmd,
 
