@@ -1,4 +1,3 @@
-
 local substitute = require("substitute")
 return {
 	{ "s",  substitute.operator, { noremap = true } },
