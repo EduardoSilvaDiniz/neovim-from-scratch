@@ -16,6 +16,10 @@ return {
 		},
 	},
 	filesystem = {
+		group_empty_dirs = true,
+		filtered_items = {
+			visible = true,
+		},
 		window = {
 			mappings = {
 				["\\"] = "close_window",
@@ -27,7 +31,7 @@ return {
 					config = {
 						use_float = true,
 						use_image_nvim = true,
-						title = 'Neo-tree Preview',
+						title = "Neo-tree Preview",
 					},
 				},
 			},
