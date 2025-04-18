@@ -13,6 +13,7 @@ local themes = {
 			vim.api.nvim_set_hl(0, "GruvboxYellowSign", { fg = "#fabd2f", bg = normal_bg })
 		end,
 	},
+
 	everforest = {
 		"neanias/everforest-nvim",
 		version = false,
@@ -25,7 +26,7 @@ local themes = {
 			vim.api.nvim_set_hl(0, "FloatBorder", { fg = normal, bg = normal })
 			vim.api.nvim_set_hl(0, "NormalFloat", { fg = normal, bg = normal })
 		end,
-	}
+	},
 }
 
 return themes["gruvbox"]

@@ -4,8 +4,12 @@ local config = {
 		component_separators = "",
 		section_separators = "",
 		theme = {
-			normal = { c = { fg = "#ebdbb2", bg = "#282828" } },
-			inactive = { c = { fg = "#ebdbb2", bg = "#282828" } },
+			normal = {
+				c = { fg = "#ebdbb2", bg = "#282828" },
+			},
+			inactive = {
+				c = { fg = "#ebdbb2", bg = "#282828" },
+			},
 		},
 		disabled_filetypes = { "neo-tree" },
 	},
@@ -38,16 +42,14 @@ end
 local function macro_recording()
 	local reg = vim.fn.reg_recording()
 	if reg ~= "" then
-		return "@" .. reg -- Ícone de gravação + nome do registro
+		return "@" .. reg
 	end
 	return ""
 end
 
 insert_left({ macro_recording })
 
-insert_left({
-	"mode",
-})
+insert_left({ "mode" })
 
 insert_left({
 	"filename",
@@ -55,13 +57,9 @@ insert_left({
 	path = 1,
 })
 
-insert_left({
-	"location",
-})
+insert_left({ "location" })
 
-insert_right({
-	"branch",
-})
+insert_right({ "branch" })
 
 insert_right({
 	"diff",
