@@ -5,6 +5,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		local keymaps = require("plugins.lspconfig.keymap")
 		local loadkeys = require("lib.loadkeys")
 		loadkeys.manual_load(keymaps, "lspconfig")
+		vim.cmd("TSEnable highlight")
 		vim.diagnostic.config({
 			virtual_text = false,
 			virtual_lines = false,
