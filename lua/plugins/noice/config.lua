@@ -1,7 +1,13 @@
 return {
 	lsp = {
-		signature = { enabled = false },
+		signature = { enabled = true },
 		presets = { lsp_doc_border = true },
+		override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
+			["vim.lsp.buf.signature_help"] = true,
+    },
 	},
 	cmdline = {
 		format = {
