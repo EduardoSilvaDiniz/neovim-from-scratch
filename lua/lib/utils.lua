@@ -18,8 +18,7 @@ function M.add_formatter_if_lsp(name, sources, formatters)
 		return
 	end
 
-	local lsps = require("lspconfig.configs")
-	if lsps[name] then
+	if vim.lsp.config[name] then
 		vim.list_extend(sources, formatters)
 	end
 end
