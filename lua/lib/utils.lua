@@ -23,4 +23,16 @@ function M.add_formatter_if_lsp(name, sources, formatters)
 	end
 end
 
+--@param path string
+function M.is_git_repo(path)
+	path = path or vim.fn.expand("%:p:h")
+	while path ~= "/" do
+		if vim.fn.isdirectory(path .. "/.git") == 1 then
+			return true
+		end
+		path = vim.fn.fnamemodify(path, ":h")
+	end
+	return false
+end
+
 return M
