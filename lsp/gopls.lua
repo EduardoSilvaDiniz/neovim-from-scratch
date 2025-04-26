@@ -1,4 +1,4 @@
-local capabilities = require("lib.capabilities")
+local capabilities = require("lib.lsp.capabilities")
 
 return {
 	cmd = { "gopls", "serve" },
