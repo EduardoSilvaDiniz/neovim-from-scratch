@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	desc = "load keymaps to lsp",
 	pattern = "*",
 	callback = function()
-		local keymaps = require("lib.lsp_keymap")
+		local keymaps = require("lib.lsp.keymap")
 		local loadkeys = require("lib.loadkeys")
 
 		loadkeys.manual_load(keymaps, nil)
