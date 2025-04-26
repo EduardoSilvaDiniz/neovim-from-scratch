@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
