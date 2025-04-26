@@ -4,7 +4,7 @@ local M = {}
 function M.whoa_system(system)
 	---@diagnostic disable-next-line: undefined-field
 	local uname = vim.loop.os_uname()
-	return uname.release:lower():find(system) ~= nil
+	return uname.sysname:lower():find(system) ~= nil
 end
 
 ---@param name string
