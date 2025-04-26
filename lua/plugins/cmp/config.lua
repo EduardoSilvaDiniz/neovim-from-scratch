@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-field, unused-local
 local lspkind = require("lspkind")
-local cmp_functions = require("lib.cmp_functions")
+local cmp_functions = require("lib.cmp.cmp_functions")
 local luasnip = require("luasnip")
 local ts_utils = require("nvim-treesitter.ts_utils")
 local cmp = require("cmp")
