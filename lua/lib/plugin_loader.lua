@@ -7,6 +7,7 @@ PluginLoader.__index = PluginLoader
 
 ---@param dir string
 ---@param filter table<string> | nil
+---@return PluginLoader
 function PluginLoader.new(dir, filter)
 	local self = setmetatable({}, PluginLoader)
 	self.dir = dir
@@ -14,6 +15,7 @@ function PluginLoader.new(dir, filter)
 	return self
 end
 
+---@return table
 function PluginLoader:create_plugins_table()
 	local plugins = {}
 	local handle = io.popen("find " .. vim.fn.stdpath("config") .. self.dir .. " -type f")
@@ -42,6 +44,7 @@ function PluginLoader:create_plugins_table()
 end
 
 ---@param file string
+---@return boolean
 function PluginLoader:_apply_filter(file)
 	for _, key in pairs(self.filter_list) do
 		if string.find(file, key) then
