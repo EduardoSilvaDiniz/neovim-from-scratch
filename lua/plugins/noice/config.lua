@@ -1,13 +1,13 @@
 return {
 	lsp = {
-		signature = { enabled = true },
+		signature = { enabled = false },
 		presets = { lsp_doc_border = true },
 		override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-			["vim.lsp.buf.signature_help"] = true,
-    },
+			["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+			["vim.lsp.util.stylize_markdown"] = false,
+			["cmp.entry.get_documentation"] = false,
+			["vim.lsp.buf.signature_help"] = false,
+		},
 	},
 	cmdline = {
 		format = {
@@ -85,4 +85,3 @@ return {
 }
 -- reference
 -- https://github.com/Hashino/hash.nvim/blob/main/lua/hash/plugins/interface/improved-ui-elements.lua
-
