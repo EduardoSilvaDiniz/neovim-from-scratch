@@ -31,39 +31,43 @@ local workspace_dir = "/home/edu/workspace-root/" .. project_name
 
 local jdtls, os_config, lombok = get_jdtls()
 local bundles = get_bundles()
-local capabilities = require("lib.capabilities")
+local capabilities = require("lib.lsp.capabilities")
 local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 return {
 	cmd = {
-		"java",
-		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
-		"-Dosgi.bundles.defaultStartLevel=4",
-		"-Declipse.product=org.eclipse.jdt.ls.core.product",
-		"-Dlog.protocol=true",
-		"-Dlog.level=ALL",
-		"-Xmx1g",
-		"-Duser.language=pt",
-		"-Duser.region=BR",
-		"--add-modules=ALL-SYSTEM",
-		"--add-opens",
-		"java.base/java.util=ALL-UNNAMED",
-		"--add-opens",
-		"java.base/java.lang=ALL-UNNAMED",
-		"-javaagent:" .. lombok,
-		"-jar",
-		jdtls,
-		"-configuration",
-		os_config,
-		"-data",
-		workspace_dir,
+		"jdtls"
 	},
+	-- cmd = {
+	-- 	"java",
+	-- 	"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+	-- 	"-Dosgi.bundles.defaultStartLevel=4",
+	-- 	"-Declipse.product=org.eclipse.jdt.ls.core.product",
+	-- 	"-Dlog.protocol=true",
+	-- 	"-Dlog.level=ALL",
+	-- 	"-Xmx1g",
+	-- 	"-Duser.language=pt",
+	-- 	"-Duser.region=BR",
+	-- 	"--add-modules=ALL-SYSTEM",
+	-- 	"--add-opens",
+	-- 	"java.base/java.util=ALL-UNNAMED",
+	-- 	"--add-opens",
+	-- 	"java.base/java.lang=ALL-UNNAMED",
+	-- 	"-javaagent:" .. lombok,
+	-- 	"-jar",
+	-- 	jdtls,
+	-- 	"-configuration",
+	-- 	os_config,
+	-- 	"-data",
+	-- 	workspace_dir,
+	-- },
 
 	root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
 
 	settings = {
 		java = {
+			home = "/nix/store/b0mjdq4gvsf0ybw9p0nhrjj02dg77sai-graalvm-ce-23.0.0",
 			format = {
 				enabled = false,
 			},

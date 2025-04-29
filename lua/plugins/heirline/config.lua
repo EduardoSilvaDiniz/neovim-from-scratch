@@ -14,18 +14,18 @@ local colors = {
 return {
 	statusline = {
 		-- hl = { bg = colors.bg, fg = colors.fg, bold = false },
-		require("lib.heirline_macro"),
-		require("lib.heirline_vimode"),
-		require("lib.heirline_file_name_block"),
-		require("lib.heirline_ruler"),
-		require("lib.heirline_git"),
-		require("lib.heirline_diag").diagnostics(),
+		require("lib.heirline.macro"),
+		require("lib.heirline.vimode"),
+		require("lib.heirline.file_name_block"),
+		require("lib.heirline.ruler"),
+		require("lib.heirline.git"),
+		require("lib.heirline.diag").diagnostics(),
 	},
 	winbar = {},
 	tabline = {},
 	statuscolumn = {
-		require("lib.heirline_gitsigns"),
-		require("lib.heirline_statuscolumn"),
+		require("lib.heirline.gitsigns"),
+		require("lib.heirline.statuscolumn"),
 	},
 	opts = {},
 }

@@ -4,6 +4,7 @@ PluginLoader.__index = PluginLoader
 ---@class PluginLoader
 ---@field dir string
 ---@field filter_list table<string>
+---@field create_plugins_table fun(self: PluginLoader): table<any>
 
 ---@param dir string
 ---@param filter table<string> | nil
@@ -15,7 +16,7 @@ function PluginLoader.new(dir, filter)
 	return self
 end
 
----@return table
+---@return table<any>
 function PluginLoader:create_plugins_table()
 	local plugins = {}
 	local handle = io.popen("find " .. vim.fn.stdpath("config") .. self.dir .. " -type f")
