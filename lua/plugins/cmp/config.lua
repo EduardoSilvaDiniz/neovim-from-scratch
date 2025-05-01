@@ -35,6 +35,7 @@ return {
 					return kind == cmp.lsp.CompletionItemKind.Variable
 				end
 				return true
+				
 			end,
 		},
 		{ name = "luasnip", max_item_count = 16, priority = 8 },
