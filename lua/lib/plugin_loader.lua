@@ -12,7 +12,7 @@ PluginLoader.__index = PluginLoader
 function PluginLoader.new(dir, filter)
 	local self = setmetatable({}, PluginLoader)
 	self.dir = dir
-	self.filter_list = filter or {}
+	self.filter_list = filter or { "init" }
 	return self
 end
 
