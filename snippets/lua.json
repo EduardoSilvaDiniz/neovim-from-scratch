@@ -16,5 +16,11 @@
 		"body": [
 			"keymap.set('$1', '$2', '$3', { desc = '$4'})"
 		]
+	},
+	"added plugin": {
+		"prefix": "pl",
+		"body": [
+			"return {", "$1", "dependencies = {", "$2", "},", "opts = require('plugins.$3.config'),", "}"
+		]
 	}
 }
