@@ -16,6 +16,7 @@ vim.lsp.enable({
 	"phpactor",
 	"ts_ls",
 	"rust_analyzer",
+	"bashls",
 })
 
 local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
