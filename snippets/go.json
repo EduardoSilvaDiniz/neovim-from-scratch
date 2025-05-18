@@ -1,0 +1,6 @@
+{
+	"create if err ": {
+		"prefix": "er",
+		"body": ["if _, err := $1 ; err != nil {", " $2", "}"]
+	}
+}
