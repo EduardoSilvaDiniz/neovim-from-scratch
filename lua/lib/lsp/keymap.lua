@@ -11,7 +11,7 @@ return {
 	{ "<C-n>", function() vim.diagnostic.jump({ forward = true }) end, { desc = "Próximo diagnóstico" }},
 	{ "<C-k>",       vim.lsp.buf.signature_help,   { desc = "mostra assinatura de ajuda" } },
 	{ "<leader>ds",  builtin.lsp_document_symbols, { desc = "documento dos simbolos" } },
-	{ "<leader>f",   vim.lsp.buf.format,           { desc = "formata o buffer" } },
+	{ "<leader>f",   "<cmd>Guard fmt<cr>",           { desc = "formata o buffer" } },
 	{ "<leader>cr",  vim.lsp.buf.rename,           { desc = "renomear" } },
 	{ "<leader>ca",  vim.lsp.buf.code_action,      { desc = "ação de codigo" } },
 	{ "<leader>ct",  vim.lsp.buf.type_definition,  { desc = "vai para definição do tipo" } },
