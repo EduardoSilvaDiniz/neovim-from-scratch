@@ -17,7 +17,7 @@ return function(_, opts)
 	utils.add_formatter_if_lsp("clangd", opts.sources, {
 		null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.diagnostics.cppcheck,
-		null_ls.builtins.diagnostics.gccdiag,
+		-- null_ls.builtins.diagnostics.gccdiag,
 		-- Make
 		null_ls.builtins.diagnostics.checkmake,
 		null_ls.builtins.diagnostics.cmake_lint,
@@ -49,8 +49,6 @@ return function(_, opts)
 		null_ls.builtins.formatting.stylua,
 	})
 
-	utils.add_formatter_if_lsp("typescript-tools", opts.sources, {
-	})
 
 	utils.add_formatter_if_lsp("clojure-lsp", opts.sources, {
 		null_ls.builtins.diagnostics.clj_kondo,
@@ -125,7 +123,7 @@ return function(_, opts)
 		null_ls.builtins.formatting.prettier,
 
 		-- C/C++, C#, Java
-		null_ls.builtins.formatting.uncrustify,
+		-- null_ls.builtins.formatting.uncrustify,
 
 		-- Go, Javascript, Lua, Python, Typescript
 		null_ls.builtins.code_actions.refactoring,
@@ -137,9 +135,12 @@ return function(_, opts)
 		null_ls.builtins.diagnostics.editorconfig_checker,
 
 		-- Spell
-		null_ls.builtins.completion.spell,
+		-- null_ls.builtins.completion.spell,
 
 		-- Xml
 		null_ls.builtins.formatting.xmllint,
+
+		-- asm
+		null_ls.builtins.formatting.asmfmt
 	})
 end
