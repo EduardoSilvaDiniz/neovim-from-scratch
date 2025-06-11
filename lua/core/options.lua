@@ -8,15 +8,12 @@ vim.wo.number = true
 vim.lsp.inlay_hint.enable(true)
 vim.opt.signcolumn = "yes:1"
 vim.lsp.enable({
+	"bashls",
 	"clangd",
 	"gopls",
 	"lua_ls",
-	"markdown_oxide",
 	"nil_ls",
-	"phpactor",
-	"ts_ls",
 	"rust_analyzer",
-	"bashls",
 })
 
 local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
