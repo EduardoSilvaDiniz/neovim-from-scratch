@@ -28,36 +28,49 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - 📦 O gerenciador de plugins lazy torna a instalação, atualização e remoção de plugins super rapido
 
 ## LSPs Suportados
+- [bashls](https://github.com/bash-lsp/bash-language-server)
 - [clangd](https://github.com/clangd/clangd)
 - [gopls](https://github.com/golang/tools/blob/master/gopls/README.md)
-- [lua ls](https://github.com/LuaLS/lua-language-server)
-- [markdown oxide](https://github.com/Feel-ix-343/markdown-oxide)
-- [nil ls](https://github.com/oxalica/nil)
-- [phpactor](https://github.com/phpactor/phpactor)
+- [lua_ls](https://github.com/LuaLS/lua-language-server)
+- [nil_ls](https://github.com/oxalica/nil)
+- [rust_analyzer](https://github.com/rust-lang/rust-analyzer)
+- [ts_server](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29)
 
 ## Plugins
 ### Codigo
 - [cmp](https://github.com/hrsh7th/nvim-cmp)
 - [lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [none ls](https://github.com/nvimtools/none-ls.nvim)
+- [guard](https://github.com/nvimdev/guard.nvim)
 - [nvim treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [noice](https://github.com/folke/noice.nvim)
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- [nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls)
+- [luasnip](https://github.com/L3MON4D3/LuaSnip)
+- [refactoring](https://github.com/ThePrimeagen/refactoring.nvim)
+- [typescript-tools](https://github.com/pmizio/typescript-tools.nvim)
 
 ### Ferramentas
 - [lazygit](https://github.com/jesseduffield/lazygit)
 - [telescope](https://github.com/nvim-telescope/telescope.nvim)
-- [tmux](https://github.com/aserowy/tmux.nvim)
 - [neo tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [neovim project](https://github.com/coffebar/neovim-project)
 - [nvim surround](https://github.com/kylechui/nvim-surround)
 - [substitute](https://github.com/gbprod/substitute.nvim)
-- [which keys](https://github.com/folke/which-key.nvim)
+- [which-keys](https://github.com/folke/which-key.nvim)
+- [neotest](https://github.com/nvim-neotest/neotest)
+- [nvim-autopairs](https://github.com/windwp/nvim-ts-autotag)
+- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+- [mason](https://github.com/mason-org/mason.nvim)
+- [rest](https://github.com/rest-nvim/rest.nvim)
+- [toggleterm](https://github.com/akinsho/toggleterm.nvim)
 
 ### UI
 - [dashboard](https://github.com/nvimdev/dashboard-nvim)
 - [dressing](https://github.com/stevearc/dressing.nvim)
-- [everforest](https://github.com/neanias/everforest-nvim)
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-- [image](https://github.com/3rd/image.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [noice](https://github.com/folke/noice.nvim)
-- [render markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- [render-markdown](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- [lsp-signature](https://github.com/ray-x/lsp_signature.nvim)
+- [snipe](https://github.com/leath-dub/snipe.nvim)
+- [trouble](https://github.com/folke/trouble.nvim)
+
