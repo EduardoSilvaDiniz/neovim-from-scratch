@@ -25,22 +25,10 @@ return {
 	},
 
 	sources = {
-		{
-			name = "nvim_lsp",
-			max_item_count = 16,
-			priority = 8,
-			entry_filter = function(entry, ctx)
-				if cmp_utils.inside_function_args() then
-					local kind = entry:get_kind()
-					return kind == cmp.lsp.CompletionItemKind.Variable
-				end
-				return true
-				
-			end,
-		},
+		{ name = "nvim_lsp", max_item_count = 16, priority = 8 },
 		{ name = "luasnip", max_item_count = 16, priority = 8 },
-		{ name = "path",    max_item_count = 16, priority = 5 },
-		{ name = "buffer",  max_item_count = 16, priority = 4 },
+		{ name = "path", max_item_count = 16, priority = 5 },
+		{ name = "buffer", max_item_count = 16, priority = 4 },
 	},
 
 	preselect = {
