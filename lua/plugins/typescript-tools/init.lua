@@ -4,5 +4,5 @@ return {
 		"nvim-lua/plenary.nvim",
 		"neovim/nvim-lspconfig",
 	},
-	opts = require("plugins.typescript-tools.config"),
+	opts = require("plugins.typescript-tools.config")
 }
