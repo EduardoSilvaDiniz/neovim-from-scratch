@@ -1,3 +1,4 @@
 return {
-	{ "<leader>pp", "<cmd>Telescope neovim-project discover<cr>", { desc = "menu de projetos" } },
+	{ "<leader>pp", "<cmd>NeovimProjectDiscover<cr>", { desc = "menu de projetos" } },
+	{ "<leader>ql", "<cmd>NeovimProjectLoadRecent<cr>", { desc = "restaurar ultima sessão" } },
 }

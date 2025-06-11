@@ -4,7 +4,7 @@ local M = {}
 function M.whoa_system(system)
 	---@diagnostic disable-next-line: undefined-field
 	local uname = vim.loop.os_uname()
-	return uname.release:lower():find(system) ~= nil
+	return uname.sysname:lower():find(system) ~= nil
 end
 
 ---@param name string
@@ -18,10 +18,21 @@ function M.add_formatter_if_lsp(name, sources, formatters)
 		return
 	end
 
-	local lsps = require("lspconfig.configs")
-	if lsps[name] then
+	if vim.lsp.config[name] then
 		vim.list_extend(sources, formatters)
 	end
+end
+
+--@param path string
+function M.is_git_repo(path)
+	path = path or vim.fn.expand("%:p:h")
+	while path ~= "/" do
+		if vim.fn.isdirectory(path .. "/.git") == 1 then
+			return true
+		end
+		path = vim.fn.fnamemodify(path, ":h")
+	end
+	return false
 end
 
 return M

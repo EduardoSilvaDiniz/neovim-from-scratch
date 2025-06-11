@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local M = {}
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -22,7 +23,7 @@ function M.luasnip_jump_backward()
 	end, { "i", "s" })
 end
 
-function M.luasnip_supertab(select_opts)
+function M.luasnip_supertab()
 	return cmp.mapping(function(fallback)
 		local col = vim.fn.col(".") - 1
 

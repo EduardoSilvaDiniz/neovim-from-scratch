@@ -1,46 +1,54 @@
-local M = {}
+local PluginLoader = {}
+PluginLoader.__index = PluginLoader
 
-function M.createTable(pathList)
+---@class PluginLoader
+---@field dir string
+---@field filter_list table<string>
+---@field create_plugins_table fun(self: PluginLoader): table<any>
+
+---@param dir string
+---@param filter table<string> | nil
+---@return PluginLoader
+function PluginLoader.new(dir, filter)
+	local self = setmetatable({}, PluginLoader)
+	self.dir = dir
+	self.filter_list = filter or { "init" }
+	return self
+end
+
+---@return table<any>
+function PluginLoader:create_plugins_table()
 	local plugins = {}
+	local handle = io.popen("find " .. vim.fn.stdpath("config") .. self.dir .. " -type f")
 
-	for _, path in pairs(pathList) do
-		local status, plugin = pcall(require, path)
-		if not status then
-			vim.print("not found plugin " .. path)
-		end
-		table.insert(plugins, plugin)
+	if handle == nil then
+		error("Failed to run find command")
 	end
 
+	for file in handle:lines() do
+		if self:_apply_filter(file) then
+			file = file:gmatch("%/lua%/(.+).lua$")({ 0 }):gsub("/", ".")
+
+			local status, plugin = pcall(require, file)
+
+			if not status then
+				vim.print("not found plugin " .. file)
+				break
+			else
+				table.insert(plugins, plugin)
+			end
+		end
+	end
+
+	handle:close()
 	return plugins
 end
 
-function M.createList(list, filter)
-	local newList = {}
-
-	for element in list:lines() do
-		element = M.clearElement(element)
-
-		if M.filter(element, filter) then
-			table.insert(newList, element)
-		end
-	end
-
-	return newList
-end
-
-function M.findFiles(dir)
-	local status, files = pcall(io.popen, 'find "$HOME"/.config/nvim/lua/' .. dir .. " -type f")
-
-	if not status then
-		vim.print("The find command could not be executed")
-	end
-
-	return files
-end
-
-function M.filter(element, filter)
-	for _, key in pairs(filter) do
-		if string.find(element, key) then
+---@param file string
+---@return boolean
+function PluginLoader:_apply_filter(file)
+	for _, key in pairs(self.filter_list) do
+		if string.find(file, key) then
 			return false
 		end
 	end
@@ -48,8 +56,4 @@ function M.filter(element, filter)
 	return true
 end
 
-function M.clearElement(element)
-	return element:gmatch("%/lua%/(.+).lua$")({ 0 }):gsub("/", ".")
-end
-
-return M
+return PluginLoader

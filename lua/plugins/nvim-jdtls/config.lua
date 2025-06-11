@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-local
 local function get_jdtls()
 	local mason_registry = require("mason-registry")
 	local jdtls = mason_registry.get_package("jdtls")
@@ -15,7 +16,7 @@ local function get_bundles()
 	local java_debug_path = java_debug:get_install_path()
 
 	local bundles = {
-		vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", true)
+		vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", true),
 	}
 
 	local java_test = mason_registry.get_package("java-test")
@@ -25,59 +26,70 @@ local function get_bundles()
 	return bundles
 end
 
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local workspace_dir = '/home/edu/workspace-root/' .. project_name
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = "/home/edu/workspace-root/" .. project_name
 
 local jdtls, os_config, lombok = get_jdtls()
 local bundles = get_bundles()
-local capabilities = require("lsp.capabilities")
+local capabilities = require("lib.lsp.capabilities")
 local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 return {
 	cmd = {
-		'java',
-		'-Declipse.application=org.eclipse.jdt.ls.core.id1',
-		'-Dosgi.bundles.defaultStartLevel=4',
-		'-Declipse.product=org.eclipse.jdt.ls.core.product',
-		'-Dlog.protocol=true',
-		'-Dlog.level=ALL',
-		'-Xmx1g',
-		'--add-modules=ALL-SYSTEM',
-		'--add-opens', 'java.base/java.util=ALL-UNNAMED',
-		'--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-		'-javaagent:' .. lombok,
-		'-jar', jdtls,
-		'-configuration', os_config,
-		'-data', workspace_dir,
+		"jdtls"
 	},
+	-- cmd = {
+	-- 	"java",
+	-- 	"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+	-- 	"-Dosgi.bundles.defaultStartLevel=4",
+	-- 	"-Declipse.product=org.eclipse.jdt.ls.core.product",
+	-- 	"-Dlog.protocol=true",
+	-- 	"-Dlog.level=ALL",
+	-- 	"-Xmx1g",
+	-- 	"-Duser.language=pt",
+	-- 	"-Duser.region=BR",
+	-- 	"--add-modules=ALL-SYSTEM",
+	-- 	"--add-opens",
+	-- 	"java.base/java.util=ALL-UNNAMED",
+	-- 	"--add-opens",
+	-- 	"java.base/java.lang=ALL-UNNAMED",
+	-- 	"-javaagent:" .. lombok,
+	-- 	"-jar",
+	-- 	jdtls,
+	-- 	"-configuration",
+	-- 	os_config,
+	-- 	"-data",
+	-- 	workspace_dir,
+	-- },
 
 	root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
 
 	settings = {
 		java = {
+			home = "/nix/store/b0mjdq4gvsf0ybw9p0nhrjj02dg77sai-graalvm-ce-23.0.0",
 			format = {
 				enabled = false,
 			},
 			-- Enable downloading archives from eclipse automatically
 			eclipse = {
-				downloadSource = true
+				downloadSource = true,
 			},
 			-- Enable downloading archives from maven automatically
 			maven = {
-				downloadSources = true
+				downloadSources = true,
 			},
 			-- Enable method signature help
 			signatureHelp = {
-				enabled = true
+				enabled = true,
 			},
 			-- Use the fernflower decompiler when using the javap command to decompile byte code back to java code
 			contentProvider = {
-				preferred = "fernflower"
+				preferred = "fernflower",
 			},
 			-- Setup automatical package import oranization on file save
 			saveActions = {
-				organizeImports = true
+				organizeImports = true,
 			},
 			-- Customize completion options
 			completion = {
@@ -106,62 +118,62 @@ return {
 					"javax",
 					"com",
 					"org",
-				}
+				},
 			},
 			sources = {
 				-- How many classes from a specific package should be imported before automatic imports combine them all into a single import
 				organizeImports = {
 					starThreshold = 9999,
-					staticThreshold = 9999
-				}
+					staticThreshold = 9999,
+				},
 			},
 			-- How should different pieces of code be generated?
 			codeGeneration = {
 				-- When generating toString use a json format
 				toString = {
-					template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+					template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
 				},
 				-- When generating hashCode and equals methods use the java 7 objects method
 				hashCodeEquals = {
-					useJava7Objects = true
+					useJava7Objects = true,
 				},
 				-- When generating code use code blocks
-				useBlocks = true
+				useBlocks = true,
 			},
 			-- If changes to the project will require the developer to update the projects configuration advise the developer before accepting the change
 			configuration = {
-				updateBuildConfiguration = "interactive"
+				updateBuildConfiguration = "interactive",
 			},
 			-- enable code lens in the lsp
 			referencesCodeLens = {
-				enabled = true
+				enabled = true,
 			},
 			-- enable inlay hints for parameter names,
 			inlayHints = {
 				parameterNames = {
-					enabled = "all"
-				}
-			}
-		}
+					enabled = "all",
+				},
+			},
+		},
 	},
 
 	capabilities = capabilities,
 
 	init_options = {
 		bundles = bundles,
-		extendedClientCapabilities = extendedClientCapabilities
+		extendedClientCapabilities = extendedClientCapabilities,
 	},
 
 	on_attach = function(_, bufnr)
-		require('jdtls.dap').setup_dap()
-		require('jdtls.dap').setup_dap_main_class_configs()
-		require 'jdtls.setup'.add_commands()
+		require("jdtls.dap").setup_dap()
+		require("jdtls.dap").setup_dap_main_class_configs()
+		require("jdtls.setup").add_commands()
 		vim.lsp.codelens.refresh()
 		vim.api.nvim_create_autocmd("BufWritePost", {
 			pattern = { "*.java" },
 			callback = function()
 				local _, _ = pcall(vim.lsp.codelens.refresh)
-			end
+			end,
 		})
-	end
+	end,
 }

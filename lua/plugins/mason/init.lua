@@ -1,4 +1,36 @@
+local config = require("plugins.mason.config")
 return {
-	"williamboman/mason.nvim",
-	opts = {}
+	{
+		"mason-org/mason.nvim",
+		opts = true,
+		config = vim.schedule(function()
+			local keymaps = require("plugins.mason.keymap")
+			local loadkeys = require("lib.loadkeys")
+			loadkeys.manual_load(keymaps, nil)
+		end),
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		opts = config.lsp,
+	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"mfussenegger/nvim-dap",
+		},
+		opts = config.dap,
+	},
+	{
+		"jay-babu/mason-null-ls.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"nvimtools/none-ls.nvim",
+		},
+		opts = config.null,
+	},
 }

@@ -1,7 +1,7 @@
-local capabilities = require("lsp.capabilities")
+local capabilities = require("lib.lsp.capabilities")
 
 return {
-	cmd = { "gopls", "serve" },
+	cmd = "gopls",
 	capabilities = capabilities,
 	settings = {
 		gopls = {
@@ -13,7 +13,7 @@ return {
 				gc_details = true,
 				generate = true,
 				regenerate_cgo = true,
-				tidy = true,
+				-- tidy = true,
 				upgrade_dependency = true,
 				vendor = true,
 			},
@@ -22,6 +22,7 @@ return {
 				shadow = true,
 				unusedparams = true,
 				unusedwrite = true,
+				fieldalignment = true,
 			},
 		},
 	},

@@ -1,16 +1,5 @@
 return {
-	ensure_installed = {
-		"lua",
-		"go",
-		"java",
-		"nix",
-		"c",
-		"cpp",
-		"html",
-		"css",
-		"markdown",
-		"markdown_inline",
-	},
+	ensure_installed = "all",
 	sync_install = true,
 	auto_install = true,
 	TSUpdate = true,

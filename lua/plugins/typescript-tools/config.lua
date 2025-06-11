@@ -1,7 +1,6 @@
 return {
 	settings = {
 		tsserver_file_preferences = {
-			-- includeInlayParameterNameHints = "all",
 			includeCompletionsForModuleExports = true,
 			quotePreference = "auto",
 		},
@@ -10,6 +9,5 @@ return {
 			allowRenameOfImportPath = false,
 		},
 		tsserver_locale = "pt-br",
-		-- code_lens = "all",
 	},
 }

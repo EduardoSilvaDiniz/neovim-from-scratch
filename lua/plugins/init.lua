@@ -1,11 +1,8 @@
-local lib = require("lib.plugin_loader")
+local PluginLoader = require("lib.plugin_loader")
 
-local function loadPlugins()
-	local list = lib.findFiles("plugins")
-	local pathList = lib.createList(list, { "config", "keymap", "plugins.init" })
-	local plugins = lib.createTable(pathList)
+local pluginLoader = PluginLoader.new("/lua/plugins", {
+	"config",
+	"keymap",
+})
 
-	return plugins
-end
-
-return loadPlugins()
+return pluginLoader:create_plugins_table()

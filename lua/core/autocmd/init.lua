@@ -1,4 +1,5 @@
-require("core.autocmd.autosaved")
-require("core.autocmd.lspconfig")
-require("core.autocmd.git")
-require("core.autocmd.start-project")
+local PluginLoader = require("lib.plugin_loader")
+
+local pluginLoader = PluginLoader.new("/lua/core/autocmd")
+
+return pluginLoader:create_plugins_table()

@@ -1,26 +1,9 @@
+---@diagnostic disable: undefined-field, unused-local
 local lspkind = require("lspkind")
-local cmp_functions = require("lib.cmp_functions")
+local cmp_function_mapping = require("lib.cmp.function_mapping")
 local luasnip = require("luasnip")
-local ts_utils = require("nvim-treesitter.ts_utils")
 local cmp = require("cmp")
-
-local function is_cmp_enabled()
-	local context = require("cmp.config.context")
-	-- Desativa em comentários de qualquer linguagem
-	return not (context.in_treesitter_capture("comment") or context.in_syntax_group("Comment"))
-end
-
-
-local function inside_function_args()
-	local node = ts_utils.get_node_at_cursor()
-	while node do
-		if node:type() == "argument_list" or node:type() == "parameters" or node:type() == "arguments" then
-			return true
-		end
-		node = node:parent()
-	end
-	return false
-end
+local cmp_utils = require("lib.cmp.utils")
 
 return {
 	mapping = {
@@ -28,10 +11,11 @@ return {
 		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-f"] = cmp_functions.luasnip_jump_forward(),
-		["<C-b"] = cmp_functions.luasnip_jump_backward(),
-		["<Tab>"] = cmp_functions.luasnip_supertab(),
-		["<S-Tab>"] = cmp_functions.luasnip_shift_supertab(),
+		["<C-f"] = cmp.mapping(cmp_function_mapping.luasnip_jump_forward()),
+		["<C-b"] = cmp.mapping(cmp_function_mapping.luasnip_jump_backward()),
+		["<Tab>"] = cmp.mapping(cmp_function_mapping.luasnip_supertab()),
+		["<S-Tab>"] = cmp.mapping(cmp_function_mapping.luasnip_shift_supertab()),
+		["<C-l>"] = cmp.mapping.close(),
 	},
 
 	snippet = {
@@ -41,20 +25,10 @@ return {
 	},
 
 	sources = {
-		{
-			name = "nvim_lsp",
-			max_item_count = 16,
-			entry_filter = function(entry, ctx)
-				if inside_function_args() then
-					local kind = entry:get_kind()
-					return kind == cmp.lsp.CompletionItemKind.Variable
-				end
-				return true
-			end,
-		},
-		{ name = "luasnip", max_item_count = 16 },
-		{ name = "path",    max_item_count = 16 },
-		{ name = "buffer",  max_item_count = 16 },
+		{ name = "nvim_lsp", max_item_count = 16, priority = 8 },
+		{ name = "luasnip", max_item_count = 16, priority = 8 },
+		{ name = "path", max_item_count = 16, priority = 5 },
+		{ name = "buffer", max_item_count = 16, priority = 4 },
 	},
 
 	preselect = {
@@ -110,13 +84,23 @@ return {
 	},
 
 	sorting = {
+		priority_weight = 1.0,
 		comparators = {
 			cmp.config.compare.exact,
 			cmp.config.compare.recently_used,
+			cmp.config.compare.kind,
 			cmp.config.compare.score,
+			-- cmp.config.compare.locality,
+			-- cmp.config.compare.score_offset,
+			-- cmp.config.compare.offset,
+			-- cmp.config.compare.scopes,
+			-- cmp.config.compare.sort_text,
+			-- cmp.config.compare.kind,
+			-- cmp.config.compare.length,
+			cmp.config.compare.order,
 		},
 	},
 	enabled = function()
-		return is_cmp_enabled()
+		return cmp_utils.is_cmp_enabled()
 	end,
 }

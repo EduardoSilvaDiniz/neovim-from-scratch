@@ -1,4 +1,4 @@
-local utils = require "lib.utils"
+local utils = require("lib.utils")
 return function(_, opts)
 	local null_ls = require("null-ls")
 	opts.root_dir = opts.root_dir
@@ -6,7 +6,7 @@ return function(_, opts)
 
 	opts.sources = {}
 
-	if utils.whoa_system("nixos") then
+	if utils.whoa_system("linux") then
 		opts.sources = vim.list_extend(opts.sources, {
 			null_ls.builtins.formatting.alejandra,
 			null_ls.builtins.code_actions.statix,
@@ -17,7 +17,7 @@ return function(_, opts)
 	utils.add_formatter_if_lsp("clangd", opts.sources, {
 		null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.diagnostics.cppcheck,
-		null_ls.builtins.diagnostics.gccdiag,
+		-- null_ls.builtins.diagnostics.gccdiag,
 		-- Make
 		null_ls.builtins.diagnostics.checkmake,
 		null_ls.builtins.diagnostics.cmake_lint,
@@ -39,9 +39,9 @@ return function(_, opts)
 		null_ls.builtins.formatting.gofumpt,
 		null_ls.builtins.formatting.golines,
 		null_ls.builtins.formatting.goimports,
-		null_ls.builtins.formatting.goimports_reviser,
-		null_ls.builtins.diagnostics.golangci_lint,
-		null_ls.builtins.diagnostics.revive,
+		-- null_ls.builtins.formatting.goimports_reviser,
+		-- null_ls.builtins.diagnostics.golangci_lint,
+		-- null_ls.builtins.diagnostics.revive,
 		null_ls.builtins.code_actions.gomodifytags,
 	})
 
@@ -49,16 +49,12 @@ return function(_, opts)
 		null_ls.builtins.formatting.stylua,
 	})
 
-	utils.add_formatter_if_lsp("typescript-tools", opts.sources, {
-		null_ls.builtins.formatting.prettier,
-	})
 
 	utils.add_formatter_if_lsp("clojure-lsp", opts.sources, {
 		null_ls.builtins.diagnostics.clj_kondo,
 	})
 
 	utils.add_formatter_if_lsp("html", opts.sources, {
-		null_ls.builtins.diagnostics.tidy,
 		null_ls.builtins.formatting.djlint,
 		null_ls.builtins.formatting.prettierd,
 		null_ls.builtins.formatting.rustywind,
@@ -123,23 +119,28 @@ return function(_, opts)
 		}),
 	})
 
-	-- opts.sources = vim.list_extend(opts.sources or {}, {
-	-- C/C++, C#, Java
-	-- null_ls.builtins.formatting.uncrustify,
+	opts.sources = vim.list_extend(opts.sources or {}, {
+		null_ls.builtins.formatting.prettier,
 
-	-- Go, Javascript, Lua, Python, Typescript
-	-- null_ls.builtins.code_actions.refactoring,
+		-- C/C++, C#, Java
+		-- null_ls.builtins.formatting.uncrustify,
 
-	-- Docker
-	-- null_ls.builtins.diagnostics.hadolint,
+		-- Go, Javascript, Lua, Python, Typescript
+		null_ls.builtins.code_actions.refactoring,
 
-	-- Editorconfig
-	-- null_ls.builtins.diagnostics.editorconfig_checker,
+		-- Docker
+		null_ls.builtins.diagnostics.hadolint,
 
-	-- Spell
-	-- null_ls.builtins.completion.spell,
+		-- Editorconfig
+		null_ls.builtins.diagnostics.editorconfig_checker,
 
-	-- Xml
-	-- null_ls.builtins.diagnostics.tidy,
-	-- })
+		-- Spell
+		-- null_ls.builtins.completion.spell,
+
+		-- Xml
+		null_ls.builtins.formatting.xmllint,
+
+		-- asm
+		null_ls.builtins.formatting.asmfmt
+	})
 end

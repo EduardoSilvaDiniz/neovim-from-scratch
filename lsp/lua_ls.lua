@@ -1,4 +1,4 @@
-local capabilities = require("lsp.capabilities")
+local capabilities = require("lib.lsp.capabilities")
 
 return {
 	capabilities = capabilities,
