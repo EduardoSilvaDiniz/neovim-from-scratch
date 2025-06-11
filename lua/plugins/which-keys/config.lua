@@ -2,6 +2,7 @@ return {
 	delay = 0,
 	icons = {
 		mappings = false,
+		colors = false,
 		keys = vim.g.have_nerd_font and {} or {
 			Up = "<Up> ",
 			Down = "<Down> ",
