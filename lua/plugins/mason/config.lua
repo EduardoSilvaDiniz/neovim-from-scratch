@@ -1,43 +1,56 @@
 ---@class M
 ---@field lsp table
 ---@field dap table
----@field null table
+---@field format table
 local M = {}
 
 M.lsp = {
 	ensure_installed = {
-		"asm_lsp",
+		"bashls",
 		"gopls",
 		"jdtls",
 		"lua_ls",
 		"rust_analyzer",
+		"ts_ls",
+		"yamlls",
 	},
 	automatic_installation = true,
 }
 
 M.dap = {
 	ensure_installed = {
+		"go-debug-adapter",
 		"java-debug-adapter",
 		"java-test",
 	},
 	automatic_installation = true,
 }
 
-M.null = {
+M.format = {
 	ensure_installed = {
-		--- Formatter
-		"asmfmt",
+		"alejandra",
+		"black",
 		"clang-format",
+		"clj-kondo",
+		"cmakelint",
+		"gofumpt",
+		"goimports",
+		"golines",
+		"google-java-format",
+		"isort",
 		"prettier",
+		"pylint",
+		"rustfmt",
+		"shfmt",
+		"sql-formatter",
 		"stylua",
-		"yaml-language-server",
-		"yamlfmt",
-
-		--- Lint
-		"checkstyle",
-		"editorconfig-checker",
 	},
-	automatic_installation = true,
+	auto_update = true,
+	integrations = {
+		["mason-lspconfig"] = false,
+		["mason-null-ls"] = true,
+		["mason-nvim-dap"] = false,
+	},
 }
 
 return M
