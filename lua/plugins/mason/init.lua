@@ -26,11 +26,10 @@ return {
 		opts = config.dap,
 	},
 	{
-		"jay-babu/mason-null-ls.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		dependencies = {
 			"williamboman/mason.nvim",
-			"nvimtools/none-ls.nvim",
 		},
-		opts = config.null,
+		opts = config.format,
 	},
 }
