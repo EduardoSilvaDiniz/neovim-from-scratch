@@ -31,10 +31,12 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - [bashls](https://github.com/bash-lsp/bash-language-server)
 - [clangd](https://github.com/clangd/clangd)
 - [gopls](https://github.com/golang/tools/blob/master/gopls/README.md)
+- [jdtls](https://github.com/eclipse-jdtls/eclipse.jdt.ls)
 - [lua_ls](https://github.com/LuaLS/lua-language-server)
 - [nil_ls](https://github.com/oxalica/nil)
 - [rust_analyzer](https://github.com/rust-lang/rust-analyzer)
 - [ts_server](https://github.com/microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29)
+- [yamlls](https://github.com/redhat-developer/yaml-language-server)
 
 ## Plugins
 ### Codigo
