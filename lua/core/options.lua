@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.g.have_nerd_font = true
+vim.g.editorconfig = true
 vim.wo.number = true
 vim.lsp.inlay_hint.enable(true)
 vim.opt.signcolumn = "yes:1"
