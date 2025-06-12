@@ -7,9 +7,11 @@ local M = {}
 M.lsp = {
 	ensure_installed = {
 		"bashls",
+		"clangd",
 		"gopls",
 		"jdtls",
 		"lua_ls",
+		"nil_ls",
 		"rust_analyzer",
 		"ts_ls",
 		"yamlls",
