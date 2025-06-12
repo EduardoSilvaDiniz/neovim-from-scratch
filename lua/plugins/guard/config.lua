@@ -1,10 +1,8 @@
-local ft = require("guard.filetype")
-
 return function()
+	local ft = require("guard.filetype")
 	ft("c"):fmt("clang-format"):append({ cmd = "cppcheck" })
 	ft("cloujure"):lint({ cmd = "clj-kondo", args = "--lint" })
 	ft("go"):fmt("gofumpt"):fmt("golines"):fmt("goimports")
-	ft("html"):fmt("prettierd")
 	ft("java"):fmt("google-java-format")
 	ft("lua"):fmt("stylua")
 	ft("make"):lint({ cmd = "cmakelint" })
@@ -17,5 +15,5 @@ return function()
 		args = { "-l", "postgresql", "--fix" },
 		fname = true,
 	})
-	ft("typescript,javascript,typescriptreact,yaml,json,markdown"):fmt("prettier")
+	ft("html,css,typescript,javascript,typescriptreact,yaml,json,markdown"):fmt("prettier")
 end
