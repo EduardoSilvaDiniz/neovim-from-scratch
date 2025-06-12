@@ -12,9 +12,12 @@ vim.lsp.enable({
 	"bashls",
 	"clangd",
 	"gopls",
+	-- "jdtls", -- nvim-jdtls plugin controls this lsp
 	"lua_ls",
 	"nil_ls",
 	"rust_analyzer",
+	-- "ts_server", -- typescript-tools plugin controls this lsp
+	"yamlls",
 })
 
 local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
