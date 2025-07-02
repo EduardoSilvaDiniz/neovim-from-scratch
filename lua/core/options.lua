@@ -17,7 +17,8 @@ vim.lsp.enable({
 	"nil_ls",
 	"rust_analyzer",
 	-- "ts_server", -- typescript-tools plugin controls this lsp
-	"yamlls",
+	"qmlls",
+	"yamll",
 })
 
 local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg

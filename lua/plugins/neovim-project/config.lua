@@ -4,6 +4,7 @@ return {
 		"~/.config/nvim",
 		"~/.config/eww",
 		"~/.config/hypr",
+		"~/.config/quickshell",
 		"~/.config/emacs",
 		"/mnt/win_linux/Projetos/*",
 		"/mnt/d/Projetos/*",
