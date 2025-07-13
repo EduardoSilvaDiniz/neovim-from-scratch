@@ -9,5 +9,5 @@ return {
 		},
 	},
 	build = ":TSUpdate",
-	opts = require("plugins.treesitter.config"),
+	config = require("plugins.treesitter.config"),
 }
