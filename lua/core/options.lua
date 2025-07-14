@@ -7,6 +7,10 @@ vim.g.have_nerd_font = true
 vim.g.editorconfig = true
 vim.wo.number = true
 vim.lsp.inlay_hint.enable(true)
+vim.g.loaded_node_provider = 1
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
 vim.opt.signcolumn = "yes:1"
 vim.lsp.enable({
 	"bashls",
