@@ -76,3 +76,21 @@ Mesmo com o tempo dedicado à configuração e ajuste de cada detalhe, ainda val
 - [snipe](https://github.com/leath-dub/snipe.nvim)
 - [trouble](https://github.com/folke/trouble.nvim)
 
+## Instalação
+### Gentoo
+```bash
+app-arch/gzip
+app-arch/unzip
+app-shells/fzf
+dev-lang/go
+dev-lua/luarocks
+dev-util/tree-sitter-cli
+media-gfx/chafa
+media-gfx/ueberzugpp
+media-gfx/viu::xarblu-overlay
+net-libs/nodejs USE="npm"
+net-misc/curl
+net-misc/wget
+sys-apps/fd
+sys-apps/ripgrep
+```
