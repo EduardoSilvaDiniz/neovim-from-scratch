@@ -8,6 +8,4 @@ return {
 		"LazyGitFilter",
 		"LazyGitFilterCurrentFile",
 	},
-	config = vim.schedule(function()
-	end),
 }
