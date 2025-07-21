@@ -32,4 +32,18 @@ return {
 		end,
 		{ noremap = true },
 	},
+	{
+		"<A-5>",
+		function()
+			harpoonUi.nav_file(5)
+		end,
+		{ noremap = true },
+	},
+	{
+		"<A-6>",
+		function()
+			harpoonUi.nav_file(6)
+		end,
+		{ noremap = true },
+	},
 }
