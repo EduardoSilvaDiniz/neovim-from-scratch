@@ -16,6 +16,11 @@ return {
 			"neovim/nvim-lspconfig",
 		},
 		opts = config.lsp,
+		config = function()
+			require("mason-lspconfig").setup {
+				automatic_enable = false
+			}
+		end
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
