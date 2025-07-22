@@ -26,9 +26,9 @@ return {
 
 	sources = {
 		{ name = "nvim_lsp", max_item_count = 16, priority = 8 },
-		{ name = "luasnip", max_item_count = 16, priority = 8 },
-		{ name = "path", max_item_count = 16, priority = 5 },
-		{ name = "buffer", max_item_count = 16, priority = 4 },
+		{ name = "luasnip",  max_item_count = 16, priority = 8 },
+		{ name = "path",     max_item_count = 16, priority = 5 },
+		{ name = "buffer",   max_item_count = 16, priority = 4 },
 	},
 
 	preselect = {
@@ -83,20 +83,29 @@ return {
 		native_menu = false,
 	},
 
+	-- configuration tjdevries
+	-- https://github.com/tjdevries/config_manager/blob/78608334a7803a0de1a08a9a4bd1b03ad2a5eb11/xdg_config/nvim/after/plugin/completion.lua
 	sorting = {
-		priority_weight = 1.0,
 		comparators = {
+			cmp.config.compare.offset,
 			cmp.config.compare.exact,
-			cmp.config.compare.recently_used,
-			cmp.config.compare.kind,
 			cmp.config.compare.score,
-			-- cmp.config.compare.locality,
-			-- cmp.config.compare.score_offset,
-			-- cmp.config.compare.offset,
-			-- cmp.config.compare.scopes,
-			-- cmp.config.compare.sort_text,
-			-- cmp.config.compare.kind,
-			-- cmp.config.compare.length,
+
+			function(entry1, entry2)
+				local _, entry1_under = entry1.completion_item.label:find "^_+"
+				local _, entry2_under = entry2.completion_item.label:find "^_+"
+				entry1_under = entry1_under or 0
+				entry2_under = entry2_under or 0
+				if entry1_under > entry2_under then
+					return false
+				elseif entry1_under < entry2_under then
+					return true
+				end
+			end,
+
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
 			cmp.config.compare.order,
 		},
 	},
