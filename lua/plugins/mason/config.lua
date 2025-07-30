@@ -7,15 +7,13 @@ local M = {}
 M.lsp = {
 	ensure_installed = {
 		"bashls",
-		"clangd",
+		-- "clangd",
 		"gopls",
 		"golangci_lint_ls",
-		"jdtls",
+		-- "jdtls",
 		"lua_ls",
 		-- "nil_ls",
-		"rust_analyzer",
-		"ts_ls",
-		"yamlls",
+		-- "rust_analyzer",
 	},
 	automatic_installation = true,
 }
@@ -23,28 +21,22 @@ M.lsp = {
 M.dap = {
 	ensure_installed = {
 		"go-debug-adapter",
-		"java-debug-adapter",
-		"java-test",
+		-- "java-debug-adapter",
+		-- "java-test",
 	},
 	automatic_installation = true,
 }
 
 M.format = {
 	ensure_installed = {
-		"alejandra",
-		"black",
-		"clang-format",
-		"clj-kondo",
-		"cmakelint",
+		-- "alejandra",
+		-- "clang-format",
+		-- "cmakelint",
 		"gofumpt",
 		"goimports",
 		"golines",
-		"google-java-format",
-		"isort",
-		"prettier",
-		"prettierd",
-		"pylint",
-		"rustfmt",
+		-- "google-java-format",
+		-- "rustfmt",
 		"shfmt",
 		"sql-formatter",
 		"stylua",
@@ -52,7 +44,7 @@ M.format = {
 	auto_update = true,
 	integrations = {
 		["mason-lspconfig"] = false,
-		["mason-null-ls"] = true,
+		["mason-null-ls"] = false,
 		["mason-nvim-dap"] = false,
 	},
 }
