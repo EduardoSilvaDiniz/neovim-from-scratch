@@ -13,7 +13,7 @@ return {
 				gc_details = true,
 				generate = true,
 				regenerate_cgo = true,
-				-- tidy = true,
+				tidy = false,
 				upgrade_dependency = true,
 				vendor = true,
 			},
