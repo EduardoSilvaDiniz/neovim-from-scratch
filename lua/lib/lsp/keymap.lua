@@ -2,20 +2,20 @@ local builtin = require("telescope.builtin")
 local conform = require("conform")
 
 return {
-	{ "gD",          vim.lsp.buf.declaration,                                               { desc = "vai para declaração" } },
-	{ "gd",          builtin.lsp_definitions,                                               { desc = "vai para definição" } },
-	{ "gr",          builtin.lsp_references,                                                { desc = "vai para referencia" } },
-	{ "gi",          builtin.lsp_implementations,                                           { desc = "vai para a implementação" } },
-	{ "gt",          builtin.lsp_type_definitions,                                          { desc = "vai para definição de tipo" } },
-	{ "ga",          vim.lsp.buf.code_action,                                               { desc = "ação de codigo" } },
+	{ "grn",  vim.lsp.buf.rename,                                                    { desc = "renomear" } },
+	{ "gra",          vim.lsp.buf.code_action,                                               { desc = "Busca ação" } },
+	{ "grr",          builtin.lsp_references,                                                { desc = "vai para referencia" } },
+	{ "gri",          builtin.lsp_implementations,                                           { desc = "vai para a implementação" } },
+	{ "grd",          builtin.lsp_definitions,                                               { desc = "vai para definição" } },
+	{ "grD",          vim.lsp.buf.declaration,                                               { desc = "vai para declaração" } },
+	{ "gO",						builtin.lsp_document_symbols,                                          { desc = "documento dos simbolos" } },
+	{"gW",						builtin.lsp_dynamic_workspace_symbols, { desc = "Open Workspace Symbols"}},
+	{ "grt",          builtin.lsp_type_definitions,                                          { desc = "vai para definição de tipo" } },
+
 	{ "<C-p>",       function() vim.diagnostic.jump({ forward = false }) end,               { desc = "Diagnóstico anterior" } },
 	{ "<C-n>",       function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<C-k>",       vim.lsp.buf.signature_help,                                            { desc = "mostra assinatura de ajuda" } },
-	{ "<leader>ds",  builtin.lsp_document_symbols,                                          { desc = "documento dos simbolos" } },
-	{ "<leader>f",   function() conform.format({ async = true, lsp_format = "never" }) end, { desc = "formata o buffer" } },
-	-- { "<leader>f",   function() vim.lsp.buf.format({async = true}) end,							 { desc = "formata o buffer" } },
-	{ "<leader>cr",  vim.lsp.buf.rename,                                                    { desc = "renomear" } },
-	{ "<leader>ca",  vim.lsp.buf.code_action,                                               { desc = "ação de codigo" } },
+	{ "<leader>f",   function() conform.format({ async = true}) end,												{ desc = "formata buffer" } },
 	{ "<leader>ct",  vim.lsp.buf.type_definition,                                           { desc = "vai para definição do tipo" } },
 	{ "<leader>cD",  vim.lsp.buf.declaration,                                               { desc = "vai para declaração" } },
 	{ "<leader>cd",  vim.lsp.buf.definition,                                                { desc = "vai para definição" } },
@@ -27,6 +27,6 @@ return {
 	{ "<leader>cd]", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<leader>cdp", function() vim.diagnostic.jump({ forward = false }) end,               { desc = "Diagnóstico anterior" } },
 	{ "<leader>cdn", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
-	{ "<leader>cdL", vim.diagnostic.open_float,                                             { desc = "Line" } },
-	{ "<leader>cdl", vim.diagnostic.setloclist,                                             { desc = "Loclist" } },
+	{ "<leader>l2", "<cmd>checkhealth vim.lsp<cr>", { desc = "Lsp" } },
+	{ '<C-k>', function()       require('lsp_signature').toggle_float_win() end, { silent = true, noremap = true, desc = 'toggle signature' }}
 }
