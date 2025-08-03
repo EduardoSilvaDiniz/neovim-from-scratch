@@ -1,4 +1,5 @@
 local config = require("lib.lsp.config")
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
@@ -23,5 +24,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		loadkeys.manual_load(keymaps, nil)
 
 		vim.diagnostic.config(config)
+	end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+	callback = function()
+		require("lint").try_lint()
 	end,
 })
