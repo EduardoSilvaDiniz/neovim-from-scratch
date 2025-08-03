@@ -1,26 +1,50 @@
 ---@diagnostic disable: unused-local
 local function get_jdtls()
-	local mason_registry = require("mason-registry")
-	local jdtls = mason_registry.get_package("jdtls")
-	local jdtls_path = jdtls:get_install_path()
+	local jdtls_path = vim.fn.expand("$MASON/packages/jdtls")
+
+	if vim.fn.isdirectory(jdtls_path) == 0 then
+		vim.notify("jdtls not found", vim.log.levels.ERROR)
+		return
+	end
+
 	local launcher = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
-	local SYSTEM = "linux"
-	local config = jdtls_path .. "/config_" .. SYSTEM
+
+	local sysname = vim.loop.os_uname().sysname
+	local system = nil
+	if sysname == "Windows_NT" then
+		system = "win"
+	elseif sysname == "Linux" then
+		system = "linux"
+	else
+		system = sysname
+		print("sysname not identification: ", system)
+		return nil
+	end
+
+	local config = jdtls_path .. "/config_" .. system
 	local lombok = jdtls_path .. "/lombok.jar"
 	return launcher, config, lombok
 end
 
 local function get_bundles()
-	local mason_registry = require("mason-registry")
-	local java_debug = mason_registry.get_package("java-debug-adapter")
-	local java_debug_path = java_debug:get_install_path()
+	local java_test_path = vim.fn.expand("$MASON/packages/java-test")
+
+	if vim.fn.isdirectory(java_test_path) == 0 then
+		vim.notify("java-test not found", vim.log.levels.ERROR)
+		return
+	end
+
+	local java_debug_path = vim.fn.expand("$MASON/packages/java-debug-adapter")
+
+	if vim.fn.isdirectory(java_debug_path) == 0 then
+		vim.notify("java-debug-adapter not found", vim.log.levels.ERROR)
+		return
+	end
 
 	local bundles = {
 		vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", true),
 	}
 
-	local java_test = mason_registry.get_package("java-test")
-	local java_test_path = java_test:get_install_path()
 	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar", true), "\n"))
 
 	return bundles
@@ -32,42 +56,49 @@ local workspace_dir = "/home/edu/workspace-root/" .. project_name
 local jdtls, os_config, lombok = get_jdtls()
 local bundles = get_bundles()
 local capabilities = require("lib.lsp.capabilities")
-local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
+
+local ok, jdtls_plugin = pcall(require, "jdtls")
+if not ok then
+	print("jdtls plugin not found")
+	return {}
+end
+
+local extendedClientCapabilities = jdtls_plugin.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 return {
-	cmd = {
-		"jdtls"
-	},
+	capabilities = capabilities,
 	-- cmd = {
-	-- 	"java",
-	-- 	"-Declipse.application=org.eclipse.jdt.ls.core.id1",
-	-- 	"-Dosgi.bundles.defaultStartLevel=4",
-	-- 	"-Declipse.product=org.eclipse.jdt.ls.core.product",
-	-- 	"-Dlog.protocol=true",
-	-- 	"-Dlog.level=ALL",
-	-- 	"-Xmx1g",
-	-- 	"-Duser.language=pt",
-	-- 	"-Duser.region=BR",
-	-- 	"--add-modules=ALL-SYSTEM",
-	-- 	"--add-opens",
-	-- 	"java.base/java.util=ALL-UNNAMED",
-	-- 	"--add-opens",
-	-- 	"java.base/java.lang=ALL-UNNAMED",
-	-- 	"-javaagent:" .. lombok,
-	-- 	"-jar",
-	-- 	jdtls,
-	-- 	"-configuration",
-	-- 	os_config,
-	-- 	"-data",
-	-- 	workspace_dir,
+	-- 	"jdtls",
 	-- },
+	cmd = {
+		"java",
+		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+		"-Dosgi.bundles.defaultStartLevel=4",
+		"-Declipse.product=org.eclipse.jdt.ls.core.product",
+		"-Dlog.protocol=true",
+		"-Dlog.level=ALL",
+		"-Xmx1g",
+		"-Duser.language=pt",
+		"-Duser.region=BR",
+		"--add-modules=ALL-SYSTEM",
+		"--add-opens",
+		"java.base/java.util=ALL-UNNAMED",
+		"--add-opens",
+		"java.base/java.lang=ALL-UNNAMED",
+		"-javaagent:" .. lombok,
+		"-jar",
+		jdtls,
+		"-configuration",
+		os_config,
+		"-data",
+		workspace_dir,
+	},
 
 	root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew" }),
 
 	settings = {
 		java = {
-			home = "/nix/store/b0mjdq4gvsf0ybw9p0nhrjj02dg77sai-graalvm-ce-23.0.0",
 			format = {
 				enabled = false,
 			},
@@ -156,8 +187,6 @@ return {
 			},
 		},
 	},
-
-	capabilities = capabilities,
 
 	init_options = {
 		bundles = bundles,
