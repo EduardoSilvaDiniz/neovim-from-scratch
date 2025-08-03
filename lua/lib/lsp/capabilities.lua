@@ -1,10 +1,9 @@
 local M = {}
 
-M = vim.lsp.protocol.make_client_capabilities()
 
-local status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local status, _ = pcall(require, "cmp_nvim_lsp")
 if status then
-	M = cmp_nvim_lsp.default_capabilities(M)
+	M = require('blink.cmp').get_lsp_capabilities()
 end
 
 M.textDocument.completion.completionItem.snippetSupport = false

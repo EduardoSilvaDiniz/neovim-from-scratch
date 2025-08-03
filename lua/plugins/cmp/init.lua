@@ -12,6 +12,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"onsails/lspkind.nvim",
 		"nvim-lua/plenary.nvim",
+		"saghen/blink.cmp",
 	},
 	config = function()
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
