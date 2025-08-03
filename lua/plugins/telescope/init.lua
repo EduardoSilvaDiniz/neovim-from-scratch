@@ -7,10 +7,7 @@ return {
 		"nvim-telescope/telescope-ui-select.nvim",
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-			cond = function()
-				return vim.fn.executable("make") == 1
-			end,
+			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
 		},
 		{
 			"nvim-tree/nvim-web-devicons",
