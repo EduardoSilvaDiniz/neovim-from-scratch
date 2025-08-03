@@ -19,6 +19,10 @@ vim.lsp.enable({
 	"nil_ls",
 	"sqls",
 })
+local capabilities = require("lib.lsp.capabilities")
+vim.lsp.config("*", {
+	capabilities = capabilities
+})
 
 local function safe_quit(force)
 	local buffers = vim.fn.getbufinfo({ buflisted = 1 })
