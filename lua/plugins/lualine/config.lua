@@ -75,16 +75,18 @@ insert_right({
 		local msg = "No Active Lsp"
 		local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 		local clients = vim.lsp.get_clients()
+		table.insert(clients, {
+			name = "jdtls",
+			config = {
+				filetypes = { "java" },
+			},
+		})
 
-		if next(clients) == nil then
+		if clients == nil then
 			return msg
 		end
 
 		for _, client in ipairs(clients) do
-			if client.name == "null-ls" then
-				goto continue
-			end
-
 			local filetypes = client.config.filetypes
 			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
 				return client.name
