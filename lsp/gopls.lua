@@ -1,7 +1,6 @@
 local capabilities = require("lib.lsp.capabilities")
 
 return {
-	cmd = "gopls",
 	capabilities = capabilities,
 	settings = {
 		gopls = {

@@ -22,6 +22,6 @@ local function build_project()
 	})
 end
 
-vim.keymap.set("n", "<leader>co", build_project, { desc = "compila projeto gradle"})
+vim.keymap.set("n", "<leader>co", build_project, { desc = "compila projeto gradle" })
 
 require("jdtls").start_or_attach(config)
