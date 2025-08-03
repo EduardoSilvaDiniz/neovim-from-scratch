@@ -1,5 +1,6 @@
 return {
 	projects = {
+		"~/IdeaProjects/*",
 		"~/Projetos/*",
 		"~/.config/nvim",
 		"~/.config/eww",
