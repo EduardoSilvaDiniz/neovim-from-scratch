@@ -13,22 +13,39 @@ vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.opt.signcolumn = "yes:1"
 vim.lsp.enable({
-	"bashls",
 	"clangd",
 	"gopls",
-	-- "jdtls", -- nvim-jdtls plugin controls this lsp
 	"lua_ls",
 	"nil_ls",
-	"rust_analyzer",
-	-- "ts_server", -- typescript-tools plugin controls this lsp
-	"qmlls",
-	"yamll",
+	"sqls",
 })
+
+local function safe_quit(force)
+	local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+
+	if #buffers > 1 then
+		vim.cmd(force and "bdelete!" or "bdelete")
+	else
+		vim.cmd("enew")
+		vim.cmd("file [No Name]")
+		vim.cmd("bdelete!")
+	end
+end
 
 local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
 vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal_bg })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal_bg })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = normal_bg })
 
-vim.keymap.set("n", "<leader>qq", "<cmd>q<cr>", { desc = "sair do neovim" })
-vim.keymap.set("n", "<leader>qs", "<cmd>q!<cr>", { desc = "sair do neovim sem salvar" })
+vim.keymap.set("n", "<leader>Q", "<cmd>exit<cr>", { desc = "fechar neovim" })
+vim.keymap.set("n", "<leader>qq", function()
+	safe_quit(false)
+end, { desc = "Fechar buffer" })
+vim.keymap.set("n", "<leader>qs", function()
+	safe_quit(true)
+end, { desc = "Fechar buffer sem salvar" })
+
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
