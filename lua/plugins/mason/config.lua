@@ -24,14 +24,15 @@ M.tools = {
 
 		-- formatter
 		-- "alejandra",
+		"checkstyle",
 		"clang-format",
 		"cmakelint",
+		"editorconfig-checker",
 		"gofumpt",
 		"goimports",
 		"golines",
 		"google-java-format",
 		"stylua",
-		"checkstyle",
 	},
 	auto_update = true,
 	integrations = {
