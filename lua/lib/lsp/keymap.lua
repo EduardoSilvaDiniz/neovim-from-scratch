@@ -27,6 +27,7 @@ return {
 	{ "<leader>cd]", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<leader>cdp", function() vim.diagnostic.jump({ forward = false }) end,               { desc = "Diagnóstico anterior" } },
 	{ "<leader>cdn", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
-	{ "<leader>l2", "<cmd>checkhealth vim.lsp<cr>", { desc = "Lsp" } },
-	{ '<C-k>', function()       require('lsp_signature').toggle_float_win() end, { silent = true, noremap = true, desc = 'toggle signature' }}
+	{ "<leader>ol", "<cmd>LspInfo<cr>", { desc = "Lsp" } },
+	{ "<leader>l2", "<cmd>LspLog<cr>", { desc = "Lsp" } },
+	{ "<leader>l3", "<cmd>ConformInfo<cr>", { desc = "Conform" } },
 }
