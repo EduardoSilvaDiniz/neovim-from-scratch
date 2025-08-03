@@ -31,6 +31,7 @@ M.tools = {
 		"golines",
 		"google-java-format",
 		"stylua",
+		"checkstyle",
 	},
 	auto_update = true,
 	integrations = {
