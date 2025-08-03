@@ -40,5 +40,7 @@ return {
 		{ "<leader>s", group = "Pesquisa" },
 		{ "<leader>q", group = "fecha sessão" },
 		{ "<leader>p", group = "Projeto" },
+		{ "<leader>o", group = "abrir" },
+		{ "<leader>l", group = "logs" },
 	},
 }
