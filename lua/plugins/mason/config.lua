@@ -27,7 +27,6 @@ M.tools = {
 		"checkstyle",
 		"clang-format",
 		"cmakelint",
-		"editorconfig-checker",
 		"gofumpt",
 		"goimports",
 		"golines",

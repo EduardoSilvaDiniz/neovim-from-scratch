@@ -5,6 +5,5 @@ return function()
 		java = { "checkstyle" },
 		nix = { "deadnix" },
 		c = { "cpplint" },
-		["*"] = { "editorconfig-checker" },
 	}
 end
