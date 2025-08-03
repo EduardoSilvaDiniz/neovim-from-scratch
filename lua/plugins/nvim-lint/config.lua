@@ -1,7 +1,9 @@
 return function()
 	require("lint").linters_by_ft = {
-		go = {},
-		lua = {},
+		go = { "golangcilint" },
+		lua = { "luacheck" },
 		java = { "checkstyle" },
+		nix = { "deadnix" },
+		c = { "cpplint" },
 	}
 end
