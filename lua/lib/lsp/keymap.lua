@@ -1,5 +1,4 @@
 local builtin = require("telescope.builtin")
-local conform = require("conform")
 
 return {
 	{ "grn",  vim.lsp.buf.rename,                                                    { desc = "renomear" } },
@@ -15,7 +14,6 @@ return {
 	{ "<C-p>",       function() vim.diagnostic.jump({ forward = false }) end,               { desc = "Diagnóstico anterior" } },
 	{ "<C-n>",       function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<C-k>",       vim.lsp.buf.signature_help,                                            { desc = "mostra assinatura de ajuda" } },
-	{ "<leader>f",   function() conform.format({ async = true}) end,												{ desc = "formata buffer" } },
 	{ "<leader>ct",  vim.lsp.buf.type_definition,                                           { desc = "vai para definição do tipo" } },
 	{ "<leader>cD",  vim.lsp.buf.declaration,                                               { desc = "vai para declaração" } },
 	{ "<leader>cd",  vim.lsp.buf.definition,                                                { desc = "vai para definição" } },
@@ -29,5 +27,4 @@ return {
 	{ "<leader>cdn", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<leader>ol", "<cmd>LspInfo<cr>", { desc = "Lsp" } },
 	{ "<leader>l2", "<cmd>LspLog<cr>", { desc = "Lsp" } },
-	{ "<leader>l3", "<cmd>ConformInfo<cr>", { desc = "Conform" } },
 }
