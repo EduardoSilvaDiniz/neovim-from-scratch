@@ -11,6 +11,8 @@ local themes = {
 			vim.api.nvim_set_hl(0, "GruvboxAquaSign", { fg = "#8ec07c", bg = normal_bg })
 			vim.api.nvim_set_hl(0, "GruvboxBlueSign", { fg = "#83a598", bg = normal_bg })
 			vim.api.nvim_set_hl(0, "GruvboxYellowSign", { fg = "#fabd2f", bg = normal_bg })
+			vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#EBDBB2" })
+			vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = "#FB4934" })
 		end,
 	},
 
