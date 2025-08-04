@@ -24,17 +24,16 @@ return {
 		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = {
-				{ name = "buffer" },
+				{ name = "buffer", max_item_count = 8 },
 			},
 		})
 
 		cmp.setup.cmdline(":", {
 			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources({
-				{ name = "path" },
-			}, {
-				{ name = "cmdline" },
-			}),
+			sources = {
+				{ name = "path", max_item_count = 8 },
+				{ name = "cmdline", max_item_count = 8 },
+			},
 			matching = { disallow_symbol_nonprefix_matching = false },
 		})
 
