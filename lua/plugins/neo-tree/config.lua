@@ -22,6 +22,7 @@ return {
 		},
 		window = {
 			mappings = {
+				["<C-'>"] = "close_window",
 				["\\"] = "close_window",
 				["l"] = "open",
 				["h"] = "back_close_folder",
