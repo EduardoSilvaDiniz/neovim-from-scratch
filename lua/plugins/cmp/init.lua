@@ -1,4 +1,7 @@
 ---@diagnostic disable: undefined-field, redundant-parameter
+if true then
+	return {}
+end
 return {
 	"hrsh7th/nvim-cmp",
 	version = false,
