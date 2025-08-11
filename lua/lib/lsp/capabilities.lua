@@ -1,11 +1,12 @@
-local M = {}
+local M = {
+	textDocument = {
+		foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
+		},
+	},
+}
 
-
-local status, _ = pcall(require, "cmp_nvim_lsp")
-if status then
-	M = require('blink.cmp').get_lsp_capabilities()
-end
-
-M.textDocument.completion.completionItem.snippetSupport = false
+M = require("blink.cmp").get_lsp_capabilities(M)
 
 return M
