@@ -65,6 +65,7 @@ end
 
 local extendedClientCapabilities = jdtls_plugin.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
 	capabilities = capabilities,
