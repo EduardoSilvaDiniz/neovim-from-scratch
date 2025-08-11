@@ -21,7 +21,7 @@ vim.lsp.enable({
 })
 local capabilities = require("lib.lsp.capabilities")
 vim.lsp.config("*", {
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 local function safe_quit(force)
@@ -53,3 +53,8 @@ vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
+vim.keymap.set("n", "<C-f>", "/")
+vim.keymap.set("n", "<C-F>", "?")
+vim.keymap.set("n", "<leader>oz", "<cmd>Lazy<cr>")
+
