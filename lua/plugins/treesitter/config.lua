@@ -26,7 +26,6 @@ return function()
 			"hjson",
 			"json",
 			"json5",
-			"jsonc",
 			"kotlin",
 			"lua",
 			"luadoc",
