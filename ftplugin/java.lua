@@ -25,3 +25,7 @@ end
 vim.keymap.set("n", "<leader>co", build_project, { desc = "compila projeto gradle" })
 
 require("jdtls").start_or_attach(config)
+
+local jdtls = require("jdtls")
+vim.keymap.set("n", "<leader>vc", jdtls.test_class, { desc = "Test class (DAP)" })
+vim.keymap.set("n", "<leader>vm", jdtls.test_nearest_method, { desc = "Test method (DAP)" })
