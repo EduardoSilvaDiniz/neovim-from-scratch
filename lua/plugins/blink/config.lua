@@ -12,6 +12,11 @@ local function is_enabled()
 end
 
 return {
+	enabled = function()
+		local disabled_filetypes = { "neo-tree", "NvimTree", "DressingInput" } -- Add "neo-tree"
+		return not vim.tbl_contains(disabled_filetypes, vim.bo.filetype)
+	end,
+
 	snippets = {
 		preset = "luasnip",
 	},
@@ -35,13 +40,13 @@ return {
 	appearance = {
 		nerd_font_variant = "mono",
 	},
-	completion = {
-		enabled = function()
-			--TODO CORRIGIR ESSE CODIGO
-			return not vim.tbl_contains({ "DressingInput", "neo-tree" })
-		end,
-		documentation = { auto_show = false },
-	},
+	-- completion = {
+	-- 	enabled = function()
+	-- 		--TODO CORRIGIR ESSE CODIGO
+	-- 		return not vim.tbl_contains({ "DressingInput", "neo-tree" })
+	-- 	end,
+	-- 	-- documentation = { auto_show = false },
+	-- },
 
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },

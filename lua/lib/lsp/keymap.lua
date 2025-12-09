@@ -1,4 +1,6 @@
 local builtin = require("telescope.builtin")
+local ts_api = require("typescript-tools.api")
+
 
 return {
 	{ "grn",  vim.lsp.buf.rename,                                                    { desc = "renomear" } },
@@ -27,4 +29,6 @@ return {
 	{ "<leader>cdn", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<leader>ol", "<cmd>LspInfo<cr>", { desc = "Lsp" } },
 	{ "<leader>l2", "<cmd>LspLog<cr>", { desc = "Lsp" } },
+		{ "<leader>co", ts_api.organize_imports, { desc = "(TS Tools) - organize imports" } },
+		{ "<leader>ca", ts_api.fix_all, { desc = "(TS Tools) - fix all" } },
 }

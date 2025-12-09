@@ -15,23 +15,24 @@ M.dap = {
 M.tools = {
 	ensure_installed = {
 		-- Lsp
-		"clangd",
+		-- "clangd", -- desativado porque não estou mais programando em C/C++
 		"gopls",
 		"jdtls",
-		"lua-language-server",
-		-- "nil_ls",
-		"sqls",
+		{ "lua-language-server", version = "3.16.1" }, -- foi definido a versão mais nova porque a stable esta com problemas de lib
+		-- "nil_ls", -- desativado porque não estou usando Nixos
+		"sql-formatter",
 
 		-- formatter
 		-- "alejandra",
-		"checkstyle",
-		"clang-format",
-		"cmakelint",
+		-- "checkstyle",
+		-- "clang-format",
+		-- "cmakelint",
 		"gofumpt",
 		"goimports",
 		"golines",
 		"google-java-format",
 		"stylua",
+		"biome",
 	},
 	auto_update = true,
 	integrations = {

@@ -2,7 +2,7 @@ local config = require("plugins.mason.config")
 return {
 	{
 		"mason-org/mason.nvim",
-		dependencies =  "neovim/nvim-lspconfig",
+		dependencies = "neovim/nvim-lspconfig",
 		opts = {},
 		config = vim.schedule(function()
 			local keymaps = require("plugins.mason.keymap")
