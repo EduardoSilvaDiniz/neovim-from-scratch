@@ -5,7 +5,7 @@ local M = {}
 
 M.dap = {
 	ensure_installed = {
-		"go-debug-adapter",
+--		"go-debug-adapter",
 		"java-debug-adapter",
 		"java-test",
 	},
@@ -21,6 +21,7 @@ M.tools = {
 		{ "lua-language-server", version = "3.16.1" }, -- foi definido a versão mais nova porque a stable esta com problemas de lib
 		-- "nil_ls", -- desativado porque não estou usando Nixos
 		"sql-formatter",
+		"angular-language-server",
 
 		-- formatter
 		-- "alejandra",

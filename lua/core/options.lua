@@ -18,6 +18,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"nil_ls",
 	"sqls",
+	"angularls"
 })
 local capabilities = require("lib.lsp.capabilities")
 vim.lsp.config("*", {
@@ -42,6 +43,10 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal_bg })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = normal_bg })
 
 vim.keymap.set("n", "<leader>Q", "<cmd>exit<cr>", { desc = "fechar neovim" })
+
+vim.keymap.set("n", "<leader><tab>", "gcc", { desc = "sargas/ux: toggle comment", remap = true })
+vim.keymap.set("v", "<leader><tab>", "gc", { desc = "sargas/ux: toggle comment", remap = true })
+
 vim.keymap.set("n", "<leader>qq", function()
 	safe_quit(false)
 end, { desc = "Fechar buffer" })

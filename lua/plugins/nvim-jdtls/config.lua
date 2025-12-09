@@ -69,17 +69,19 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
 	capabilities = capabilities,
-	-- cmd = {
-	-- 	"jdtls",
-	-- },
 	cmd = {
 		"java",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+		"-Dsun.zip.disableMemoryMapping=true",
 		"-Dosgi.bundles.defaultStartLevel=4",
 		"-Declipse.product=org.eclipse.jdt.ls.core.product",
-		"-Dlog.protocol=true",
+		"-Dlog.protocol=false",
 		"-Dlog.level=ALL",
-		"-Xmx1g",
+		"-XX:+UseParallelGC",
+		"-XX:GCTimeRatio=4",
+		"-XX:AdaptiveSizePolicyWeight=90",
+		"-Xmx4G",
+		"-Xms100m",
 		"-Duser.language=pt",
 		"-Duser.region=BR",
 		"--add-modules=ALL-SYSTEM",
