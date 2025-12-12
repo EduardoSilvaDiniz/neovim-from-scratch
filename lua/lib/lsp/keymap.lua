@@ -3,7 +3,7 @@ local ts_api = require("typescript-tools.api")
 
 
 return {
-	{ "grn",  vim.lsp.buf.rename,                                                    { desc = "renomear" } },
+	{ "grn",					vim.lsp.buf.rename,                                                    { desc = "renomear" } },
 	{ "gra",          vim.lsp.buf.code_action,                                               { desc = "Busca ação" } },
 	{ "grr",          builtin.lsp_references,                                                { desc = "vai para referencia" } },
 	{ "gri",          builtin.lsp_implementations,                                           { desc = "vai para a implementação" } },
@@ -12,7 +12,6 @@ return {
 	{ "gO",						builtin.lsp_document_symbols,                                          { desc = "documento dos simbolos" } },
 	{"gW",						builtin.lsp_dynamic_workspace_symbols, { desc = "Open Workspace Symbols"}},
 	{ "grt",          builtin.lsp_type_definitions,                                          { desc = "vai para definição de tipo" } },
-
 	{ "<C-p>",       function() vim.diagnostic.jump({ forward = false }) end,               { desc = "Diagnóstico anterior" } },
 	{ "<C-n>",       function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<C-k>",       vim.lsp.buf.signature_help,                                            { desc = "mostra assinatura de ajuda" } },
@@ -27,8 +26,6 @@ return {
 	{ "<leader>cd]", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
 	{ "<leader>cdp", function() vim.diagnostic.jump({ forward = false }) end,               { desc = "Diagnóstico anterior" } },
 	{ "<leader>cdn", function() vim.diagnostic.jump({ forward = true }) end,                { desc = "Próximo diagnóstico" } },
-	{ "<leader>ol", "<cmd>LspInfo<cr>", { desc = "Lsp" } },
-	{ "<leader>l2", "<cmd>LspLog<cr>", { desc = "Lsp" } },
-		{ "<leader>co", ts_api.organize_imports, { desc = "(TS Tools) - organize imports" } },
-		{ "<leader>ca", ts_api.fix_all, { desc = "(TS Tools) - fix all" } },
+	{ "<leader>co", ts_api.organize_imports, { desc = "(TS Tools) - organize imports" } },
+	{ "<leader>ca", ts_api.fix_all, { desc = "(TS Tools) - fix all" } },
 }

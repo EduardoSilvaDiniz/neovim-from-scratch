@@ -18,11 +18,13 @@ vim.lsp.enable({
 	"lua_ls",
 	"nil_ls",
 	"sqls",
-	"angularls"
-})
-local capabilities = require("lib.lsp.capabilities")
-vim.lsp.config("*", {
-	capabilities = capabilities,
+	"pyright",
+	"html",
+	"cssls",
+	"angularls",
+	"tailwindcss",
+	"intelephense",
+	"vtsls",
 })
 
 local function safe_quit(force)
@@ -63,3 +65,5 @@ vim.keymap.set("n", "<C-f>", "/")
 vim.keymap.set("n", "<C-F>", "?")
 vim.keymap.set("n", "<leader>oz", "<cmd>Lazy<cr>")
 
+vim.keymap.set("n", "<leader>ol", "<cmd>LspInfo<cr>", { desc = "Lsp" })
+vim.keymap.set("n", "<leader>l2", "<cmd>LspLog<cr>", { desc = "Lsp" })
