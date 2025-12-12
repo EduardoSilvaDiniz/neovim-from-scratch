@@ -1,6 +1,6 @@
 return {
 	lsp = {
-		signature = { enabled = false },
+		signature = { auto_open = { enabled = false } },
 		presets = { lsp_doc_border = true },
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = false,
