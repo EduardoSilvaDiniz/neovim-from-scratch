@@ -1,5 +1,6 @@
 local capabilities = require("lib.lsp.capabilities")
 
-vim.lsp.config("angularls", {
+vim.lsp.config("html", {
 	capabilities = capabilities,
+	filetypes = { "html", "templ", "htmlangular" },
 })

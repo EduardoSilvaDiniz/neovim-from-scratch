@@ -1,6 +1,6 @@
 local capabilities = require("lib.lsp.capabilities")
 
-return {
+vim.lsp.config("lua_ls", {
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -11,4 +11,4 @@ return {
 			telemetry = { enable = false },
 		},
 	},
-}
+})
