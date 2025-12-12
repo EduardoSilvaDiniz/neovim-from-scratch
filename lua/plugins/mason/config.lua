@@ -1,40 +1,34 @@
 ---@class M
----@field dap table
----@field tools table
 local M = {}
+local config = require("config.languages")
+local languages = config.languages
+local language_enabled = config.language_enabled
 
+-- Helpers
+local function collect(kind)
+	local result = {}
+	for lang, cfg in pairs(languages) do
+		if language_enabled[lang] then
+			for _, item in ipairs(cfg[kind] or {}) do
+				table.insert(result, item)
+			end
+		end
+	end
+	return result
+end
+
+-- Mason configs finais
 M.dap = {
-	ensure_installed = {
---		"go-debug-adapter",
-		"java-debug-adapter",
-		"java-test",
-	},
+	ensure_installed = collect("dap"),
 	automatic_installation = true,
 }
 
 M.tools = {
-	ensure_installed = {
-		-- Lsp
-		-- "clangd", -- desativado porque não estou mais programando em C/C++
-		"gopls",
-		"jdtls",
-		{ "lua-language-server", version = "3.16.1" }, -- foi definido a versão mais nova porque a stable esta com problemas de lib
-		-- "nil_ls", -- desativado porque não estou usando Nixos
-		"sql-formatter",
-		"angular-language-server",
-
-		-- formatter
-		-- "alejandra",
-		-- "checkstyle",
-		-- "clang-format",
-		-- "cmakelint",
-		"gofumpt",
-		"goimports",
-		"golines",
-		"google-java-format",
-		"stylua",
-		"biome",
-	},
+	ensure_installed = vim.tbl_flatten({
+		collect("lsp"),
+		collect("format"),
+		collect("lint"),
+	}),
 	auto_update = true,
 	integrations = {
 		["mason-lspconfig"] = false,
