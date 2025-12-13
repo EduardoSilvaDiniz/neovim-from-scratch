@@ -3,10 +3,14 @@ local config = require("lib.lsp.config")
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
-		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-			buffer = event.buf,
-			callback = vim.lsp.buf.document_highlight,
-		})
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+		if client.server_capabilities.documentHighlightProvider then
+			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+				buffer = event.buf,
+				callback = vim.lsp.buf.document_highlight,
+			})
+		end
 
 		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 			buffer = event.buf,
