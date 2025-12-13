@@ -54,6 +54,11 @@ return {
 			snippets = {
 				enabled = true,
 			},
+			laravel = {
+				name = "laravel",
+				module = "blink.compat.source",
+				score_offset = 95, -- show at a higher priority than lsp
+			},
 		},
 	},
 	fuzzy = { implementation = "prefer_rust_with_warning" },

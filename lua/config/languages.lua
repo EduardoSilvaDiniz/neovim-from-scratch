@@ -27,9 +27,7 @@ M.languages = {
 			"intelephense",
 		},
 		dap = {},
-		format = {
-			"biome",
-		},
+		format = {},
 		lint = {},
 	},
 
