@@ -26,9 +26,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.diagnostic.config(config)
 	end,
 })
-
-vim.api.nvim_create_autocmd({"TextChanged", "InsertLeave", "BufWritePost"}, {
-	callback = function()
-		require("lint").try_lint()
-	end,
-})
