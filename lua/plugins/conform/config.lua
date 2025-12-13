@@ -17,6 +17,7 @@ local ft_map = {
 	angular = { "htmlangular" },
 	yaml = { "yaml" },
 }
+--TODO html não formata
 
 local formatters_by_ft = {}
 
