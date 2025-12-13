@@ -24,6 +24,9 @@ vim.lsp.enable({
 	"angularls",
 	"tailwindcss",
 	"intelephense",
+	"phpactor",
+	"laravel_ls",
+	"stimulus_ls",
 	"vtsls",
 })
 

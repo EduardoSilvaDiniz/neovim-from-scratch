@@ -25,10 +25,14 @@ M.languages = {
 	php = {
 		lsp = {
 			"intelephense",
+			"phpactor",
+			"laravel-ls",
+			"psalm",
+			"stimulus-language-server",
 		},
 		dap = {},
-		format = {},
-		lint = {},
+		format = { "phpcbf", "pint"  },
+		lint = { "phpmd", "phpstan", "phpcs" },
 	},
 
 	go = {
