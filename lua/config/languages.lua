@@ -11,9 +11,10 @@ M.language_enabled = {
 	java = false,
 	python = false,
 	lua = true,
-	vue = true,
+	html = true,
 	angular = true,
 	c = false,
+	blade = true,
 }
 
 ---@class languages
@@ -31,8 +32,22 @@ M.languages = {
 			"stimulus-language-server",
 		},
 		dap = {},
-		format = { "phpcbf", "pint"  },
-		lint = { "phpmd", "phpstan", "phpcs" },
+		format = {
+			"phpcbf",
+			"pint",
+			"php-cs-fixer",
+		},
+		lint = {
+			"phpmd",
+			"phpstan",
+			"phpcs",
+		},
+	},
+	blade = {
+		lsp = {},
+		dap = {},
+		format = { "blade-formatter" },
+		lint = {},
 	},
 
 	go = {
@@ -86,13 +101,13 @@ M.languages = {
 		},
 	},
 
-	vue = {
+	html = {
 		lsp = {
 			"vue-language-server",
 			"tailwindcss-language-server",
 		},
 		dap = {},
-		format = {},
+		format = { "blade-formatter" },
 		lint = {},
 	},
 
