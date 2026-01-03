@@ -21,6 +21,7 @@ return {
 						"intelephense",
 						"laravel-ls",
 						"phpactor",
+						"pint",
 			},
 			integrations = {
     		['mason-lspconfig'] = true,

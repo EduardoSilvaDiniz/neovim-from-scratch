@@ -5,6 +5,7 @@ return {
 		lua = { "stylua" },
 		typescript = { "prettierd" },
 		vue = { "prettierd" },
+		php = { "pint" },
 	},
 
 	formatters = {
