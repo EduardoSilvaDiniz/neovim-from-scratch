@@ -5,12 +5,13 @@ return {
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		{ "L3MON4D3/LuaSnip", version = "v2.*" },
+		"fang2hou/blink-copilot",
 	},
 
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
-		    snippets = { preset = 'luasnip' },
+		snippets = { preset = "luasnip" },
 		keymap = {
 			preset = "default",
 			["<Tab>"] = {
@@ -40,14 +41,20 @@ return {
 						{ "label", "label_description", gap = 1 },
 						{ "kind_icon", "kind", gap = 1 },
 						{ "source_name" },
-						{ "source_id" },
 					},
 				},
 			},
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "copilot" },
+			providers = {
+				copilot = {
+					name = "copilot",
+					module = "blink-copilot",
+					async = true,
+				},
+			},
 		},
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
