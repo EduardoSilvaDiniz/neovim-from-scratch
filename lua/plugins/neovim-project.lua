@@ -1,3 +1,6 @@
+if true then
+	return {}
+end
 return {
 	"coffebar/neovim-project",
 	lazy = false,
@@ -19,6 +22,7 @@ return {
 		picker = {
 			type = "telescope",
 		},
+		last_session_on_startup = false,
 	},
 	init = function()
 		vim.opt.sessionoptions:append("globals")
