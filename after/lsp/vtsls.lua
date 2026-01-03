@@ -8,8 +8,19 @@ local vue_plugin = {
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 return {
 	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+    -- desativa semantic tokens
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
   settings = {
+		typescript = {
+      semanticTokens = false,
+    },
+    javascript = {
+      semanticTokens = false,
+    },
     vtsls = {
+      semanticTokens = false,
       tsserver = {
         globalPlugins = {
           vue_plugin,

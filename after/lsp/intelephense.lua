@@ -3,6 +3,9 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 -- configuração copiada de 
 -- https://github.com/pnx/dotfiles/blob/main/nvim/lua/user/plugins/lang/php/lsp/intelephense.lua
 return {
+	on_attach = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
 	capabilities = capabilities,
 	settings = {
 		intelephense = {
@@ -48,6 +51,7 @@ return {
 				"random",
 				"standard",
 				"dom",
+				"laravel",
 			},
 		},
 	},

@@ -1,6 +1,9 @@
 -- configuração copiada de 
 -- https://github.com/pnx/dotfiles/blob/main/nvim/lua/user/plugins/lang/php/lsp/phpactor.lua
 return {
+	on_attach = function(client, bufnr)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
 	inlay_hints = { enabled = false },
 	codelens = { enabled = false },
 	document_highlight = { enabled = false },
