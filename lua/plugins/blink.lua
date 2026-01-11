@@ -1,62 +1,86 @@
 return {
-	"saghen/blink.cmp",
-	version = "1.*",
-	build = "cargo build --release",
-	dependencies = {
-		"rafamadriz/friendly-snippets",
-		{ "L3MON4D3/LuaSnip", version = "v2.*" },
-		"fang2hou/blink-copilot",
+	{
+		"saghen/blink.compat",
+		version = "2.*",
+		lazy = true,
+		opts = {},
 	},
 
-	---@module 'blink.cmp'
-	---@type blink.cmp.Config
-	opts = {
-		snippets = { preset = "luasnip" },
-		keymap = {
-			preset = "default",
-			["<Tab>"] = {
-				function(cmp)
-					if cmp.snippet_active() then
-						return cmp.accept()
-					else
-						return cmp.select_and_accept()
-					end
-				end,
-				"snippet_forward",
-				"fallback",
+	{
+		"saghen/blink.cmp",
+		version = "1.*",
+		build = "cargo build --release",
+		dependencies = {
+			"Kaiser-Yang/blink-cmp-avante",
+			"rafamadriz/friendly-snippets",
+			{ "L3MON4D3/LuaSnip", version = "v2.*" },
+		},
+
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			snippets = { preset = "luasnip" },
+			keymap = {
+				preset = "default",
+				["<Tab>"] = {
+					function(cmp)
+						if cmp.snippet_active() then
+							return cmp.accept()
+						else
+							return cmp.select_and_accept()
+						end
+					end,
+					"snippet_forward",
+					"fallback",
+				},
+				["<S-Tab>"] = { "snippet_backward", "fallback" },
+				["<CR>"] = { "select_and_accept", "fallback" },
 			},
-			["<S-Tab>"] = { "snippet_backward", "fallback" },
-			["<CR>"] = { "select_and_accept", "fallback" },
-		},
 
-		appearance = {
-			nerd_font_variant = "mono",
-		},
+			appearance = {
+				nerd_font_variant = "mono",
+			},
 
-		completion = {
-			documentation = { auto_show = false },
-			menu = {
-				draw = {
-					columns = {
-						{ "label", "label_description", gap = 1 },
-						{ "kind_icon", "kind", gap = 1 },
-						{ "source_name" },
+			completion = {
+				signature = { window = { border = "rounded" } },
+				trigger = {
+					show_on_keyword = true,
+				},
+				documentation = {
+					auto_show = false,
+					window = {
+						border = "rounded",
+					},
+				},
+				menu = {
+					border = "rounded",
+					draw = {
+						columns = {
+							{ "kind_icon", gap = 1 },
+							{ "label", gap = 1 },
+							{ "label_description", gap = 1 },
+						},
 					},
 				},
 			},
-		},
 
-		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "copilot" },
-			providers = {
-				copilot = {
-					name = "copilot",
-					module = "blink-copilot",
-					async = true,
+			sources = {
+				default = { "snippets", "lsp", "avante", "laravel", "path", "buffer" },
+				providers = {
+					avante = {
+						module = "blink-cmp-avante",
+						name = "Avante",
+						opts = {},
+					},
+					laravel = {
+						name = "laravel",
+						module = "blink.compat.source",
+						score_offset = 95,
+					},
 				},
 			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
-		fuzzy = { implementation = "prefer_rust_with_warning" },
+		opts_extend = { "sources.default" },
 	},
-	opts_extend = { "sources.default" },
 }
