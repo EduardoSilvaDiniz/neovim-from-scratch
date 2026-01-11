@@ -1,4 +1,4 @@
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+local capabilities = require('config.capabilities')
 
 return {
 	capabilities = capabilities,

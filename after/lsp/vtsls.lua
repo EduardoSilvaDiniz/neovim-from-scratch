@@ -5,7 +5,8 @@ local vue_plugin = {
   languages = { 'vue' },
   configNamespace = 'typescript',
 }
-local capabilities = require('blink.cmp').get_lsp_capabilities()
+local capabilities = require('config.capabilities')
+
 return {
 	capabilities = capabilities,
 	on_attach = function(client, bufnr)

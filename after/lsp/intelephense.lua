@@ -1,4 +1,4 @@
-local capabilities = require('blink.cmp').get_lsp_capabilities()
+local capabilities = require('config.capabilities')
 
 -- configuração copiada de 
 -- https://github.com/pnx/dotfiles/blob/main/nvim/lua/user/plugins/lang/php/lsp/intelephense.lua
