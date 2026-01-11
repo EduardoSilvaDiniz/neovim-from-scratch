@@ -19,6 +19,9 @@ vim.opt.signcolumn = "yes:1"
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- recomendação do avante.nvim
+vim.opt.laststatus = 3
+
 require("config.lazy")
 require("config.autocmds")
 

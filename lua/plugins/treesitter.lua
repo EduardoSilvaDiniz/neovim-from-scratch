@@ -11,6 +11,7 @@ return {
 			additional_vim_regex_highlighting = true,
 		})
 		require("nvim-treesitter").install({
+			"dart",
 			"javascript",
 			"html",
 			"css",
@@ -24,7 +25,6 @@ return {
 			"ini",
 			"blade",
 			"bash",
-			"git",
 			"gitignore",
 			"markdown",
 			"git_config",

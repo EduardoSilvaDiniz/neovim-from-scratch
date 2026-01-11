@@ -11,14 +11,6 @@ return {
 		{ "<leader>e", "<Cmd>Neotree<CR>", desc = "Abrir Neo-tree" },
 	},
 	opts = {
-		-- window = {
-		-- 	position = "float",
-		-- 	popup = {
-		-- 		border = "rounded",
-		-- 		title = "Neo-Tree",
-		-- 		title_pos = "center",
-		-- 	},
-		-- },
 		event_handlers = {
 			{
 				event = "file_open_requested",
@@ -44,11 +36,13 @@ return {
 		},
 		reveal_current_file = true,
 		filesystem = {
-			follow_current_file = true,
 			use_libuv_file_watcher = true,
 			group_empty_dirs = true,
 			filtered_items = {
 				visible = true,
+			},
+			follow_current_file = {
+				enabled = true,
 			},
 			window = {
 				mappings = {
