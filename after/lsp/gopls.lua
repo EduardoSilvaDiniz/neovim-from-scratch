@@ -1,6 +1,6 @@
 local capabilities = require("lib.lsp.capabilities")
 
-vim.lsp.config("go", {
+return {
 	capabilities = capabilities,
 	settings = {
 		gopls = {
@@ -25,4 +25,4 @@ vim.lsp.config("go", {
 			},
 		},
 	},
-})
+}

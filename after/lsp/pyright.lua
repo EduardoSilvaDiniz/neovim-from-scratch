@@ -1,5 +1,5 @@
 local capabilities = require("lib.lsp.capabilities")
 
-vim.lsp.config("angularls", {
+return {
 	capabilities = capabilities,
-})
+}

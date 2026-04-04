@@ -1,6 +1,6 @@
 -- configuração copiada de 
 -- https://github.com/pnx/dotfiles/blob/main/nvim/lua/user/plugins/lang/php/lsp/phpactor.lua
-vim.lsp.config("phpactor", {
+return {
 	inlay_hints = { enabled = false },
 	codelens = { enabled = false },
 	document_highlight = { enabled = false },
@@ -56,4 +56,4 @@ vim.lsp.config("phpactor", {
 		["code_transform.refactor.generate_mutator.upper_case_first"] = true,
 		["code_transform.refactor.generate_mutator.fluent"] = true,
 	},
-})
+}

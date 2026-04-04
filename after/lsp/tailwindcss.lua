@@ -1,6 +1,6 @@
 local capabilities = require("lib.lsp.capabilities")
 
-vim.lsp.config("tailwindcss", {
+return {
 	capabilities = capabilities,
 	handlers = {
 		["textDocument/documentHighlight"] = false,
@@ -61,4 +61,4 @@ vim.lsp.config("tailwindcss", {
 		"svelte",
 		"templ",
 	},
-})
+}

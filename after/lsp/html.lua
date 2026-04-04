@@ -1,4 +1,4 @@
-vim.lsp.config("html", {
+return {
 	filetypes = {
 		-- html
 		"aspnetcorerazor",
@@ -55,4 +55,4 @@ vim.lsp.config("html", {
 		"svelte",
 		"templ",
 	},
-})
+}

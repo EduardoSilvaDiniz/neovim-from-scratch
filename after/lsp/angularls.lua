@@ -1,5 +1,5 @@
 local capabilities = require("lib.lsp.capabilities")
 
-vim.lsp.config("cssls", {
+return  {
 	capabilities = capabilities,
-})
+}

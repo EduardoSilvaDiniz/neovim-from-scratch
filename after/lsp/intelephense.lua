@@ -2,7 +2,7 @@ local capabilities = require("lib.lsp.capabilities")
 
 -- configuração copiada de 
 -- https://github.com/pnx/dotfiles/blob/main/nvim/lua/user/plugins/lang/php/lsp/intelephense.lua
-vim.lsp.config("intelephense", {
+return {
 	capabilities = capabilities,
 	settings = {
 		intelephense = {
@@ -51,4 +51,4 @@ vim.lsp.config("intelephense", {
 			},
 		},
 	},
-})
+}
