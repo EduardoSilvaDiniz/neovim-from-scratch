@@ -1,16 +1,3 @@
-local function is_enabled()
-	local ts_utils = require("nvim-treesitter.ts_utils")
-	if vim.tbl_contains({ "DressingInput", "neo-tree" }) then
-		return false
-	end
-
-	if ts_utils.get_node_at_cursor():type():match("comment") then
-		return false
-	end
-
-	return true
-end
-
 return {
 	enabled = function()
 		local disabled_filetypes = { "neo-tree", "NvimTree", "DressingInput" } -- Add "neo-tree"
@@ -53,11 +40,6 @@ return {
 		providers = {
 			snippets = {
 				enabled = true,
-			},
-			laravel = {
-				name = "laravel",
-				module = "blink.compat.source",
-				score_offset = 95, -- show at a higher priority than lsp
 			},
 		},
 	},
