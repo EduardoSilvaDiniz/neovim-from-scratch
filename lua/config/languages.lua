@@ -6,15 +6,12 @@ local M = {}
 ---@class language_enabled
 ---@field name boolean
 M.language_enabled = {
-	php = true,
+	php = false,
 	go = false,
 	java = false,
-	python = false,
+	python = true,
 	lua = true,
-	html = true,
-	angular = true,
 	c = false,
-	blade = true,
 }
 
 ---@class languages
@@ -42,12 +39,6 @@ M.languages = {
 			"phpstan",
 			"phpcs",
 		},
-	},
-	blade = {
-		lsp = {},
-		dap = {},
-		format = { "blade-formatter" },
-		lint = {},
 	},
 
 	go = {
@@ -101,25 +92,7 @@ M.languages = {
 		},
 	},
 
-	html = {
-		lsp = {
-			"vue-language-server",
-			"tailwindcss-language-server",
-		},
-		dap = {},
-		format = { "blade-formatter" },
-		lint = {},
-	},
 
-	angular = {
-		lsp = {
-			"angular-language-server",
-			"tailwindcss-language-server",
-		},
-		dap = {},
-		format = {},
-		lint = {},
-	},
 }
 
 return M
