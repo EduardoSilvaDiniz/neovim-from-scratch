@@ -8,10 +8,9 @@ return {
 		"Shatur/neovim-session-manager",
 		"ibhagwan/fzf-lua",
 	},
+	keys = {
+		{ "<leader>pp", "<cmd>NeovimProjectDiscover<cr>", desc = "menu de projetos" },
+		{ "<leader>ql", "<cmd>NeovimProjectLoadRecent<cr>", desc = "restaurar ultima sessão" },
+	},
 	opts = require("plugins.neovim-project.config"),
-	config = vim.schedule(function()
-		local keymaps = require("plugins.neovim-project.keymap")
-		local loadkeys = require("lib.loadkeys")
-		loadkeys.manual_load(keymaps, nil)
-	end),
 }

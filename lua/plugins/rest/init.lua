@@ -6,9 +6,8 @@ return {
 	dependencies = {
 		"rest-nvim/tree-sitter-http",
 	},
-	config = vim.schedule(function()
-		local keymaps = require("plugins.rest.keymap")
-		local loadkeys = require("lib.loadkeys")
-		loadkeys.manual_load(keymaps, nil)
-	end),
+	keys = {
+		{ "<leader>hh", "<cmd>Rest run<CR>", desc = "Executar requisição HTTP" },
+		{ "<leader>hl", "<cmd>Rest run last<CR>", desc = "Reexecutar última requisição" },
+	},
 }
