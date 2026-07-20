@@ -1,6 +1,6 @@
 return {
 	enabled = function()
-		local disabled_filetypes = { "neo-tree", "NvimTree", "DressingInput" } -- Add "neo-tree"
+		local disabled_filetypes = { "neo-tree", "NvimTree", "DressingInput" }
 		return not vim.tbl_contains(disabled_filetypes, vim.bo.filetype)
 	end,
 
@@ -27,13 +27,6 @@ return {
 	appearance = {
 		nerd_font_variant = "mono",
 	},
-	-- completion = {
-	-- 	enabled = function()
-	-- 		--TODO CORRIGIR ESSE CODIGO
-	-- 		return not vim.tbl_contains({ "DressingInput", "neo-tree" })
-	-- 	end,
-	-- 	-- documentation = { auto_show = false },
-	-- },
 
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },

@@ -19,15 +19,6 @@ vim.lsp.enable({
 	"nil_ls",
 	"sqls",
 	"pyright",
-	"html",
-	"cssls",
-	"angularls",
-	"tailwindcss",
-	"intelephense",
-	"phpactor",
-	"laravel_ls",
-	"stimulus_ls",
-	"vtsls",
 })
 
 local function safe_quit(force)

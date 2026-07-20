@@ -3,6 +3,7 @@ return function()
 	require("nvim-treesitter").install({
 		"bash",
 		"c",
+		"cpp",
 		"cmake",
 		"css",
 		"dockerfile",
@@ -11,7 +12,6 @@ return function()
 		"json",
 		"lua",
 		"make",
-		"php",
 		"python",
 		"rust",
 		"sql",
